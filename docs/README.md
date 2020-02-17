@@ -24,9 +24,10 @@ When you complete this training you will be able to
 
 Total duration: 16 hours, split over four sessions.
 
+
 ### Session one
 
-Total duration session 1: 4 hours
+Total duration: 4 hours
 
   | Subject                                     | Duration |
   |---------------------------------------------|----------|
@@ -39,9 +40,10 @@ Total duration session 1: 4 hours
   | user defined types and classes              | 85 min.  |
   | hands-on session                            | 20 min.  |
 
+
 ### Session two
 
-Total duration, session 2: 4 hours
+Total duration: 4 hours
 
   | Subject                             | Duration |
   |-------------------------------------|----------|
@@ -54,7 +56,10 @@ Total duration, session 2: 4 hours
   | functional programming              | 20 min.  |
   | hands-on session                    | 20 min.  |
 
-Total duration, session 3: 4 hours
+
+### Session three
+
+Total duration: 4 hours
 
   | Subject                        | Duration |
   |--------------------------------|----------|
@@ -66,7 +71,10 @@ Total duration, session 3: 4 hours
   | STL algorithms                 | 30 min.  |
   | hands-on session               | 20 min.  |
   
-Total duration, session 4: 4 hours
+
+### Session four
+
+Total duration: 4 hours
 
   | Subject                        | Duration |
   |--------------------------------|----------|

@@ -1,0 +1,5 @@
+/home/gjb/Documents/training-material/CPlusPlus/STL/Knapsack/build/CMakeFiles/rebuild_cache.dir
+/home/gjb/Documents/training-material/CPlusPlus/STL/Knapsack/build/CMakeFiles/edit_cache.dir
+/home/gjb/Documents/training-material/CPlusPlus/STL/Knapsack/build/src/CMakeFiles/rebuild_cache.dir
+/home/gjb/Documents/training-material/CPlusPlus/STL/Knapsack/build/src/CMakeFiles/knapsack.exe.dir
+/home/gjb/Documents/training-material/CPlusPlus/STL/Knapsack/build/src/CMakeFiles/edit_cache.dir

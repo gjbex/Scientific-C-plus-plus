@@ -5,6 +5,7 @@ Code illustrations for chapter 3, Modularity in Stroustrup's
 # What is it?
 1. `NamespaceParticles`: example of defining a namespace.
 1. `Patricles`: example of separate compilation.
+1. `PatriclesCMake`: example of build using CMake.
 1. `Stats`: example of separate compilation.
 1. `fac.cpp`: illustrates exception handling.
 1. `memory_leak.cpp`: illustration of a memory leak caused by bad exception

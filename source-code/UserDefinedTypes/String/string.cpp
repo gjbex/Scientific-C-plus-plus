@@ -30,11 +30,11 @@ class String {
                       << std::endl;
             return *this;
         }
-        String(String&& other) : id {++global_id} {
+        String(String&& other) noexcept : id {++global_id} {
             str = std::exchange(other.str, nullptr);
             std::cout << "String(&&\"" << str << "\") " << id << std::endl;
         }
-        String& operator=(String&& other) {
+        String& operator=(String&& other) noexcept {
             str = std::exchange(other.str, nullptr);
             std::cout << id << " =&& " << other.id << " \"" << str << "\""
                       << std::endl;

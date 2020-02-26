@@ -29,12 +29,12 @@ struct Gadget {
                       << " to " << id_ << std::endl;
             return *this;
         };
-        Gadget(Gadget&& other) : id_ {++id_counter_} {
+        Gadget(Gadget&& other) noexcept : id_ {++id_counter_} {
             value_ = other.value_;
             std::cerr << "move Gadget " << other.id_ << "(" << value_ << ")"
                       << " to " << id_ << std::endl;
         };
-        Gadget& operator=(Gadget&& other) {
+        Gadget& operator=(Gadget&& other) noexcept {
             value_ = other.value_;
             std::cerr << "move assign "
                       << "Gadget " << other.id_ << "(" << value_ << ")"

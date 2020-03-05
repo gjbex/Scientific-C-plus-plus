@@ -16,3 +16,6 @@ Some illustrations of using pointers in C++.
   * `tree_uptr.cpp`: main file to test node implementation.
 * `DoubleLinkedList`: implementation of a double linked list
   that requires using raw pointers.
+* `runtime_vs_compile_time.cpp`: illustrates how to determine the
+  type of a derived class object at runtime when it is assigned to
+  a pointer of the parent class.

@@ -1,1 +1,5 @@
 *.exe
+a.out
+
+# CMake build directories
+build/

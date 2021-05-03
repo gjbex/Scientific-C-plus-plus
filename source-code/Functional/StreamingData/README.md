@@ -12,3 +12,4 @@ Comparison between a functional and OO approach to computing running statistics.
 1. `main_oo.cpp`: main function that reads from standard input and
    uses object-oriented approach.
 1. `CMakeLists.txt`: CMake file to build the applications.
+1. `generate_data.py` Python script to generate large data files.

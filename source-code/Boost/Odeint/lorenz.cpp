@@ -25,8 +25,10 @@ int main() {
     const double R = 28.0;
     const double b = 8.0/3.0;
     using namespace std::placeholders;
-    auto lorenz = bind(lorenz_param, _1, _2, _3, sigma, R, b);
-    state_type x = { 10.0, 1.0, 1.0 }; // initial conditions
+    auto lorenz = [=] (const state_type& x, state_type& dxdt, double t) {
+        return lorenz_param(x, dxdt, t, sigma, R, b);
+    };
+    state_type x = { 11.0, 1.0, 1.0 }; // initial conditions
     integrate(lorenz, x, 0.0, 25.0, 0.1, write_lorenz );
     return 0;
 }

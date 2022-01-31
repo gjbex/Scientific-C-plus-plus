@@ -10,6 +10,7 @@ class Quad {
         virtual double integrate(Integrand f,
                                  const double a,
                                  const double b) const  = 0;
+        virtual ~Quad() = default;
 };
 
 #endif

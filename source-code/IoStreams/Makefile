@@ -3,7 +3,7 @@ CXXFLAGS = -std=c++14 -O2 -g -Wall -Wextra
 LDLIBS = -lm
 
 all: csv2tsv.exe formatting.exe serialization.exe sum.exe \
-     aggregate.exe
+     aggregate.exe alternative_io.exe
 
 %.exe: %.o
 	$(CXX) $(CXXFLAGS) -o $@ $^ $(LDLIBS)

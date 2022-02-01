@@ -10,12 +10,11 @@
 namespace logging = boost::log;
 
 void init_logger() {
-      boost::filesystem::path full_path(boost::filesystem::current_path());
-
-      auto sink = logging::add_file_log("sample.log");
-      BOOST_LOG_TRIVIAL(info) << "Log initialized";
-      BOOST_LOG_TRIVIAL(info) << "Working dir: " << full_path;
-      sink->flush();
+     auto sink = logging::add_file_log("sample.log");
+     BOOST_LOG_TRIVIAL(info) << "Log initialized";
+     boost::filesystem::path full_path(boost::filesystem::current_path());
+     BOOST_LOG_TRIVIAL(info) << "Working dir: " << full_path;
+     sink->flush();
 }
 
 int main() {

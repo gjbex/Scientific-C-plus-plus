@@ -4,3 +4,6 @@ build/
 # executables
 *.exe
 a.out
+
+# editor backup files
+*~

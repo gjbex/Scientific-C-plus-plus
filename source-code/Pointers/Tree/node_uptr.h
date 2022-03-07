@@ -7,37 +7,37 @@
 template<typename T>
 class Node {
     private:
-        int _id;
-        T _value;
-        std::unique_ptr<Node<T>> _left;
-        std::unique_ptr<Node<T>> _right;
+        int id_;
+        T value_;
+        std::unique_ptr<Node<T>> left_;
+        std::unique_ptr<Node<T>> right_;
     public:
         Node(int id, T value) :
-            _id {id}, _value {value}, _left {nullptr}, _right {nullptr} {};
-        Node(Node<T>&& other) : _id {other._id}, _value {other._value} {
-            _left = std::move(other._left);
-            _right = std::move(other._right);
+            id_ {id}, value_ {value}, left_ {nullptr}, right_ {nullptr} {};
+        Node(Node<T>&& other) : id_ {other.id_}, value_ {other.value_} {
+            left_ = std::move(other.left_);
+            right_ = std::move(other.right_);
         };
-        int id() const { return _id; };
-        T value() const { return _value; };
-        void set_value(T v) { _value = v; };
-        bool has_left() const { return _left != nullptr; };
+        int id() const { return id_; };
+        T value() const { return value_; };
+        void setvalue_(T v) { value_ = v; };
+        bool has_left() const { return left_ != nullptr; };
         Node<T>& left() {
-            return *_left.get();
+            return *left_.get();
         };
         void set_left(std::unique_ptr<Node<T>>& child) {
-            _left = std::move(child);
+            left_ = std::move(child);
         };
-        bool has_right() const { return _right != nullptr; };
+        bool has_right() const { return right_ != nullptr; };
         Node<T>& right() {
-            return *_right.get();
+            return *right_.get();
         };
         void set_right(std::unique_ptr<Node<T>>& child) {
-            _right = std::move(child);
+            right_ = std::move(child);
         };
         void to_str(std::ostream& out) { to_str(out, ""); };
         void to_str(std::ostream& out, const std::string& indent) {
-            out << indent << id() << ": " << _value << std::endl;
+            out << indent << id() << ": " << value_ << std::endl;
             if (has_left())
                 left().to_str(out, indent + "  ");
             if (has_right())

@@ -6,25 +6,25 @@
 template<typename T>
 class Node {
     private:
-        int _id;
-        T _value;
-        Node<T>* _left;
-        Node<T>* _right;
+        int id_;
+        T value_;
+        Node<T>* left_;
+        Node<T>* right_;
     public:
         Node(int id, T value) :
-            _id {id}, _value {value}, _left {nullptr}, _right {nullptr} {};
-        int id() const { return _id; };
-        T value() const { return _value; };
-        void set_value(T v) { _value = v; };
-        bool has_left() const { return _left != nullptr; };
-        Node<T>* left() const { return _left; };
-        void set_left(Node<T>* child) { _left = child; };
-        bool has_right() const { return _right != nullptr; };
-        Node<T>* right() const { return _right; };
-        void set_right(Node<T>* child) { _right = child; };
+            id_ {id}, value_ {value}, left_ {nullptr}, right_ {nullptr} {};
+        int id() const { return id_; };
+        T value() const { return value_; };
+        void setvalue_(T v) { value_ = v; };
+        bool has_left() const { return left_ != nullptr; };
+        Node<T>* left() const { return left_; };
+        void set_left(Node<T>* child) { left_ = child; };
+        bool has_right() const { return right_ != nullptr; };
+        Node<T>* right() const { return right_; };
+        void set_right(Node<T>* child) { right_ = child; };
         void to_str(std::ostream& out) const { to_str(out, ""); };
         void to_str(std::ostream& out, const std::string& indent) const {
-            out << indent << id() << ": " << _value << std::endl;
+            out << indent << id() << ": " << value_ << std::endl;
             if (has_left())
                 left()->to_str(out, indent + "  ");
             if (has_right())
@@ -40,9 +40,9 @@ class Node {
         };
         ~Node<T>() {
             if (has_left())
-                delete _left;
+                delete left_;
             if (has_right())
-                delete _right;
+                delete right_;
         };
 };
 

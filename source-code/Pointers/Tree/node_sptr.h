@@ -7,33 +7,33 @@
 template<typename T>
 class Node {
     private:
-        int _id;
-        T _value;
-        std::shared_ptr<Node<T>> _left;
-        std::shared_ptr<Node<T>> _right;
+        int id_;
+        T value_;
+        std::shared_ptr<Node<T>> left_;
+        std::shared_ptr<Node<T>> right_;
     public:
         Node(int id, T value) :
-            _id {id}, _value {value} {};
-        int id() const { return _id; };
-        T value() const { return _value; };
-        void set_value(T v) { _value = v; };
-        bool has_left() const { return _left != nullptr; };
+            id_ {id}, value_ {value} {};
+        int id() const { return id_; };
+        T value() const { return value_; };
+        void setvalue_(T v) { value_ = v; };
+        bool has_left() const { return left_ != nullptr; };
         std::shared_ptr<Node<T>> left() {
-            return _left;
+            return left_;
         };
         void set_left(std::unique_ptr<Node<T>>& child) {
-            _left = std::move(child);
+            left_ = std::move(child);
         };
-        bool has_right() const { return _right != nullptr; };
+        bool has_right() const { return right_ != nullptr; };
         std::shared_ptr<Node<T>> right() {
-            return _right;
+            return right_;
         };
         void set_right(std::unique_ptr<Node<T>>& child) {
-            _right = std::move(child);
+            right_ = std::move(child);
         };
         void to_str(std::ostream& out) { to_str(out, ""); };
         void to_str(std::ostream& out, const std::string& indent) {
-            out << indent << id() << ": " << _value << std::endl;
+            out << indent << id() << ": " << value_ << std::endl;
             if (has_left())
                 left()->to_str(out, indent + "  ");
             if (has_right())

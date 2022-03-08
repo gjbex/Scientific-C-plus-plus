@@ -16,4 +16,5 @@ Code illustrations for chapter 8, I/O streams in Stroustrup's
 1. `aggregate.cpp`: compute the sum of each row of a CSV file, and write
     that in the output CSV file as the first column. String streams are
     used to parse the data.
+1. `alternative_io.cpp`: open one output stream or another based on a condition.
 1. `Makefile`: make file to build the code.

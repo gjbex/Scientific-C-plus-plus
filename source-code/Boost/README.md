@@ -4,8 +4,10 @@ context of mathematics (vector and matrix operations, and solving
 ordinary differential equations).
 
 ## What is it?
+1. `Bimap`: using the Boost bimap data structure, a bi-directional map.
 1. `Coroutines`: using the Boost `coroutines2` library to emulate Python's
 generator functions.
+1. `Logging`: using the Boost logging facilities.
 1. `Odeint`: using the Boost `odeint` library to solve a set of ordinary
     differential equations.
 1. `Process`: using the Boost `process` library to start and communicate

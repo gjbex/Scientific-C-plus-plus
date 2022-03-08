@@ -23,3 +23,4 @@ Code illustrations for chapter 5, Temaples in Stroustrup's
    expressions).
 1. `DuckTyping`: example of using a template for duck typing.
 1. `Makefile`: make file to build the applications.
+1. `Grid`: templated data structure with friend function.

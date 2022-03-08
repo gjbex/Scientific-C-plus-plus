@@ -37,7 +37,7 @@ int main() {
     }
     if (!dynamic_cast<C*>(a.get()))
         std::cout << "a is not a C\n";
-    std::cout << "A = B: ";
+    std::cout << "A = C: ";
     a = std::make_unique<C>();
     a->f();
     a->p();

@@ -41,3 +41,4 @@ programming concepts and idiosyncracies particular to C++.
    line argument handling library.
 1. `DesignPatterns`: illustration of design patterns implemented in C++.
 1. `Assembler`: illustrations of how to use assembly functions from C++.
+1. `Misc`: some miscellaneous examples.

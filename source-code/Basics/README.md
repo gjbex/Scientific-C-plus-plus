@@ -17,4 +17,4 @@ presentation `essential_cpp_basic.pptx`.
 1. [arrays.cpp](arrays.cpp): illustration of arrays in C++.
 1. [argument_passing.cpp](argument_passing.cpp): illustrates that data is not copied when
     passing `vector` from and to functions.
-1. [Makefile][Makefile]: make file to build the applications.
+1. [Makefilie](Makefile): make file to build the applications.

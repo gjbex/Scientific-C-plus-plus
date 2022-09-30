@@ -1,6 +1,6 @@
 # Basics
 Code used to illustrate the basic concepts of C++, for the Powerpoint
-presentation `essential_cpp_basic.pptx`.
+presentation [essential_cpp_basic.pptx](essential_cpp_basic.pptx).
 
 ## What is it?
 1. [hello.cpp](hello.cpp): canonical hello world in C++.

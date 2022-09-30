@@ -5,14 +5,14 @@ compute is `(3.14*x - 2.4) + 1.9`
 
 ## What is it?
 
-  1. `quad.nsm`: assembly implementation of the function.
-  1. `quad_calc.cpp`: C++ application that calls the assembly implementation.
-  1. `timing.cpp`: C++ application that times the assembly function, as
+  1. [quad.nsm](quad.nsm): assembly implementation of the function.
+  1. [quad_calc.cpp](quad_calc.cpp): C++ application that calls the assembly implementation.
+  1. [timing.cpp](timing.cpp): C++ application that times the assembly function, as
     well as a C++ inline version and verifies the respective results.
-  1. `quad_calc_inline.cpp`: C++ application that calls an inline C++
+  1. [quad_calc_inline.cpp](quad_calc_inline.cpp): C++ application that calls an inline C++
     function.  Intended for disassembling to illustrate what a smart
     compiler can do.
-  1. `Makefile`: make file to build the applications.
+  1. [Makefile](Makefile): make file to build the applications.
 
 ## How to use it?
 

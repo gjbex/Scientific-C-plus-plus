@@ -18,7 +18,7 @@ programming in C++.
 1. [vector_parallel_reduce.cpp](vector_parallel_reduce.cpp): simple application illustraing a
     `tbb::parallel_reduce` over a `std::vector`, using `std::accumulate`,
     rather than an explicit loop for the reduction.
-1. [stats_paralle_reduce.cpp](stats_paralle_reduce.cpp): reduction example using a class rather than lambda
+1. [stats_parallel_reduce.cpp](stats_parallel_reduce.cpp): reduction example using a class rather than lambda
    functions.
 1. [fibonacci_tasks.cpp](fibonacci_tasks.cpp): implementation of the Fibonacci function using TBB
     tasks.
@@ -28,6 +28,6 @@ programming in C++.
     the VSC cluster.
 1. [run.sh](run.sh): bash script to conveniently run the application on
     the VSC cluster.
-1. [Julia](Julia): Julia set implementation using TBB and OpenMP.
+1. [JuliaSet](JuliaSet): Julia set implementation using TBB and OpenMP.
 1. [LineOfSight](LineOfSight): illustration of `tbb::parallel_scan`.
 1. [Tree](Tree): illustration of parallel tree traversal.

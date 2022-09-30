@@ -22,7 +22,7 @@ Code illustrations for chapter 10, Algorithms in Stroustrup's
     to produce a third.
 1. [find_words.cpp](find_words.cpp): illustrates using `search` for strings.
 1. [text.txt](text.txt): text file to perform search on.
-1. [distances.cpp](distances.cpp): illustrating a `std::back_inserter` in an
+1. [distance.cpp](distance.cpp): illustrating a `std::back_inserter` in an
     `std::transform`.
 1. [iota.cpp](iota.cpp): initialize a `valarray` using `iota` and apply a function.
 1. [Makefile](Makefile): make file to build the code.

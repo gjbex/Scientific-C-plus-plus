@@ -26,7 +26,7 @@ Code illustrations for chapter 9, Containers in Stroustrup's
 1. [diffusion_system.cpp](diffusion_system.cpp): definitions of `Particle` and 'System`
     classes to simulate diffusion through a medium;  illustration
     of a priority queue.
-1. [diffusion_main.ccp](diffusion_main.ccp): main function to drive the diffusion
+1. [diffusion_main.cpp](diffusion_main.cpp): main function to drive the diffusion
     simulation.
 1. [dim_nr_counts.cpp](dim_nr_counts.cpp): use a map to count occurences of number
     in a file.

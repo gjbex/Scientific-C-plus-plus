@@ -9,7 +9,7 @@ C/C++ code.
   1. [calc_sum_function_compiler.nsm](calc_sum_function_compiler.nsm): assembly implementation of the
     function inspired by reverse engineering the output of a compiler.
   1. [calc_sum_function.nsm](calc_sum_function.nsm): assembly implementation that is 7 % faster.
-  1. [calc.cpp](calc.cpp): C++ program that uses the assembly function.
+  1. [calc_sum.cpp](calc_sum.cpp): C++ program that uses the assembly function.
   1. [timing.cpp](timing.cpp): C++ program that times the assembly function.
   1. [Makefile](Makefile): make file to build the applications.
 

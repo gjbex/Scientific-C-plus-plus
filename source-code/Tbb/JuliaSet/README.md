@@ -1,5 +1,5 @@
 # Tbb
-Implementation of the Julia set computatino using Intel Threading Building Blocks (TBB) and
+Implementation of the Julia set computation using Intel Threading Building Blocks (TBB) and
 OpenMP.
 
 ## What is it?

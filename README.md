@@ -14,4 +14,4 @@ For information on the training, see the website
 1. [License](LICENSE): license information for the material in this repository.
 1. [Contributing](CONTRIBUTING.md): information on how to contribute to this
    repository.
-1. [docs](docs): directory containing the website for this repository.
+1. [docs](docs): directory containing the website for this repository. 

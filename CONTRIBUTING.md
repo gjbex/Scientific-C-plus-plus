@@ -8,13 +8,13 @@ You are very welcome to contribute to this repository.
 This can be done in several ways, depending on how familiar you are with
 the GitHub workflow:
 
-  * simply send an [email](geertjan.bex@uhasselt.be),
-  * [create an issue](https://help.github.com/articles/creating-an-issue/)
+  * simply send an [email](mailto:geertjan.bex@uhasselt.be),
+  * [create an issue](https://docs.github.com/en/issues/tracking-your-work-with-issues/creating-an-issue)
     on GitHub, or
-  * [fork the repository](https://help.github.com/articles/fork-a-repo/)
+  * [fork the repository](https://docs.github.com/en/get-started/quickstart/fork-a-repo)
     on GitHub, create a branch based on the development
     branch, make your contribution, and submit a
-    [pull request](https://help.github.com/articles/about-pull-requests/).
+    [pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests).
 
 For pull requests, a few things should be noted:
 

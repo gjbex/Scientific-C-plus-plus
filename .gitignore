@@ -31,3 +31,7 @@
 *.out
 *.app
 /~$scientific_cpp.pptx
+
+# editor backup files
+*.swp
+*~

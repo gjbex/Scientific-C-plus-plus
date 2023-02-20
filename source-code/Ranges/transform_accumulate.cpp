@@ -1,6 +1,7 @@
 #include <iostream>
+#include <numeric>
+#include <ranges>
 #include <vector>
-#include <range/v3/all.hpp>
 
 int main(int argc __attribute__((unused)),
          char *argv[] __attribute__((unused))) {
@@ -9,8 +10,8 @@ int main(int argc __attribute__((unused)),
         std::cout << value << " ";
     std::cout << std::endl;
     auto times2 = [] (int n) -> int { return 2*n; };
-    auto sum = ranges::accumulate(data |
-                                  ranges::view::transform(times2), 0);
+    auto filtered = data | std::views::transform(times2);
+    auto sum = std::accumulate(filtered.begin(), filtered.end(), 0);
     std::cout << "sum = " << sum << std::endl;
     return 0;
 }

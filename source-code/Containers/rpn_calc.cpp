@@ -1,13 +1,14 @@
+#include <exception>
 #include <iostream>
 #include <stack>
 #include <stdlib.h>
 #include <sstream>
 #include <tuple>
 
-long add(std::stack<long>& stack) throw (std::string);
-long substract(std::stack<long>& stack) throw (std::string);
-long multiply(std::stack<long>& stack) throw (std::string);
-long divide(std::stack<long>& stack) throw (std::string);
+long add(std::stack<long>& stack);
+long substract(std::stack<long>& stack);
+long multiply(std::stack<long>& stack);
+long divide(std::stack<long>& stack);
 
 int main() {
     std::stack<long> stack;
@@ -47,18 +48,17 @@ int main() {
                     std::cout << stack.top() << std::endl;
                 else
                     std::cerr << "### error: no result" << std::endl;
-            } catch (std::string& except) {
-                std::cerr << "### error: " << except << std::endl;
+            } catch (std::invalid_argument& except) {
+                std::cerr << "### error: " << except.what() << std::endl;
             }
         }
     }
     return 0;
 }
 
-std::tuple<long, long> get_operands(std::stack<long>& stack)
-    throw (std::string) {
+std::tuple<long, long> get_operands(std::stack<long>& stack) {
     if (stack.size() < 2) {
-        throw std::string("too few operands on stack");
+        throw std::invalid_argument("too few operands on stack");
     } else {
         auto op1 = stack.top();
         stack.pop();
@@ -68,24 +68,24 @@ std::tuple<long, long> get_operands(std::stack<long>& stack)
     }
 }
 
-long add(std::stack<long>& stack) throw (std::string) {
+long add(std::stack<long>& stack) {
     auto operands = get_operands(stack);
     return std::get<1>(operands) + std::get<0>(operands);
 }
 
-long substract(std::stack<long>& stack) throw (std::string) {
+long substract(std::stack<long>& stack) {
     auto operands = get_operands(stack);
     return std::get<1>(operands) - std::get<0>(operands);
 }
 
-long multiply(std::stack<long>& stack) throw (std::string) {
+long multiply(std::stack<long>& stack) {
     auto operands = get_operands(stack);
     return std::get<1>(operands)*std::get<0>(operands);
 }
 
-long divide(std::stack<long>& stack) throw (std::string) {
+long divide(std::stack<long>& stack) {
     auto operands = get_operands(stack);
     if (std::get<0>(operands) == 0)
-        throw std::string("division by zero");
+        throw std::invalid_argument("division by zero");
     return std::get<1>(operands)/std::get<0>(operands);
 }

@@ -12,10 +12,11 @@ double func(double x) {
 
 using QuadPtr = std::unique_ptr<Quad>;
 
-void compute_quads(QuadPtr quad, Integrand f) {
+void compute_quads(const Quad* const quad, const Integrand& f) {
     for (double x = 1.0; x <= 5.0; x += 1.0)
-        std::cout << std::fixed << std::setprecision(15)
-                  << quad->integrate(f, -x, x) << std::endl;
+        std::cout << std::fixed
+            << std::setprecision(1) << x << ": "
+            << std::setprecision(15) << quad->integrate(f, -x, x) << std::endl;
 }
 
 int main(int argc, char *argv[]) {
@@ -31,6 +32,6 @@ int main(int argc, char *argv[]) {
         std::cerr << "### error: unknown quadrature method" << std::endl;
         return 1;
     }
-    compute_quads(std::move(quad), func);
+    compute_quads(quad.get(), func);
     return 0;
 };

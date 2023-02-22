@@ -1,5 +1,5 @@
 CXX = g++
-CXXFLAGS = -std=c++14 -O2 -g -Wall -Wextra
+CXXFLAGS = -std=c++17 -O2 -g -Wall -Wextra
 LDLIBS = -lm
 
 .PRECIOUS: %.o

@@ -12,5 +12,8 @@ int main(void) {
     tie(mass, charge) = electron_prop;
     cout << "electron mass: " << mass << endl;
     cout << "electron charge: " << charge << endl;
+    auto pos = std::make_tuple(3.5, 4.3);
+    auto [x, y] = pos;
+    std::cout << "x = " << x << ", y = " << y << "\n";
     return 0;
 }

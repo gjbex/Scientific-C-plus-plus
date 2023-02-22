@@ -15,7 +15,7 @@ double StaticParticle::energy() const {
 }
 
 double StaticParticle::dist(const StaticParticle& other) const {
-    return sqrt(sqr(_x - other.x()) + sqr(_y - other.y()));
+    return sqrt(sqr(x() - other.x()) + sqr(y() - other.y()));
 }
 
 ostream& operator<<(ostream& out, const StaticParticle& p) {

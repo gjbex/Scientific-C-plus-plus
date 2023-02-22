@@ -6,8 +6,8 @@
 
 class GaussianQuad : public Quad {
     private:
-        std::vector<double> _x;
-        std::vector<double> _w;
+        std::vector<double> x_;
+        std::vector<double> w_;
     public:
         GaussianQuad();
         double integrate(Integrand f, const double a, const double b) const

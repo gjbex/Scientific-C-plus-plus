@@ -7,12 +7,12 @@
 
 class Stats : public SimpleStats {
     private:
-        double _sum2;
+        double sum2_;
         using super = SimpleStats;
     public:
-        Stats() : SimpleStats(), _sum2 {0.0} {};
-        void add(double x) { super::add(x); _sum2 += x*x; };
-        double sum2() const { return _sum2; };
+        Stats() : SimpleStats(), sum2_ {0.0} {};
+        void add(double x) { super::add(x); sum2_ += x*x; };
+        double sum2() const { return sum2_; };
         double stddev() const;
         friend std::ostream& operator<<(std::ostream&,
                                         const Stats& stats);

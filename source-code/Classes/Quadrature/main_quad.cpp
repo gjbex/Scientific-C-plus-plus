@@ -14,7 +14,7 @@ using QuadPtr = std::unique_ptr<Quad>;
 
 void compute_quads(QuadPtr quad, Integrand f) {
     for (double x = 1.0; x <= 5.0; x += 1.0)
-        std::cout << std::fixed << std::setprecision(15)
+        std::cout << std::fixed << std::setprecision(15) << x << ": "
                   << quad->integrate(f, -x, x) << std::endl;
 }
 

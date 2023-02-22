@@ -1,8 +1,8 @@
 #include "particle.h"
 
 void Particle::move(double t) {
-    _x += _v_x*t;
-    _y += _v_y*t;
+    x_ += v_x()*t;
+    y_ += v_y()*t;
 }
 
 double Particle::energy() const {

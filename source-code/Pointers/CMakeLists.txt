@@ -9,3 +9,5 @@ add_compile_options(-Wall -Wextra -Wpedantic)
 
 add_executable(runtime_vs_compile_time.exe
     runtime_vs_compile_time.cpp)
+add_executable(pointers_vs_references.exe
+    pointers_vs_references.cpp)

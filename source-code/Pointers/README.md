@@ -8,4 +8,6 @@ Some illustrations of using pointers in C++.
 * `runtime_vs_compile_time.cpp`: illustrates how to determine the
   type of a derived class object at runtime when it is assigned to
   a pointer of the parent class.
+* `pointers_vs_references.cpp`: illustration of the difference
+  between pointers and references.
 * `CMakeLists.txt`: CMake file to build the applications.

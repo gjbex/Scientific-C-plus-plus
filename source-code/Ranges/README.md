@@ -8,6 +8,6 @@ the C++20 standard.
 1. `simple.cpp`: very simple example of using ranges.
 1. `transform_accumulate.cpp`: simple example of chaining a
     transformation and an accumulator on a vector.
-1. `Makefile`: make file to build the applications.
+1. `CMakeLists.txt`: CMake file to build the applications.
 
 *Note:* you will need at least g++ 10.x to compile this succesfully.

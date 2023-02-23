@@ -31,9 +31,9 @@ int main() {
     std::unique_ptr<A> a = std::make_unique<B>();
     a->f();
     a->p();
-    if (dynamic_cast<B*>(a.get())) {
+    if (B* a_cast = dynamic_cast<B*>(a.get()); a_cast) {
         std::cout << "a is a B: ";
-        dynamic_cast<B*>(a.get())->p();
+        a_cast->p();
     }
     if (!dynamic_cast<C*>(a.get()))
         std::cout << "a is not a C\n";

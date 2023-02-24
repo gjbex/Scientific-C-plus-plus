@@ -14,4 +14,5 @@ Some sample code for using the STL library.
     iterators.
 1. `valarray_stl.cpp`: very basic illustration of using STL valarrays with
     iterators.
+1. `time.cpp`: illustration of how to display time, and how to sleep.
 1. `Makefile`: make file to build the sample code.

@@ -10,3 +10,5 @@ Code illustrations for chapter 4, Classes in Stroustrup's
     simple statistics on a data stream.
 1. `Quadrature`: illustration of a class hierarchy with an abstract base
     class.
+1. `Mixin`: illustration of using multiple inheritance to implement
+   a mix-in class.

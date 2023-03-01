@@ -31,3 +31,5 @@ add_executable(iota.exe
     iota.cpp)
 add_executable(transform.exe
     transform.cpp)
+add_executable(points.exe
+    points.cpp)

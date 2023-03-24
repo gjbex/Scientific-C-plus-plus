@@ -42,3 +42,4 @@ programming concepts and idiosyncracies particular to C++.
 1. `DesignPatterns`: illustration of design patterns implemented in C++.
 1. `Assembler`: illustrations of how to use assembly functions from C++.
 1. `Misc`: some miscellaneous examples.
+1. `Vcpkg`: illustration of how to use the vcpkg C++ package manager.

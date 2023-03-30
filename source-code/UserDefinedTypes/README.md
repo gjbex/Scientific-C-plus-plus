@@ -18,3 +18,5 @@ Code illustrations for chapter 2, User defined types in Stroustrup's
 1. `Makefile`: make file to build the applictions.
 1. `ObjectLifeCycle`: illustration of object life cycle.
 1. `TableStats`: Example of using STL data structures.
+1. `RuleOfFive`: Illustration of the rule of five when resource handling
+   is required.

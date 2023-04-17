@@ -8,7 +8,7 @@ all: cosine_similarity.exe synthesizer.exe \
         tuple.exe vector.exe list.exe set.exe \
         stats.exe dim_nrs.exe dim_nr_counts.exe split_string.exe \
         point_distances.exe diffusion.exe aggregate_data.exe \
-        rpn_calc.exe
+        rpn_calc.exe kaprekar.exe
 
 diffusion.exe: diffusion_system.o diffusion_main.o
 	$(CXX) $(CXXFLAGS) -o $@ $^ $(LDLIBS)

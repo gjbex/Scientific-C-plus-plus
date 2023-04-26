@@ -11,3 +11,4 @@ Some illustrations of using pointers in C++.
 * `pointers_vs_references.cpp`: illustration of the difference
   between pointers and references.
 * `CMakeLists.txt`: CMake file to build the applications.
+* `SharedPointers`: illustration of using shared pointers.

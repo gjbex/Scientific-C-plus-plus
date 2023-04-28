@@ -9,6 +9,11 @@ add_compile_options(-Wall -Wextra -Wpedantic)
 
 find_package(TBB REQUIRED)
 
+add_executable(no_policy.exe
+    main_no_policy.cpp
+    data.cpp)
+target_link_libraries(no_policy.exe PRIVATE TBB::tbb)
+
 add_executable(seq.exe
     main_seq.cpp
     data.cpp)

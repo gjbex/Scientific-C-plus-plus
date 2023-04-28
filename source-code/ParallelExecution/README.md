@@ -15,4 +15,14 @@ Blocks (TBB) under the hood.
    specified.
 1. `main_par.cpp`: application that sorts a vector with a parallel policy
    specified.
+1. `data.h`: some functions to create data.
+1. `data.cpp`: implementation of functions to create data.
+1. `main_transform_seq.cpp`: application that transforms elements of a vector
+   with a sequential policy.
+1. `main_transform_par.cpp`: application that transforms elements of a vector
+   with a parallel policy.
+1. `main_transform_par_unseq.cpp`: application that transforms elements of a vector
+   with a parallel unsequenced policy.
+1. `functions.h`: some functions to use to transform data elements.
+1. `functions.cpp`: implementation of functions to use to transform data elements.
 1. `CMakeLists.txt`: CMake file to build the applications

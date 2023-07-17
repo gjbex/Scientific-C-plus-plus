@@ -46,3 +46,4 @@ programming concepts and idiosyncracies particular to C++.
 1. `CPM`: illustration of how to use the CPM package manager for C++.
 1. `ParallelExecution`: illustration of parallelizing algorithms using
    execution policies and TBB.
+1. `Cling`: Xeus-cling kernel in Jupyter Lab for interactive C++ development.

@@ -12,3 +12,5 @@ Code illustrations for chapter 4, Classes in Stroustrup's
     class.
 1. `Mixin`: illustration of using multiple inheritance to implement
    a mix-in class.
+1. `Quadrature_CRTP`: illustration of the Curiously Repeating Template
+   Pattern (CRTP) to avoid runtime polymorphism.

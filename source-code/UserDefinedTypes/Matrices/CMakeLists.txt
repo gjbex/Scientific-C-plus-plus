@@ -8,4 +8,4 @@ set(CMAKE_CXX_EXTENSIONS NO)
 add_compile_options(-Wall -Wextra -Wpedantic)
 
 add_executable(matrix_test.exe
-    matrices.cpp matrix_test.cpp)
+    matrix_test.cpp)

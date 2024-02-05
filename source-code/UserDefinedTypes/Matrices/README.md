@@ -1,7 +1,8 @@
 # Matrices
 
 A very simple class that implements a matrix data structure
-to illustrate the rule of five.
+to illustrate the rule of five.  It also illustrates using
+`std::span` to create a view on the underlying data.
 
 
 ## What is it?

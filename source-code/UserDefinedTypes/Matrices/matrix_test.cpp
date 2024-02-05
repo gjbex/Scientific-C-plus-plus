@@ -22,5 +22,15 @@ int main() {
     m3 = m;
     std::cout << "m3 = " << std::endl;
     std::cout << m3 << std::endl;
+    auto m4 = create_matrix(4, 3);
+    if (m4 == m3) {
+        std::cout << "matrices equal\n";
+    }
+    m4(0, 0) = -29.0;
+    if (m4 != m3) {
+        std::cout << "matrices unequal\n";
+    }
+    std::fill(m4.data().begin(), m4.data().end(), 1.0);
+    std::cout << m4 << std::endl;
     return 0;
 }

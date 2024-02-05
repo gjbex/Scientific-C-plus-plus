@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <iostream>
 #include <memory>
+#include <span>
 
 template<typename T>
 struct Matrix {
@@ -26,9 +27,17 @@ struct Matrix {
         // getters for number of rows and columns
         int rows() const { return rows_; }
         int cols() const { return cols_; }
-        // accessors for the data
-        T* data() { return data_.get(); }
-        const T* data() const { return data_.get(); }
+        int size() const { return rows_*cols_; }
+        // equality and inequlity operators
+        bool operator==(const Matrix& other) const;
+        bool operator!=(const Matrix& other) const { return !(*this == other); }
+        // accessors for the data using views
+        std::span<const T> data() const {
+            return std::span<const T>(data_.get(), size());
+        }
+        std::span<T> data() {
+            return std::span<T>(data_.get(), size());;
+        }
         // destructor
         ~Matrix() = default;
         // textual representation of the matrix
@@ -75,6 +84,19 @@ Matrix<T>& Matrix<T>::operator=(Matrix<T>&& other) noexcept {
         other.cols_ = 0;
     }
     return *this;
+}
+
+template<typename T>
+bool Matrix<T>::operator==(const Matrix<T>& other) const {
+    if (this == &other) {
+        return true;
+    }
+    if (rows_ != other.rows_ || cols_ != other.cols_) {
+        return false;
+    }
+    std::span<const double> this_view(data_.get(), size());
+    std::span<const double> other_view(other.data_.get(), other.size());
+    return std::equal(this_view.begin(), this_view.end(), other_view.begin());
 }
 
 template<typename T>

@@ -94,9 +94,7 @@ bool Matrix<T>::operator==(const Matrix<T>& other) const {
     if (rows_ != other.rows_ || cols_ != other.cols_) {
         return false;
     }
-    std::span<const double> this_view(data_.get(), size());
-    std::span<const double> other_view(other.data_.get(), other.size());
-    return std::equal(this_view.begin(), this_view.end(), other_view.begin());
+    return std::equal(data().begin(), data().end(), other.data().begin());
 }
 
 template<typename T>

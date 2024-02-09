@@ -10,6 +10,8 @@ the C++20 standard.
     transformation and an accumulator on a vector.
 1. `classic_stl_to_ranges.cpp`: from classic STL algorithms to
    ranges and views.
+1. `classic_stl_to_ranges_performance.cpp`: performance test for classic
+   algorithms versus views.
 1. `input_ranges.cpp`: example of using an input stream view and a
    range copy.
 1. `data.txt`: small data file to use for `input_ranges.cpp` application.

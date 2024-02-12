@@ -15,6 +15,7 @@ the C++20 standard.
 1. `input_ranges.cpp`: example of using an input stream view and a
    range copy.
 1. `data.txt`: small data file to use for `input_ranges.cpp` application.
+1. `enumerate.cpp`: illustration of using `std::enumerate`.
 1. `CMakeLists.txt`: CMake file to build the applications.
 
-*Note:* you will need at least g++ 10.x to compile this succesfully.
+*Note:* you will need at least g++ 13.x to compile this succesfully.

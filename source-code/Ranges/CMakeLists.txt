@@ -15,3 +15,5 @@ add_executable(classic_stl_to_ranges.exe
     classic_stl_to_ranges.cpp)
 add_executable(input_ranges.exe
     input_ranges.cpp)
+add_executable(enumerate.exe
+    enumerate.cpp)

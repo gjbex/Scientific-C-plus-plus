@@ -26,3 +26,5 @@ Code illustrations for chapter 5, Temaples in Stroustrup's
 1. `Grid`: templated data structure with friend function.
 1. `ArrayView`: template for creating multi-dimensional views
    on one-dimensional data; illustrates the use of variadic templates.
+1. `Concepts`: illustration of using concepts to define constraints on
+   templates.

@@ -7,4 +7,5 @@ subprocesses.
     working directory.
 1. `bc.cpp`: simple wrapper around the `bc` calculator, illustrates
     output and input pipes.
-1. `Makefile`: make file to build the applications.
+1. `env.cpp`: check the environment variables set in the shell.
+1. `CMakeLists.txt`: CMake file to build the applications.

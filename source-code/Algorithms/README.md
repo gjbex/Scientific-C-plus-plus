@@ -27,3 +27,4 @@ Code illustrations for chapter 10, Algorithms in Stroustrup's
 1. `iota.cpp`: initialize a `valarray` using `iota` and apply a function.
 1. `points.cpp`: illustration of using C++20's spaceship operator.
 1. `CMakeLists.txt`: CMake file to build the code.
+1. `OceanView`: compute which buildings have an ocean view.

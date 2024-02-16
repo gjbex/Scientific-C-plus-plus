@@ -41,3 +41,5 @@ Code illustrations for chapter 9, Containers in Stroustrup's
 1. `Makefile`: make file to build the applications.
 1. `SlidingWindow`: class template that uses a list to compute averages over a
    slidign window.
+1. `kaprekar.cpp`: simple illustration of using `std::array` and `std::vector`
+   as well as `std::sort()` and `std::reverse()` to find the Kaprekar constant.

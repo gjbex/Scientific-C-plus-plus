@@ -20,3 +20,4 @@ Code illustrations for chapter 2, User defined types in Stroustrup's
 1. `TableStats`: Example of using STL data structures.
 1. `RuleOfFive`: Illustration of the rule of five when resource handling
    is required.
+1. `Matrices`: another illustration of the rule of five, using smart pointers.

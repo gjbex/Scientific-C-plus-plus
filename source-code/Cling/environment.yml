@@ -1,0 +1,9 @@
+name: cling
+channels:
+  - conda-forge
+dependencies:
+  - xeus-cling
+  - jupyterlab
+  - ca-certificates
+  - openssl
+prefix: /home/gjb/mambaforge/envs/cling

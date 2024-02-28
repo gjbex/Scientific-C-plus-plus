@@ -17,4 +17,6 @@ Code illustrations for chapter 8, I/O streams in Stroustrup's
     that in the output CSV file as the first column. String streams are
     used to parse the data.
 1. `alternative_io.cpp`: open one output stream or another based on a condition.
-1. `Makefile`: make file to build the code.
+1. `format.cpp`: simple illustration of using `std::format`, note that g++ 13.x
+   or later is required to build this.
+1. `CMakeLists.txt`: CMake file to build the code.

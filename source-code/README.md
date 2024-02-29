@@ -33,7 +33,8 @@ programming concepts and idiosyncracies particular to C++.
 1. `Boost`: some illustrations of using the Boost C++ library,
     mostly in the context of numerical programming.
 1. `UsingCLibraries`: illustration of how to use a C library from C++ code.
-1. `C++17`: illustrations of features added in the C++17 standard
+1. `GrammarFeatures`: illustrations of recent C++ grammar features added in
+    recent C++ standarsd
     specification.
 1. `Ranges`: ranges are an interesting concept for working more
     conveniently with STL containers and composing algorithms.

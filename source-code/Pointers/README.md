@@ -10,5 +10,7 @@ Some illustrations of using pointers in C++.
   a pointer of the parent class.
 * `pointers_vs_references.cpp`: illustration of the difference
   between pointers and references.
+* `const_and_pointers.cpp`: illustration of the use of `const` with
+  pointers.
 * `CMakeLists.txt`: CMake file to build the applications.
 * `SharedPointers`: illustration of using shared pointers.

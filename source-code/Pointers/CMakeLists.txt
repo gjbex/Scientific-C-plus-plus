@@ -11,3 +11,5 @@ add_executable(runtime_vs_compile_time.exe
     runtime_vs_compile_time.cpp)
 add_executable(pointers_vs_references.exe
     pointers_vs_references.cpp)
+add_executable(const_and_pointers.exe
+    const_and_pointers.cpp)

@@ -10,3 +10,4 @@ types.
 1. `iterable.h`: defintion of the iterable concept.
 1. `main.cpp`: application that will fail to compile because the template
    constraints are not satisfied.
+1. `CMakeLists.txt`: CMake file to build the applications.

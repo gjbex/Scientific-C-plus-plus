@@ -7,13 +7,3 @@ Code illustrations for chapter 3, Modularity in Stroustrup's
 1. `Particles`: example of separate compilation.
 1. `ParticlesCMake`: example of build using CMake.
 1. `Stats`: example of separate compilation.
-1. `fac.cpp`: illustrates exception handling.
-1. `memory_leak.cpp`: illustration of a memory leak caused by bad exception
-    handling.
-1. `memory_leak_fixed.cpp`: illustrates using RAII to ensure correct resource
-    management.
-1. `Makefile`: make file for these examples.
-
-## How to use it?
-Run `memory_leak.exe` and `memory_leak_fixed.exe` through valgrind with -1 and 5
-as arguments and note the difference.

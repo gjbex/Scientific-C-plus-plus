@@ -4,7 +4,9 @@
 struct S {
     S() { puts("S()"); }
     S(const S&) { puts("S(&)"); }
+    S& operator=(const S&) { puts("S=&"); return *this; }
     S(S&&) { puts("S(&&)"); }
+    S& operator=(S&&) { puts("S=&&"); return *this; }
     ~S() { puts("~S()"); }
 };
 

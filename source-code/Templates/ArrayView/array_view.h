@@ -12,7 +12,8 @@ struct ArrayView {
         const std::array<std::size_t, sizeof...(Dims)> dims_{Dims...};
     public:
         explicit ArrayView(T* data) : data_(data) {
-            static_assert(sizeof...(Dims) > 0, "ArrayView must have at least one dimension");
+            static_assert(sizeof...(Dims) > 0,
+                    "ArrayView must have at least one dimension");
         }
         ArrayView(const ArrayView&) = default;
         ArrayView& operator=(const ArrayView&) = default;

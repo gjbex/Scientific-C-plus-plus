@@ -7,4 +7,4 @@ copy constructors, copy assignment, and copy elision.
   1. `gadget.cpp`: driver function to illustrate the various life cycle
     scenarios of an object.
   1. `emplace.cpp`: example of using emplace for vectors.
-  1. `Makefile`: make file to build the application.
+  1. `CMakeLists.txt`: CMake file to build the application.

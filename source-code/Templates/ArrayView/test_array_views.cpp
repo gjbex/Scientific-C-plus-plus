@@ -9,7 +9,12 @@ int main() {
         data.push_back(i);
     }
     ArrayView<double, 6, 4> view2(data.data());
-    std::cout << "view2(" << view2.shape(0) << ", " << view2.shape(1) << "):\n";
+    auto shape = view2.shape();
+    std::cout << "view2(" << shape[0];
+    for (std::size_t i = 1; i < shape.size(); ++i) {
+        std::cout << ", " << shape[i];
+    }
+    std::cout << "):\n";
     for (std::size_t i = 0; i < view2.shape(0); ++i) {
         for (std::size_t j = 0; j < view2.shape(1); ++j) {
             std::cout << view2(i, j) << " ";

@@ -9,10 +9,7 @@ using Options = std::tuple<int, double, double, size_t>;
 Options get_options(int argc, char* argv[]);
 
 int main(int argc, char* argv[]) {
-    int n;
-    double a, b;
-    size_t seed;
-    std::tie(n, a, b, seed) = get_options(argc, argv);
+    auto [n, a, b, seed] = get_options(argc, argv);
 
     std::mt19937 engine(seed);
     std::uniform_real_distribution<double> distr(a, b);

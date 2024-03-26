@@ -15,12 +15,18 @@ struct Counter {
         ITEM_T const lower;
         ITEM_T const upper;
 
-        struct iterator : public std::iterator<std::input_iterator_tag, std::pair<ITEM_T, COUNT_T>> {
+        struct iterator {
             private:
                 ITEM_T value;
                 COUNT_T* count;
 
             public:
+                using iterator_category = std::input_iterator_tag;
+                using value_type = std::pair<ITEM_T, COUNT_T>;
+                using difference_type = std::ptrdiff_t;
+                using pointer = std::pair<ITEM_T, COUNT_T>*;
+                using reference = std::pair<ITEM_T, COUNT_T>&;
+
                 iterator(ITEM_T lower, COUNT_T* count) : value {lower}, count {count} {}
                 iterator& operator++() { ++value; ++count; return *this; }
                 iterator operator++(int) { iterator tmp = *this; ++value; ++count; return tmp; }
@@ -37,6 +43,8 @@ struct Counter {
         COUNT_T const& at(ITEM_T const value) const { return values_at(value - lower); }
         iterator begin() { return iterator(lower, &values_[0]); }
         iterator end() { return iterator(upper + 1, &values_[upper - lower + 1]); }
+        iterator const begin() const { return iterator(lower, &values_[0]); }
+        iterator const end() const { return iterator(upper + 1, &values_[upper - lower + 1]); }
         iterator const cbegin() const { return iterator(lower, &values_[0]); }
         iterator const cend() const { return iterator(upper + 1, &values_[upper - lower + 1]); }
 

@@ -12,4 +12,6 @@ Code illustrations for chapter 9, Numerics in Stroustrup's
     create an engine for the distribution of interest.
 1. `multiple_distr.cpp`: shows how to bind an engine to multiple
     distributions using a reference wrapper.
+1. `numbers_pi_versus_M_PI.cpp`: illustration of temaplated numeric
+    constants to avoid type promotion.
 1. `Makefile`: make file to build the code.

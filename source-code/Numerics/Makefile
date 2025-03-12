@@ -4,7 +4,7 @@ LDLIBS = -lm
 
 .PRECIOUS: %.o
 
-APPL = complex.exe limits.exe julia.exe random.exe multiple_distr.exe
+APPL = complex.exe limits.exe julia.exe random.exe multiple_distr.exe numbers_pi_versus_M_PI.exe
 
 all: $(APPL)
 

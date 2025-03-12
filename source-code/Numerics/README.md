@@ -14,4 +14,4 @@ Code illustrations for chapter 9, Numerics in Stroustrup's
     distributions using a reference wrapper.
 1. `numbers_pi_versus_M_PI.cpp`: illustration of temaplated numeric
     constants to avoid type promotion.
-1. `Makefile`: make file to build the code.
+1. `CMakeLists.txt`: CMake file to build the code.

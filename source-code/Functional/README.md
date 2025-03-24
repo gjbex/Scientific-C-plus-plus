@@ -9,3 +9,4 @@ Examples of functional programming style in C++.
 1. `StreamingData`: comparison between functional and object-oriented approach
    to computing streaming statistics.
 1. `PersistentBinaryTrees`: purely functional implementation of a doubly-linked list.
+1. `FibonacciGenerator`: illustration of how to define and use a generator in C++23.

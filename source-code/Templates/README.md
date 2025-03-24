@@ -29,3 +29,4 @@ Code illustrations for chapter 5, Temaples in Stroustrup's
 1. `Concepts`: illustration of using concepts to define constraints on
    templates.
 1. `Shapes`: comparing various implementations of the shapes example.
+1. `Counter`: illustration of a template class with a custom iterator.

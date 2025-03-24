@@ -1,6 +1,5 @@
 # Basics
-Code used to illustrate the basic concepts of C++, for the Powerpoint
-presentation `essential_cpp_basic.pptx`.
+Code used to illustrate the basic concepts of C++.
 
 ## What is it?
 1. `hello.cpp`: canonical hello world in C++.

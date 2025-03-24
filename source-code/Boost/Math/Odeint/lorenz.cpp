@@ -2,10 +2,9 @@
 #include <iostream>
 #include <boost/numeric/odeint.hpp>
 
-using namespace std;
 using namespace boost::numeric::odeint;
 
-using state_type = array<double, 3>;
+using state_type = std::array<double, 3>;
 
 void lorenz_param(const state_type& x, state_type& dxdt,
                   double t __attribute__((unused)),
@@ -16,14 +15,14 @@ void lorenz_param(const state_type& x, state_type& dxdt,
 }
 
 void write_lorenz(const state_type& x, const double t) {
-    cout << t << '\t' << x[0] << '\t' << x[1] << '\t' << x[2]
-         << endl;
+    std::cout << t << '\t' << x[0] << '\t' << x[1] << '\t' << x[2]
+         << "\n";
 }
 
 int main() {
-    const double sigma = 10.0;
-    const double R = 28.0;
-    const double b = 8.0/3.0;
+    const double sigma {10.0};
+    const double R {28.0};
+    const double b {8.0/3.0};
     auto lorenz = [=] (const state_type& x, state_type& dxdt, double t) {
         return lorenz_param(x, dxdt, t, sigma, R, b);
     };

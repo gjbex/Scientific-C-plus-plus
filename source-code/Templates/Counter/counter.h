@@ -40,7 +40,7 @@ struct Counter {
         void incr(ITEM_T const value) { values_[value - lower]++; }
         void incr_at(ITEM_T const value) { values_.at(value - lower)++; }
         COUNT_T const& operator[](ITEM_T const value) const { return values_[value - lower]; }
-        COUNT_T const& at(ITEM_T const value) const { return values_at(value - lower); }
+        COUNT_T const& at(ITEM_T const value) const { return values_.at(value - lower); }
         iterator begin() { return iterator(lower, &values_[0]); }
         iterator end() { return iterator(upper + 1, &values_[upper - lower + 1]); }
         iterator const begin() const { return iterator(lower, &values_[0]); }

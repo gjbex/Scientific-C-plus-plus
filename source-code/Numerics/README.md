@@ -14,6 +14,6 @@ well as some additional examples illustrating C++20 features.
    an engine for the distribution of interest.
 1. `multiple_distr.cpp`: shows how to bind an engine to multiple distributions
    using a reference wrapper.
-1. `numbers_pi_versus_M_PI.cpp`: illustration of temaplated numeric constants
+1. `numbers_pi_versus_M_PI.cpp`: illustration of templated numeric constants
    to avoid type promotion.
 1. `CMakeLists.txt`: CMake file to build the code.

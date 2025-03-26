@@ -2,6 +2,7 @@
 #include <cmath>
 #include <iostream>
 #include <fstream>
+#include <numbers>
 #include <sstream>
 #include <valarray>
 #include <vector>
@@ -13,7 +14,7 @@ using wave_t = pair<double, double>;
 vector<wave_t> read_wave_properties();
 
 int main() {
-    const double pi {acos(-1.0)};
+    const double pi {std::numbers::pi};
     const size_t nr_points {1000};
     const double delta_t {10.0*pi/nr_points};
     auto waves = read_wave_properties();

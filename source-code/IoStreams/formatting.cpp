@@ -1,9 +1,10 @@
 #include <cmath>
 #include <iomanip>
 #include <iostream>
+#include <numbers>
 
 int main() {
-    const double PI {acos(-1.0)};
+    const double PI {std::numbers::pi};
     std::cout << "default format: " << PI << std::endl;
     std::cout << "scientific format: " << std::scientific
               <<  PI << std::endl;

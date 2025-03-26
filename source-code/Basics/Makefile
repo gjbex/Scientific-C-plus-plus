@@ -5,7 +5,7 @@ CXXFLAGS = -std=c++14 -g -O2 -Wall -Wextra
 
 APPL = hello.exe talk.exe col_dist.exe gcd.exe fac.exe scope.exe swap.exe \
        arrays.exe argument_passing.exe local_namespace_use.exe \
-       data_parser.exe
+       data_parser.exe arrays_vs_pointers.exe
 
 all: $(APPL)
 

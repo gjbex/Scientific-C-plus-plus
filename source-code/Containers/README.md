@@ -40,7 +40,7 @@ Code illustrations for chapter 9, Containers in Stroustrup's
 1. `rpn_calc.cpp`: implementation of a simple calculater for integer
     arithmetic expression in reverse Polish notation.  Illustrates use
     of a stack, a tuple, tokenizaiton, and simple exceptions.
-1. `Makefile`: make file to build the applications.
+1. `CMakeLists.txt`: CMake file to build the applications.
 1. `SlidingWindow`: class template that uses a list to compute averages over a
    slidign window.
 1. `kaprekar.cpp`: simple illustration of using `std::array` and `std::vector`

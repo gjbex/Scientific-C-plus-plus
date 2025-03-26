@@ -18,5 +18,6 @@ Code used to illustrate the basic concepts of C++.
     passing `vector` from and to functions.
 1. `arrays_vs_pointers.cpp`: code illustrating that an array is only
    the address of the first element is passed to a function in a function
-   call with an array as argument.
+   call with an array as argument. **Note:** the compiler will generate
+   a warning, but that is intentional.
 1. `CMakeLists.txt`: CMake file to build the applications.

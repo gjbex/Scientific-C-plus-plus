@@ -1,27 +1,25 @@
 #include <iostream>
 
-using namespace std;
-
 int fac(int n);
 
 int main(int argc, char *argv[]) {
     if (argc < 1) {
-        cerr << "#error: expecting one integer as argument" << endl;
+        std::cerr << "#error: expecting one integer as argument" << std::endl;
         return 1;
     }
     int n {0};
     try {
-        n = stoi(string(argv[1]));
-    } catch (invalid_argument) {
-        cerr << "# error: argument can not be converted to an integer"
-             << endl;
+        n = std::stoi(std::string(argv[1]));
+    } catch (std::invalid_argument&) {
+        std::cerr << "# error: argument can not be converted to an integer"
+             << std::endl;
         return 3;
     }
     if (n < 0) {
-        cerr << "# error: argument should be positive" << endl;
+        std::cerr << "# error: argument should be positive" << std::endl;
         return 4;
     }
-    cout << fac(n) << endl;
+    std::cout << fac(n) << std::endl;
     return 0;
 }
 

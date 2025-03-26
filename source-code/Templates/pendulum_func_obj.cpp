@@ -5,14 +5,14 @@
 
 class Pendulum {
     private:
-        double _freq;
+        double freq_;
         const double pi {std::numbers::pi};
     public:
-        Pendulum(const double& freq) : _freq {freq} {};
+        explicit Pendulum(const double& freq) : freq_ {freq} {};
         double operator()(const double& t) const {
-            return cos(2.0*pi*_freq*t);
+            return cos(2.0*pi*freq_*t);
         };
-        double freq() const { return _freq; };
+        double freq() const { return freq_; };
 };
 
 int main(int argc, char *argv[]) {

@@ -1,9 +1,10 @@
 #include <cmath>
 #include <functional>
+#include <numbers>
 
 #include "pendulum_utils.h"
 
-const double pi {acos(-1.0)};
+const double pi {std::numbers::pi};
 
 double pendulum_func(double t, double freq) {
     return cos(2.0*pi*freq*t);

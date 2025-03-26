@@ -1,11 +1,12 @@
 #include <cmath>
+#include <numbers>
 
 #include "pendulum_utils.h"
 
 class Pendulum {
     private:
         double _freq;
-        const double pi {acos(-1.0)};
+        const double pi {std::numbers::pi};
     public:
         Pendulum(const double& freq) : _freq {freq} {};
         double operator()(const double& t) const {

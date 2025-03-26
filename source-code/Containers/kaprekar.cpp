@@ -8,7 +8,7 @@ using Numbers = std::vector<int>;
 
 Digits number2digits(int number) {
     Digits digits;
-    for (int i {0}; i < digits.size(); ++i) {
+    for (size_t i {0}; i < digits.size(); ++i) {
         digits[i] = number % 10;
         number /= 10;
     }

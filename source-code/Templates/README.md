@@ -1,8 +1,10 @@
 # Templates
+
 Code illustrations for chapter 5, Temaples in Stroustrup's
 "A tour of C++".
 
 # What is it?
+
 1. `swap.cpp`: simple illustration of function template.
 1. `fac.cpp`: computing the factorial at compile time using template
    meta-programming.

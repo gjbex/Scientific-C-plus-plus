@@ -16,4 +16,4 @@ Some sample code for using the Armadillo linear algebra library.
 1. `elementwise.cpp`: illustrates various aspects of elementwise access
     to Armadillo vectors and matrices.
 1. `inverse.cpp`: illustrates computing the matrix inverse.
-1. `Makefile`: make file to build the sample code.
+1. `CMakeLists.txt`: CMake file to build the sample code.

@@ -2,7 +2,6 @@
 #include <iostream>
 
 using namespace arma;
-using namespace std;
 
 int main() {
     mat A {{1.0, 2.0}, {3.0, 4.0}};
@@ -11,6 +10,6 @@ int main() {
     B.print("B:");
     mat C = eye<mat>(2, 2);
     C.print("C:");
-    cout << "abs. sum: " <<  accu(abs(B - C)) << endl;
+    std::cout << "abs. sum: " <<  accu(abs(B - C)) << std::endl;
     return 0;
 }

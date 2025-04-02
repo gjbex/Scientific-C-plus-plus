@@ -3,8 +3,6 @@
 
 #include "static_particle.h"
 
-using namespace std;
-
 inline double sqr(double x) {
     return x*x;
 }
@@ -18,7 +16,7 @@ double StaticParticle::dist(const StaticParticle& other) const {
     return sqrt(sqr(x() - other.x()) + sqr(y() - other.y()));
 }
 
-ostream& operator<<(ostream& out, const StaticParticle& p) {
+std::ostream& operator<<(std::ostream& out, const StaticParticle& p) {
     return out << "(" << p.x() << ", " << p.y() << ")"
            << ", mass = " << p.mass();
 }

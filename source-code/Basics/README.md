@@ -16,4 +16,8 @@ Code used to illustrate the basic concepts of C++.
 1. `arrays.cpp`: illustration of arrays in C++.
 1. `argument_passing.cpp`: illustrates that data is not copied when
     passing `vector` from and to functions.
-1. `Makefile`: make file to build the applications.
+1. `arrays_vs_pointers.cpp`: code illustrating that an array is only
+   the address of the first element is passed to a function in a function
+   call with an array as argument. **Note:** the compiler will generate
+   a warning, but that is intentional.
+1. `CMakeLists.txt`: CMake file to build the applications.

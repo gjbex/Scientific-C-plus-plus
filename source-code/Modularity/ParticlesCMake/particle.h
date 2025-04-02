@@ -1,3 +1,6 @@
+#ifndef PARTICLE_H
+#define PARTICLE_H
+
 #include <functional>
 #include <iostream>
 
@@ -20,3 +23,5 @@ class Particle {
         double dist(const Particle& other) const;
         friend std::ostream& operator<<(std::ostream& out, const Particle& p);
 };
+
+#endif

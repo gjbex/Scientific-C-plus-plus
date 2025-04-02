@@ -1,15 +1,10 @@
 #include <algorithm>
-#include <functional>
 #include <iostream>
 #include <list>
 
-bool ge_pred(int a, int b) {
-    return a >= b;
-}
-
 void show_list(std::list<int> int_list) {
-    for (auto it = int_list.begin(); it != int_list.end(); it++) {
-        std::cout << *it << " ";
+    for (const auto& value: int_list) {
+        std::cout << value << " ";
     }
     std::cout << std::endl;
 }
@@ -22,9 +17,8 @@ int main() {
     std::cout << "size 1: " << int_list.size() << std::endl;
     show_list(int_list);
     for (int i = 12; i >= 8; i--) {
-        using namespace std::placeholders;
-        auto pred = std::bind(ge_pred, _1, i);
-        auto it = std::find_if(int_list.begin(), int_list.end(), pred);
+        auto it = std::find_if(int_list.begin(), int_list.end(),
+                [i] (int a) { return a >= i; });
         if (it != int_list.end()) {
             int_list.insert(it, i);
         } else {

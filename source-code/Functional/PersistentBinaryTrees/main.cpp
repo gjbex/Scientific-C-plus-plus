@@ -11,9 +11,8 @@ int main() {
         std::cout << "no left child\n";
     }
     int value {5};
-    tree.search(5);
+    tree.search(value);
     /*
-    int value;
     while (std::cin >> value) {
         tree.insert(value);
     }

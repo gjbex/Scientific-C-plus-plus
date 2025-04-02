@@ -5,7 +5,7 @@ double dist(double x, double y);
 
 int main() {
     double a, b;
-    while (cin >> a >> b) {
+    while (std::cin >> a >> b) {
         std::cout << dist(a, b) << std::endl;
     }
     return 0;

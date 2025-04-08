@@ -9,6 +9,7 @@ Implementations of design patterns in C++.
    chaining.
 1. `FactoryPattern`: illustration of a simple factory class.
 1. `StrategyPattern`: illustration of a strategy pattern.
+1. `CRTP`: illustration of the Curiously Recurring Template Pattern.
 
 
 ## References

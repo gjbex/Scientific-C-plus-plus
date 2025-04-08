@@ -20,8 +20,8 @@ int main(int argc, char* argv[]) {
     auto stop_function = [=] (const DiceAvgSimulation& simulation, [[maybe_unused]] const std::size_t step_nr) {
         const auto& distribution {simulation.distribution()};
         double avg {std::accumulate(distribution.begin(), distribution.end(), 0.0)/distribution.size()};
-        auto [min, max] = std::minmax_element(distribution.begin(), distribution.end());
-        return (*max - *min)/avg < threshold;
+        auto [min, max] = std::ranges::minmax(distribution);
+        return (max - min)/avg < threshold;
     };
     simulation.run(stop_function);
     for (const auto& [i, value]: std::ranges::views::enumerate(simulation.distribution())) {

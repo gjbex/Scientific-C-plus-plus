@@ -13,5 +13,5 @@ Example of a base class and a derived class where late binding is required.
 1. `stats_main.cpp`: application that computes statistics on data read from
    standard input.  If the `-m` option is specified on the command line, it
    will also compute the median in addition to the trivial statistics.
-1. `Makefile`: make file to build the application.
+1. `CMakeLists.txt`: CMake file to build the application.
 1. `data.txt`: small data file to test the application.

@@ -1,4 +1,3 @@
-#include <functional>
 #include <iostream>
 #include <random>
 #include <string>
@@ -10,7 +9,10 @@ int main(int argc, char *argv[]) {
     Seed_t seed {1234};
     if (argc > 1)
         seed = std::stoul(argv[1]);
-    auto distribution = std::bind(Distr_t(0.0, 1.0), std::mt19937_64(seed));
+    auto distribution = [engine = std::mt19937_64(seed),
+                         dist = Distr_t(0.0, 1.0)]() mutable {
+        return dist(engine);
+    };
     int n {10};
     if (argc > 2)
         n = std::stoi(argv[2]);

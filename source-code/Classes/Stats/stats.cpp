@@ -12,6 +12,6 @@ double Stats::stddev() const {
 }
 
 std::ostream& operator<<(std::ostream& out, const Stats& stats) {
-    return out << static_cast<SimpleStats>(stats) << std::endl
+    return out << static_cast<const SimpleStats&>(stats) << std::endl
                << "sum2 = " << stats.sum2();
 }

@@ -15,4 +15,4 @@ as well as a method from the base class.  Illustrates defining `super`.
     value.
 1. `main_stats.cpp`: main program to illustrate the use of `SimpleStats`
     and `Stats` classes.
-1. `Makefile`: make file to build the executable.
+1. `CMakeLists.txt`: CMake file to build the executable (replaces the Makefile).

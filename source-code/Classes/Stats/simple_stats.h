@@ -5,10 +5,10 @@
 
 class SimpleStats {
     private:
-        double sum_;
-        int n_;
+        double sum_{};
+        int n_{};
     public:
-        SimpleStats() : sum_ {0.0}, n_ {0} {};
+        SimpleStats() = default;
         void add(double x) { sum_ += x; n_++; };
         double sum() const { return sum_; };
         int n() const { return n_; };

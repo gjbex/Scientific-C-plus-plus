@@ -7,10 +7,10 @@
 
 class Stats : public SimpleStats {
     private:
-        double sum2_;
+        double sum2_{};
         using super = SimpleStats;
     public:
-        Stats() : SimpleStats(), sum2_ {0.0} {};
+        Stats() = default;
         void add(double x) { super::add(x); sum2_ += x*x; };
         double sum2() const { return sum2_; };
         double stddev() const;

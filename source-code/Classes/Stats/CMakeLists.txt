@@ -24,5 +24,16 @@ if(BUILD_TESTING)
         stats.cpp
     )
     target_compile_options(stats_exceptions_test.exe PRIVATE -Wall -Wextra -Wpedantic)
-    add_test(NAME StatsExceptionTests COMMAND stats_exceptions_test.exe)
+    add_test(NAME StatsExceptionTests
+             COMMAND stats_exceptions_test.exe)
+
+    # Add value correctness tests
+    add_executable(stats_values_test.exe
+        test_values.cpp
+        simple_stats.cpp
+        stats.cpp
+    )
+    target_compile_options(stats_values_test.exe PRIVATE -Wall -Wextra -Wpedantic)
+    add_test(NAME StatsValuesTests
+             COMMAND stats_values_test.exe)
 endif()

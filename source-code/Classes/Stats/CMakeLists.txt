@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.20)
 
 project(stats LANGUAGES CXX)
+include(CTest)
+enable_testing()
 
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -13,3 +15,14 @@ add_executable(stats.exe
 )
 
 target_compile_options(stats.exe PRIVATE -Wall -Wextra -Wpedantic)
+  
+# Add exception tests (requires BUILD_TESTING enabled)
+if(BUILD_TESTING)
+    add_executable(stats_exceptions_test.exe
+        test_exceptions.cpp
+        simple_stats.cpp
+        stats.cpp
+    )
+    target_compile_options(stats_exceptions_test.exe PRIVATE -Wall -Wextra -Wpedantic)
+    add_test(NAME StatsExceptionTests COMMAND stats_exceptions_test.exe)
+endif()

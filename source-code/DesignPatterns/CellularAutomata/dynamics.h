@@ -11,7 +11,7 @@ struct Dynamics {
 
 template<typename Dyn>
 struct PrintDecorator : public Dyn {
-    explicit PrintDecorator(Dyn& dyn) : Dyn(dyn) {}
+    explicit PrintDecorator(Dyn&& dyn) : Dyn(std::move(dyn)) {}
     void update(Cells& cells) override {
         Dyn::update(cells);
         print_cells(cells);

@@ -2,6 +2,8 @@
 #define DYNAMICS_HDR
 
 #include "cells.h"
+#include <memory>
+#include <utility>
 
 struct Dynamics {
     public:
@@ -9,13 +11,19 @@ struct Dynamics {
         virtual ~Dynamics() = default;
 };
 
-template<typename Dyn>
-struct PrintDecorator : public Dyn {
-    explicit PrintDecorator(Dyn&& dyn) : Dyn(std::move(dyn)) {}
-    void update(Cells& cells) override {
-        Dyn::update(cells);
-        print_cells(cells);
-    }
+struct PrintDecorator : public Dynamics {
+    private:
+        std::unique_ptr<Dynamics> inner_;
+    
+    public:
+        explicit PrintDecorator(std::unique_ptr<Dynamics> inner)
+            : inner_(std::move(inner)) {}
+
+        void update(Cells& cells) override {
+            inner_->update(cells);
+            print_cells(cells);
+        }
+
 };
 
 #endif

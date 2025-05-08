@@ -18,6 +18,7 @@ CAOptions parse_arguments(int argc, char* argv[]) {
         ("seed", po::value<int>()->default_value(1234), "random seed (default value 1234)")
         ("runner", po::value<std::string>()->default_value("visualization"), "runner: 'visualization' or 'cycle_finder'")
         ("t_max", po::value<int>()->default_value(15), "number of steps (>= 0)")
+        ("verbose", po::bool_switch(), "enable verbose output")
         ("rule_nr", po::value<int>()->required(), "rule number (0-255)");
 
     po::variables_map vm;
@@ -72,6 +73,8 @@ CAOptions parse_arguments(int argc, char* argv[]) {
         if (options.rule_nr < 0 || options.rule_nr > 255) {
             throw std::runtime_error("rule_nr must be between 0 and 255");
         }
+        // Read verbose flag
+        options.verbose = vm["verbose"].as<bool>();
 
     } catch (std::exception& e) {
         std::cerr << "Error: " << e.what() << "\n";
@@ -89,5 +92,16 @@ std::unique_ptr<CellsFactory> create_cells_factory(const CAOptions& options) {
         return std::make_unique<RandomCellsFactory>(options.nr_cells, options.seed);
     } else {
         throw std::invalid_argument("Unknown initializer: " + options.initializer);
+    }
+}
+ 
+// Factory for selecting the runner implementation based on options.runner
+RunnerVariant create_runner(const CAOptions& options) {
+    if (options.runner == "cycle_finder") {
+        return CycleFinder{};
+    } else if (options.runner == "visualization") {
+        return VisualizationRunner{options.t_max};
+    } else {
+        throw std::invalid_argument("Unknown runner: " + options.runner);
     }
 }

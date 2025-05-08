@@ -6,6 +6,8 @@
 #include "cyclic_boundary_dynamics.h"
 #include "rule.h"
 #include "utils.h"
+#include <variant>
+#include <type_traits>
 #include "visualization_runner.h"
 
 
@@ -14,18 +16,20 @@ int main(int argc, char* argv[]) {
     auto factory = create_cells_factory(options);
     auto cells = factory->create();
     auto rule = create_rule(options.rule_nr);
-    /*
-    auto dynamics {
-        std::make_unique<PrintDecorator>(std::make_unique<CyclicBoundaryDynamics>(rule, cells.size()))
-    };
-    CycleFinder runner;
-    print_cells(cells);
-    runner.run(*dynamics, cells);
-    auto result = runner.result();
-    std::cout << "Cycle size: " << result.cycle_size << std::endl;
-    */
-    CyclicBoundaryDynamics dynamics(rule, cells.size());
-    VisualizationRunner runner(options.t_max);
-    runner.run(dynamics, cells);
+    std::unique_ptr<Dynamics> dynamics {std::make_unique<CyclicBoundaryDynamics>(rule, cells.size())};
+    if (options.verbose && options.runner != "visualization") {
+        dynamics  = std::make_unique<PrintDecorator>(std::move(dynamics));
+    }
+    auto runner = create_runner(options);
+    std::visit([&](auto& r) {
+        r.run(*dynamics, cells);
+    }, runner);
+    std::visit([&](auto& r) {
+        using RunnerT = std::decay_t<decltype(r)>;
+        if constexpr (std::is_same_v<RunnerT, CycleFinder>) {
+            auto result = r.result();
+            std::cout << "Cycle size: " << result.cycle_size << std::endl;
+        }
+    }, runner);
     return 0;
 }

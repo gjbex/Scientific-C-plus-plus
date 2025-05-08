@@ -17,6 +17,6 @@ struct CAOptions {
 };
 
 CAOptions parse_arguments(int argc, char* argv[]);
-std::unique_ptr<CellsFactory> create_factor(const CAOptions& options);
+std::unique_ptr<CellsFactory> create_factory(const CAOptions& options);
 
 #endif

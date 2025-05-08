@@ -69,7 +69,7 @@ CAOptions parse_arguments(int argc, char* argv[]) {
     return options;
 }
 
-std::unique_ptr<CellsFactory> create_factor(const CAOptions& options) {
+std::unique_ptr<CellsFactory> create_factory(const CAOptions& options) {
     if (options.initializer == "uniform") {
         return std::make_unique<UniformCellsFactory>(options.nr_cells);
     } else if (options.initializer == "random") {

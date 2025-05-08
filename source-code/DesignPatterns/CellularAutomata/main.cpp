@@ -10,7 +10,7 @@
 
 int main(int argc, char* argv[]) {
     auto options = parse_arguments(argc, argv);
-    auto factory = create_factor(options);
+    auto factory = create_factory(options);
     auto cells = factory->create();
     auto rule = create_rule(options.rule_nr);
     auto dynamics {

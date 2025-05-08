@@ -4,6 +4,9 @@
 #include "random_cells_factory.h"
 #include "uniform_cells_factory.h"
 #include "utils.h"
+// for dynamics factory
+#include "dynamics.h"
+#include "cyclic_boundary_dynamics.h"
 
 namespace po = boost::program_options;
 
@@ -95,7 +98,6 @@ std::unique_ptr<CellsFactory> create_cells_factory(const CAOptions& options) {
     }
 }
  
-// Factory for selecting the runner implementation based on options.runner
 RunnerVariant create_runner(const CAOptions& options) {
     if (options.runner == "cycle_finder") {
         return CycleFinder{};
@@ -104,4 +106,15 @@ RunnerVariant create_runner(const CAOptions& options) {
     } else {
         throw std::invalid_argument("Unknown runner: " + options.runner);
     }
+}
+ 
+std::unique_ptr<Dynamics> create_dynamics(const CAOptions& options) {
+    auto rule = create_rule(options.rule_nr);
+    std::unique_ptr<Dynamics> dyn =
+        std::make_unique<CyclicBoundaryDynamics>(rule, options.nr_cells);
+    // wrap in print-decorator if verbose requested
+    if (options.verbose) {
+        dyn = std::make_unique<PrintDecorator>(std::move(dyn));
+    }
+    return dyn;
 }

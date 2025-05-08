@@ -1,25 +1,15 @@
 #include <iostream>
-#include <memory>
-
-#include "cells.h"
-#include "cycle_finder.h"
-#include "cyclic_boundary_dynamics.h"
-#include "rule.h"
-#include "utils.h"
-#include <variant>
 #include <type_traits>
-#include "visualization_runner.h"
+#include <variant>
 
+#include "cycle_finder.h"
+#include "utils.h"
 
 int main(int argc, char* argv[]) {
     auto options = parse_arguments(argc, argv);
     auto factory = create_cells_factory(options);
     auto cells = factory->create();
-    auto rule = create_rule(options.rule_nr);
-    std::unique_ptr<Dynamics> dynamics {std::make_unique<CyclicBoundaryDynamics>(rule, cells.size())};
-    if (options.verbose && options.runner != "visualization") {
-        dynamics  = std::make_unique<PrintDecorator>(std::move(dynamics));
-    }
+    auto dynamics = create_dynamics(options);
     auto runner = create_runner(options);
     std::visit([&](auto& r) {
         r.run(*dynamics, cells);

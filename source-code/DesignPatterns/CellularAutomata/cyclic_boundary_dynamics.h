@@ -5,7 +5,6 @@
 
 #include "cells.h"
 #include "dynamics.h"
-#include "neighbourhood.h"
 #include "rule.h"
 
 struct CyclicBoundaryDynamics : Dynamics {

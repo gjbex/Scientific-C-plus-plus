@@ -14,7 +14,7 @@ int main(int argc, char* argv[]) {
     std::visit([&](auto& r) {
         r.run(*dynamics, cells);
     }, runner);
-    std::visit([&](auto& r) {
+    std::visit([](auto& r) {
         using RunnerT = std::decay_t<decltype(r)>;
         if constexpr (std::is_same_v<RunnerT, CycleFinder>) {
             std::cout << "Cycle size: " << r.cycle_size() << std::endl;

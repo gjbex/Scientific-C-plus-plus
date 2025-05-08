@@ -18,6 +18,7 @@ add_executable(cellular_automata.exe
     cyclic_boundary_dynamics.cpp
     rule.cpp
     utils.cpp
+    visualization_runner.cpp
     main.cpp)
 target_compile_options(cellular_automata.exe PRIVATE -Wall -Wextra -Wpedantic)
 target_include_directories(cellular_automata.exe PRIVATE ${Boost_INCLUDE_DIR})

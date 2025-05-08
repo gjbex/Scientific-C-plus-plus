@@ -15,13 +15,7 @@ struct CyclicBoundaryDynamics : Dynamics {
         explicit CyclicBoundaryDynamics(const Rule& rule, std::size_t nr_cells) : rule_{rule} {
             new_cells_.resize(nr_cells);
         }
-        void update(Cells& cells) override {
-            for (std::size_t i = 0; i < cells.size(); ++i) {
-                std::size_t index = neighbourhood_index(cells, i);
-                new_cells_[i] = rule_[index];
-            }
-            std::copy(new_cells_.begin(), new_cells_.end(), cells.begin());
-        }
+        void update(Cells& cells) override;
 };
 
 #endif

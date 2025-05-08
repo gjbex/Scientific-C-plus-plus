@@ -1,7 +1,6 @@
 #ifndef UTILS_HDR
 #define UTILS_HDR
 
-#include <cstdint>
 #include <memory>
 #include <string>
 #include <variant>
@@ -9,7 +8,7 @@
 #include "cells_factory.h"
 #include "cycle_finder.h"
 #include "visualization_runner.h"
-#include "dynamics.h"  // for create_dynamics factory return type
+#include "dynamics.h"
 
 struct CAOptions {
     std::size_t nr_cells;

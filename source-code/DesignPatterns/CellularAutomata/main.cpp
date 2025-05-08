@@ -1,8 +1,6 @@
 #include <iostream>
 #include <type_traits>
-#include <variant>
 
-#include "cycle_finder.h"
 #include "utils.h"
 
 int main(int argc, char* argv[]) {

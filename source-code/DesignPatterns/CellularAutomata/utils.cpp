@@ -4,7 +4,6 @@
 #include "random_cells_factory.h"
 #include "uniform_cells_factory.h"
 #include "utils.h"
-// for dynamics factory
 #include "dynamics.h"
 #include "cyclic_boundary_dynamics.h"
 

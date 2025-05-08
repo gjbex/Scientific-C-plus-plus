@@ -13,11 +13,12 @@ CAOptions parse_arguments(int argc, char* argv[]) {
     po::options_description desc("Allowed options");
     desc.add_options()
         ("help,h", "produce help message")
-        ("nr_cells", po::value<int>()->required(), "number of cells (required, >= 0)")
-        ("initializer", po::value<std::string>()->default_value("uniform"), "initializer: uniform or random")
-        ("seed", po::value<int>(), "random seed (required if initializer is random, >= 0)")
-        ("rule_nr", po::value<int>()->required(), "rule number (0-255)")
-        ("t_max", po::value<int>()->required(), "number of steps");
+        ("nr_cells", po::value<int>()->required(), "number of cells (required, > 0)")
+        ("initializer", po::value<std::string>()->default_value("random"), "initializer: 'uniform' or 'random'")
+        ("seed", po::value<int>()->default_value(1234), "random seed (default value 1234)")
+        ("runner", po::value<std::string>()->default_value("visualization"), "runner: 'visualization' or 'cycle_finder'")
+        ("t_max", po::value<int>()->default_value(15), "number of steps (>= 0)")
+        ("rule_nr", po::value<int>()->required(), "rule number (0-255)");
 
     po::variables_map vm;
 
@@ -43,22 +44,34 @@ CAOptions parse_arguments(int argc, char* argv[]) {
         }
 
         if (options.initializer == "random") {
-            if (!vm.count("seed")) {
-                throw std::runtime_error("seed is required when initializer is 'random'");
+            if (vm.count("seed")) {
+                int seed_raw = vm["seed"].as<int>();
+                if (seed_raw < 0) {
+                    throw std::runtime_error("seed must be >= 0");
+                }
+                options.seed = static_cast<std::size_t>(seed_raw);
             }
-            int seed_raw = vm["seed"].as<int>();
-            if (seed_raw < 0) {
-                throw std::runtime_error("seed must be >= 0");
+        }
+
+        options.runner = vm["runner"].as<std::string>();
+        if (options.runner != "visualization" && options.runner != "cycle_finder") {
+            throw std::runtime_error("runner must be 'visualization' or 'cycle_finder'");
+        }
+
+        if (options.runner == "visualization") {
+            if (!vm.count("t_max")) {
+                throw std::runtime_error("t_max must be specified for 'visualization' runner");
             }
-            options.seed = static_cast<std::size_t>(seed_raw);
+            options.t_max = vm["t_max"].as<int>();
+            if (options.t_max < 0) {
+                throw std::runtime_error("t_max must be positive");
+            }
         }
 
         options.rule_nr = vm["rule_nr"].as<int>();
         if (options.rule_nr < 0 || options.rule_nr > 255) {
             throw std::runtime_error("rule_nr must be between 0 and 255");
         }
-
-        options.t_max = vm["t_max"].as<int>();
 
     } catch (std::exception& e) {
         std::cerr << "Error: " << e.what() << "\n";
@@ -69,11 +82,11 @@ CAOptions parse_arguments(int argc, char* argv[]) {
     return options;
 }
 
-std::unique_ptr<CellsFactory> create_factory(const CAOptions& options) {
+std::unique_ptr<CellsFactory> create_cells_factory(const CAOptions& options) {
     if (options.initializer == "uniform") {
         return std::make_unique<UniformCellsFactory>(options.nr_cells);
     } else if (options.initializer == "random") {
-        return std::make_unique<RandomCellsFactory>(options.nr_cells, options.seed.value());
+        return std::make_unique<RandomCellsFactory>(options.nr_cells, options.seed);
     } else {
         throw std::invalid_argument("Unknown initializer: " + options.initializer);
     }

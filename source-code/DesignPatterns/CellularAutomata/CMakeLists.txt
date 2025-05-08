@@ -14,6 +14,7 @@ endif (NOT Boost_FOUND)
 
 add_executable(cellular_automata.exe
     cells.cpp
+    cycle_finder.cpp
     rule.cpp
     utils.cpp
     main.cpp)

@@ -10,11 +10,9 @@ void print_cells(Cells& cells) {
 }
 
 void VisualizationRunner::run(Dynamics& dynamics, Cells& cells) {
-    cells_.clear();
     print_cells(cells);
     for (int t = 0; t <= t_max_; ++t) {
         dynamics.update(cells);
         print_cells(cells);
     }
-    cells_ = cells;
 }

@@ -27,8 +27,7 @@ int main(int argc, char* argv[]) {
     std::visit([&](auto& r) {
         using RunnerT = std::decay_t<decltype(r)>;
         if constexpr (std::is_same_v<RunnerT, CycleFinder>) {
-            auto result = r.result();
-            std::cout << "Cycle size: " << result.cycle_size << std::endl;
+            std::cout << "Cycle size: " << r.cycle_size() << std::endl;
         }
     }, runner);
     return 0;

@@ -8,6 +8,5 @@ void CycleFinder::run(Dynamics& dynamics, Cells& cells) {
         dynamics.update(cells);
         step_++;
     }
-    result_.cycle_size = step_ - states_[cells_to_key(cells)]; 
-    result_.cells = cells;
+    cells_ = cells;
 }

@@ -29,4 +29,3 @@ principles and design patterns.
 1. `utils.h`/`utils.cpp`: definition of the utility functions.
 1. `main.cpp`: main function definition that drives the simulations.
 1. `CMakeLists.txt`: CMake file to build the application.
-

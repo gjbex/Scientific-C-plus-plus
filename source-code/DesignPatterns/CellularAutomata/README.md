@@ -11,9 +11,9 @@ principles and design patterns.
    declaration of some functions related to such systems.
 1. `cells_factory.h`: abstract base class for initializers
    of the systems.
-1. `uniform_cells_factory.h`: system initializer that sets
+1. `uniform_cells_factory.h`/`uniform_cells_factory.cpp`: system initializer that sets
    all cells to 1.
-1. `random_cells_factory.h`: system initializer that assigns
+1. `random_cells_factory.h`/`random_cells_factory.cpp`: system initializer that assigns
    0 or 1 to a system randomly.
 1. `rule.h`/`rule.cpp`: definition of a rule type for cellular automata.
 1. `dynamics.h`: definition of an abstract base class that

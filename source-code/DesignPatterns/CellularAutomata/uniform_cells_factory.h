@@ -1,7 +1,6 @@
 #ifndef UNIFORM_CELLS_FACTORY_HDR
 #define UNIFORM_CELLS_FACTORY_HDR
 
-#include <algorithm>
 #include "cells.h"
 #include "cells_factory.h"
 
@@ -11,12 +10,7 @@ struct UniformCellsFactory : public CellsFactory {
     public:
         explicit UniformCellsFactory(std::size_t nr_cells) : nr_cells_ {nr_cells} {}
         std::size_t nr_cells() const { return nr_cells_; }
-        Cells create() override {
-            Cells cells;
-            cells.resize(nr_cells_);
-            std::fill(cells.begin(), cells.end(), 1);
-            return cells;
-        }
+        Cells create() override;
 };
 
 #endif

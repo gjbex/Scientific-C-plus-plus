@@ -1,10 +1,10 @@
 #ifndef RANDOM_CELLS_FACTORY_HDR
 #define RANDOM_CELLS_FACTORY_HDR
 
-#include <algorithm>
+#include <random>
+
 #include "cells.h"
 #include "cells_factory.h"
-#include <random>
 
 struct RandomCellsFactory : public CellsFactory {
     protected:
@@ -17,14 +17,7 @@ struct RandomCellsFactory : public CellsFactory {
             nr_cells_ {nr_cells}, seed_ {seed}, engine_ {seed} {}
         std::size_t nr_cells() const { return nr_cells_; }
         std::size_t seed() const { return seed_; }
-        Cells create() override {
-            Cells cells;
-            cells.resize(nr_cells_);
-            std::generate(cells.begin(), cells.end(), [this]() {
-                return distribution_(engine_);
-            });
-            return cells;
-        }
+        Cells create() override;
 };
 
 #endif

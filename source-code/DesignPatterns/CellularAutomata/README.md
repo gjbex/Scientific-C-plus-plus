@@ -28,3 +28,39 @@ mainly intended to illustrate various design principles and design patterns.
 1. `utils.h`/`utils.cpp`: definition of the utility functions.
 1. `main.cpp`: main function definition that drives the simulations.
 1. `CMakeLists.txt`: CMake file to build the application.
+
+
+## Design principles and patterns
+
+1. Factory Method / Simple Factory
+   • CellsFactory + `create_cells_factory(...)` → Uniform vs. Random initializers
+   • `create_runner(...)` → VisualizationRunner vs. CycleFinder
+   Encapsulates object‐creation logic behind a common interface.
+2. Strategy Pattern
+   • `struct Dynamics { virtual void update(...) = 0; }`
+   • Concrete strategies: `CyclicBoundaryDynamics` (and wrapped by `PrintDecorator`)
+   Encapsulates the evolving‐state algorithm so you can swap it in/out at runtime.
+3. Decorator Pattern
+   • `PrintDecorator` wraps any `Dynamics` implementation to add logging without modifying it
+   Demonstrates “extend behavior by composition” rather than inheritance.
+4. Variant + Visitor (a type-safe union)
+   • `using RunnerVariant = std::variant<CycleFinder, VisualizationRunner>;`
+   • `std::visit(...)` to dispatch `run()` and then handle the `CycleFinder` case
+   Avoids a common base‐class for runners and still gives you dynamic dispatch.
+5. Single Responsibility Principle (SRP)
+   • `utils.cpp` only parses flags,
+   • factories only build cell containers,
+   • dynamics only update state,
+   • runners only drive the simulation and collect results.
+6. Open/Closed Principle (OCP)
+   You can add new initializers, dynamics, or runners by
+   • defining a new `CellsFactory` subclass or `Dynamics` subclass,
+   • extending the factory function (or the `std::variant`)—without touching the core loop.
+7. Dependency Inversion Principle (DIP)
+   High‐level code in `main()` depends on the abstractions (`CellsFactory`, `Dynamics`), not on concrete types.
+8. Liskov Substitution Principle (LSP)
+   Any `Dynamics` implementation (or decorated variant) can be substituted for the base `Dynamics&` in the runner.
+9. RAII & Smart Pointers
+   `std::unique_ptr` everywhere for automatic lifetime management and exception safety.
+10. Separation of Concerns
+       Clear modular division: argument parsing, object creation, simulation logic, and I/O/output are all in separate components.

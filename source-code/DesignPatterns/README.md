@@ -10,6 +10,7 @@ Implementations of design patterns in C++.
 1. `FactoryPattern`: illustration of a simple factory class.
 1. `StrategyPattern`: illustration of a strategy pattern.
 1. `CRTP`: illustration of the Curiously Recurring Template Pattern.
+1. `CellularAutomata`: illustration of various design principles and patterns.
 
 
 ## References

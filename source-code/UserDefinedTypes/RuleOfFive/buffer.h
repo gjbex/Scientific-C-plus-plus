@@ -24,7 +24,7 @@ struct CircularBuffer {
             end_ = other.end_;
         }
     public:
-        CircularBuffer(size_t max_size) : max_size_ {max_size},
+        explicit CircularBuffer(size_t max_size) : max_size_ {max_size},
             size_ {0}, start_ {0}, end_ {0}, data_ {new T[max_size]} {
                 std::fill(data_, data_ + max_size_, T());
             }
@@ -79,6 +79,7 @@ struct CircularBuffer {
         ~CircularBuffer() {
             delete[] data_;
             nullify();
+            std::cout << "destructor called\n";
         }
         friend std::ostream& operator<<(std::ostream& out, const CircularBuffer& buffer) {
             out << "max_size = " << buffer.max_size_ << "\n";

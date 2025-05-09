@@ -11,7 +11,7 @@ struct Base {
     virtual void bye() const {
         std::cout << "bye from Base(" << id_ << ")" << std::endl;
     }
-    ~Base() {
+    virtual ~Base() {
         std::cout << "~Base(" << id_ << ")" << std::endl;
     }
     protected:
@@ -25,10 +25,10 @@ struct Derived1 : public Base {
     void hello() const {
         std::cout << "hello from Derived1(" << id_ << ")" << std::endl;
     }
-    void bye() const {
+    void bye() const override {
         std::cout << "bye from Derived1(" << id_ << ")" << std::endl;
     }
-    virtual ~Derived1() {
+    ~Derived1() {
         std::cout << "~Derived1(" << id_ << ")" << std::endl;
     }
 };
@@ -40,7 +40,7 @@ struct Derived2 : public Derived1 {
     virtual void hello() const {
         std::cout << "hello from Derived2(" << id_ << ")" << std::endl;
     }
-    void bye() const {
+    void bye() const override {
         std::cout << "bye from Derived2(" << id_ << ")" << std::endl;
     }
     ~Derived2() {

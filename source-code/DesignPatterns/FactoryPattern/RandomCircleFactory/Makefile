@@ -24,7 +24,7 @@ random_circles.exe: circle.o circle_factory.o random_circles.o
 circle_overlap.exe: circle.o circle_overlap.o
 	$(CXX) $(CXXFLAGS) -o $@ $^ $(LDLIBS)
 
-%.o: %.cc
+%.o: %.cpp
 	$(CXX) $(CXXFLAGS) $(CPPFLAGS) -c -o $@ $<
 
 -include $(wildcard *.d)

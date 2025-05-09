@@ -1,4 +1,5 @@
 #include <iostream>
+#include <stdexcept>
 
 #include "simple_stats.h"
 #include "stats.h"
@@ -18,7 +19,12 @@ int main() {
     std::cout << std::endl;
     std::cout << "stats: " << std::endl << stats << std::endl;
     std::cout << std::endl;
-    std::cout << "mean = " << stats.mean() << std::endl;
-    std::cout << "stddev = " << stats.stddev() << std::endl;
+    try {
+        std::cout << "mean = " << stats.mean() << std::endl;
+        std::cout << "stddev = " << stats.stddev() << std::endl;
+    } catch (const std::domain_error& e) {
+        std::cerr << "Error computing statistics: " << e.what() << std::endl;
+        return 1;
+    }
     return 0;
 }

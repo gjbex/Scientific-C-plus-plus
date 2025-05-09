@@ -8,4 +8,4 @@ C++.
 1. `random_double.cpp`: samples from a uniform double precision
     distribution using the mt19937 Mersenne Twister generator.
 1. `multiple_distr.cpp`: using an engine for multiple distributions.
-1. `Makefile`: make file to build the applications.
+1. `CMakeLists.txt`: CMake configuration file to build the applications.

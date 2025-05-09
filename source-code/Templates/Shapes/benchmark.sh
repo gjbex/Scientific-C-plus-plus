@@ -41,7 +41,7 @@ if [ -n "$OUTPUT_FILE" ]; then
 fi
 
 # list of the implementation to compare, separated by space
-IMPLEMENTATIONS="Variant Subclasses TypeErasure Crtp"
+IMPLEMENTATIONS="Variant Subclasses TypeErasure"
 
 # make sure the implementation are built for releaes
 for impl in $IMPLEMENTATIONS; do

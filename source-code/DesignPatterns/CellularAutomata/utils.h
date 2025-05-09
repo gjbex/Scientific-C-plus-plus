@@ -3,12 +3,13 @@
 
 #include <memory>
 #include <string>
-#include <variant>
 
 #include "cells_factory.h"
 #include "cycle_finder.h"
-#include "visualization_runner.h"
 #include "dynamics.h"
+#include "runners.h"
+#include "visualization_runner.h"
+
 
 struct CAOptions {
     std::size_t nr_cells;
@@ -22,8 +23,8 @@ struct CAOptions {
 
 CAOptions parse_arguments(int argc, char* argv[]);
 std::unique_ptr<CellsFactory> create_cells_factory(const CAOptions& options);
-using RunnerVariant = std::variant<CycleFinder, VisualizationRunner>;
-RunnerVariant create_runner(const CAOptions& options);
 std::unique_ptr<Dynamics> create_dynamics(const CAOptions& options);
+RunnerVariant create_runner(const CAOptions& options);
+void handle_runner_result(RunnerVariant& runner, const CAOptions& options);
 
 #endif

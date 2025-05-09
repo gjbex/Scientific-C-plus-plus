@@ -1,5 +1,6 @@
 #include <boost/program_options.hpp>
 #include <iostream>
+#include <type_traits>
 
 #include "random_cells_factory.h"
 #include "uniform_cells_factory.h"
@@ -116,4 +117,13 @@ std::unique_ptr<Dynamics> create_dynamics(const CAOptions& options) {
         dyn = std::make_unique<PrintDecorator>(std::move(dyn));
     }
     return dyn;
+}
+
+void handle_runner_result(RunnerVariant& runner, [[maybe_unused]] const CAOptions& options) {
+    std::visit([](auto& r) {
+        using RunnerT = std::decay_t<decltype(r)>;
+        if constexpr (std::is_same_v<RunnerT, CycleFinder>) {
+            std::cout << "Cycle size: " << r.cycle_size() << std::endl;
+        }
+    }, runner);
 }

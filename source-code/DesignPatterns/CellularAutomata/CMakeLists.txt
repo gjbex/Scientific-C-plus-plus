@@ -18,6 +18,7 @@ add_executable(cellular_automata.exe
     cyclic_boundary_dynamics.cpp
     random_cells_factory.cpp
     rule.cpp
+    runners.cpp
     uniform_cells_factory.cpp
     utils.cpp
     visualization_runner.cpp

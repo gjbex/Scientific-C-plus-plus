@@ -20,6 +20,7 @@ mainly intended to illustrate various design principles and design patterns.
    each call.
 1. `cyclic_boundary_dynamics.h`/`cyclic_boundary_dynamics.cpp`: concrete class
    that implements cyclic boundary conditions for the update.
+1. `runners.h`/`runners.cpp`: definition of relevant types and some utility functions.
 1. `visualization_runner.h`/`visualization_runner.cpp`: defines a runner class
    that runs a system using a given dynamics and writes output that can be used
    to visualize the system's evolution.

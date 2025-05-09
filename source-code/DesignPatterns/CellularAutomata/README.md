@@ -310,6 +310,33 @@ fully in the spirit of Demeter.
      without modifying it
 1. Separation of Concerns: clear modular division: argument parsing, object
    creation, simulation logic, and I/O/output are all in separate components.
+1. Dependency injection
+    1. Constructor injection in the decorator
+       – In `dynamics.h`
+         ```cpp
+           struct PrintDecorator : public Dynamics {
+             explicit PrintDecorator(std::unique_ptr<Dynamics> inner)
+               : inner_(std::move(inner)) {}
+             void update(Cells& c) override {
+               inner_->update(c);
+               print_cells(c);
+             }
+           };
+       ```
+       Here the decorator never `new`s its own `Dynamics`; it gets one handed in.
+    2. Constructor injection in each `Dynamics` implementation
+       – Both `CollectiveDynamics` and `IndividualDynamics` take a `Rule` (and
+         cell count) in their constructor, rather than building or looking up the
+         rule themselves.
+    3. Method (or “setter”) injection in the runners
+       – Neither `VisualizationRunner` nor `CycleFinder` ever build a `Dynamics`
+         or `Cells` internally. Instead they expose
+         ```cpp
+           void VisualizationRunner::run(Dynamics& dyn, Cells& cells);
+           void CycleFinder      ::run(Dynamics& dyn, Cells& cells);
+         ```
+         and the `main()` + factory functions inject the ready-to-go `Dynamics`
+         and `Cells`.
 
 
 ## C++ specific design patterns

@@ -29,8 +29,14 @@ mainly intended to illustrate various design principles and design patterns.
 1. `utils.h`/`utils.cpp`: definition of the utility functions.
 1. `main.cpp`: main function definition that drives the simulations.
 1. `CMakeLists.txt`: CMake file to build the application.
+1. `add-dynamics`: directory containing a new dynamics to be added to the
+   simulation.
 
 
+## Extension
+
+By way of example, the directory `add-dynamics` contains all the files that need
+to be added or modified to add a new dynamics to the simulation.
 
 
 ## Design principles: SOLID

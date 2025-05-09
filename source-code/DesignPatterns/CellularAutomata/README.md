@@ -18,8 +18,8 @@ mainly intended to illustrate various design principles and design patterns.
    update a system from one time step to the next.  It also defines a decorator
    that ensures the `update` method writes the system to standard output after
    each call.
-1. `cyclic_boundary_dynamics.h`/`cyclic_boundary_dynamics.cpp`: concrete class
-   that implements cyclic boundary conditions for the update.
+1. `collective_dynamics.h`/`collective_dynamics.cpp`: concrete class
+   that implements a collective update for the system.
 1. `runners.h`/`runners.cpp`: definition of relevant types and some utility functions.
 1. `visualization_runner.h`/`visualization_runner.cpp`: defines a runner class
    that runs a system using a given dynamics and writes output that can be used
@@ -48,8 +48,8 @@ examples:
   responsible for one way of initializing the cell array: “random” vs.
   “uniform.” They don’t also try to parse CLI flags, drive the simulation, or
   print output.
-* `CyclicBoundaryDynamics` – Knows only how to take one time‐step of the
-  automaton under cyclic boundaries.  It doesn’t manage I/O, cycle detection,
+* `CollectiveDynamics` – Knows only how to take one time‐step of the
+  automaton under collective updates.  It doesn’t manage I/O, cycle detection,
   or any higher‐level orchestration.
 * `PrintDecorator` – Wraps any Dynamics to add exactly one bit of extra
   behavior—printing the cell state after each update.  Nothing more.
@@ -115,7 +115,7 @@ Here are the clearest examples:
      ```
      If later you want another kind of logging or tracing, you can write a new
      decorator class wrapping `Dynamics`—without ever touching
-     `CyclicBoundaryDynamics` itself.
+     `CollectiveDynamics` itself.
 1. Runner Variant + `std::visit` Dispatch
    – We model “what to do with the simulation” as a
      `using RunnerVariant = std::variant<CycleFinder`, VisualizationRunner>;`
@@ -145,7 +145,7 @@ clearest spots are:
           virtual ~Dynamics() = default;
       };
       ```
-    * `CyclicBoundaryDynamics` implements the core automaton step, and
+    * `CollectiveDynamics` implements the core automaton step, and
       `PrintDecorator` publicly inherits from Dynamics, wrapping another Dynamics.
     * Because `PrintDecorator::update(…)` still satisfies the exact same “take one
       time-step” contract (it just adds a print afterward), any code that does
@@ -154,7 +154,7 @@ clearest spots are:
           dyn.update(cells);
       }
       ```
-      will work *identically* whether `dyn` is a plain `CyclicBoundaryDynamics`
+      will work *identically* whether `dyn` is a plain `CollectiveDynamics`
       or a `PrintDecorator`.  That is classic Liskov substitution.
 2. The `CellsFactory` interface
     * In `cells_factory.h`:
@@ -199,7 +199,7 @@ action. A few concrete examples:
         virtual ~Dynamics() = default;
     };
     ```
-  – Concrete classes (`CyclicBoundaryDynamics`) and the `PrintDecorator` only
+  – Concrete classes (`CollectiveDynamics`) and the `PrintDecorator` only
     implement `update()`.  Nothing more is shoe-horned in.
 * Runner types via `std::variant` (`utils.h`)
   – Instead of one big “Runner” interface with a bunch of optional hooks, we
@@ -220,7 +220,7 @@ how your high‐level “orchestration” code depends only on abstract interfac
 and the low‐level concrete types depend on those abstractions:
 
 * In `main.cpp` you never #include "`uniform_cells_factory.h`" or new
-  `CyclicBoundaryDynamics` yourself—you only include `utils.h` and work with:
+  `CollectiveDynamics` yourself—you only include `utils.h` and work with:
   – `std::unique_ptr<CellsFactory>`
   – `std::unique_ptr<Dynamics>`
   – `RunnerVariant` (the `std::variant` of runners)
@@ -229,7 +229,7 @@ and the low‐level concrete types depend on those abstractions:
   High-level module (main) → depends on → abstractions (`CellsFactory`, `Dynamics`,
   `RunnerVariant`).
 * The concrete factories (`RandomCellsFactory`, `UniformCellsFactory`), dynamics
-  (`CyclicBoundaryDynamics`) and runners (`VisualizationRunner`, `CycleFinder`) all
+  (`CollectiveDynamics`) and runners (`VisualizationRunner`, `CycleFinder`) all
   inherit from those abstract interfaces.
   Low-level modules (those concrete classes) → depend on → the abstract interfaces.
 
@@ -255,7 +255,7 @@ implement that interface” (low -> abstract) is classic Dependency Inversion.
 1. Strategy Pattern: encapsulates the evolving‐state algorithm so you can swap
    it in/out at runtime.
    * `struct Dynamics { virtual void update(...) = 0; }`
-   * Concrete strategies: `CyclicBoundaryDynamics` (and wrapped by
+   * Concrete strategies: `CollectiveDynamics` (and wrapped by
      `PrintDecorator`)
 1. Decorator Pattern: demonstrates “extend behavior by composition” rather than
    inheritance.

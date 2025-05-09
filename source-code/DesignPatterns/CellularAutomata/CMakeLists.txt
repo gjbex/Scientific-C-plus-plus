@@ -14,8 +14,8 @@ endif (NOT Boost_FOUND)
 
 add_executable(cellular_automata.exe
     cells.cpp
+    collective_dynamics.cpp
     cycle_finder.cpp
-    cyclic_boundary_dynamics.cpp
     random_cells_factory.cpp
     rule.cpp
     runners.cpp

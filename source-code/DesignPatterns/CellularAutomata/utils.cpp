@@ -2,11 +2,11 @@
 #include <iostream>
 #include <type_traits>
 
+#include "collective_dynamics.h"
+#include "dynamics.h"
 #include "random_cells_factory.h"
 #include "uniform_cells_factory.h"
 #include "utils.h"
-#include "dynamics.h"
-#include "cyclic_boundary_dynamics.h"
 
 namespace po = boost::program_options;
 
@@ -111,7 +111,7 @@ RunnerVariant create_runner(const CAOptions& options) {
 std::unique_ptr<Dynamics> create_dynamics(const CAOptions& options) {
     auto rule = create_rule(options.rule_nr);
     std::unique_ptr<Dynamics> dyn =
-        std::make_unique<CyclicBoundaryDynamics>(rule, options.nr_cells);
+        std::make_unique<CollectiveDynamics>(rule, options.nr_cells);
     // wrap in print-decorator if verbose requested
     if (options.verbose) {
         dyn = std::make_unique<PrintDecorator>(std::move(dyn));

@@ -251,6 +251,47 @@ That separation of “I only code to the interface” (high -> abstract) and “
 implement that interface” (low -> abstract) is classic Dependency Inversion.
 
 
+## Law of Demeter
+
+The Law of Demeter (“only talk to your immediate friends”) is all about
+minimizing coupling by forbidding long “train-wreck” method chains and by only
+letting a module call methods on:
+
+* Itself
+* Its direct fields or components
+* Its method parameters
+* Objects it creates
+* Its direct friends (e.g. close collaborators, small helper objects)
+
+In practice this codebase adheres quite closely to that guideline:
+
+* Factory functions – main() never reaches into the guts of any initializer or
+  dynamics type.
+  - It asks only for `create_cells_factory()`, `create_dynamics()`
+    and `create_runner()`, then treats each result as a black-box.
+* Small, focused interfaces
+  – `CellsFactory` has a single `create()` method, so callers just do
+    `factory->create()`, and nothing more.
+  – `Dynamics` has exactly one method,
+    `update(cells)`, so nobody ever writes things like `dyn->inner()->foo()`.
+* Decorator pattern
+  – `PrintDecorator` wraps a `Dynamics` pointer and only calls
+    `inner_->update(cells)` (its immediate friend) before doing its own print.
+    There are no deeper calls into the wrapped object’s internals.
+* Runner variant + `std::visit`
+  – The simulation driver uses std::visit on a tight variant of runner types
+    (`CycleFinder`, `VisualizationRunner`) rather than inspecting or pulling data out
+    of them piece by piece.
+* No long call chains
+  – You won’t find code like `a->b()->c()->d()` anywhere—every call is to either
+    a local member, a parameter, or a directly‐created object.
+
+By restricting each module to only interact with its immediate
+collaborators—and by hiding all deeper structure behind small interfaces and
+factory functions—the system stays loosely coupled, easier to reason about, and
+fully in the spirit of Demeter.
+
+
 ## General Design patterns
 
 1. Factory Method / Simple Factory: encapsulates object‐creation logic behind a

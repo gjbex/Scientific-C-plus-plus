@@ -11,6 +11,7 @@ Implementations of design patterns in C++.
 1. `StrategyPattern`: illustration of a strategy pattern.
 1. `CRTP`: illustration of the Curiously Recurring Template Pattern.
 1. `CellularAutomata`: illustration of various design principles and patterns.
+1. `PIMPL`: illustration of the PIMPL idiom.
 
 
 ## References

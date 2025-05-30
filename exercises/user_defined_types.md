@@ -72,7 +72,7 @@
     ```
  4. In `main()`, create an `std::vector<Atom>` for the first five elements and print each atom’s name, atomic number, and mass.
 
- ## Bonus Exercise: Complex-Number Class with I/O
+## Exercise 6: Complex-Number Class with I/O
 
  1. Write a `class Complex` with private members `double re_, im_;` and:
     - Constructors.

@@ -16,4 +16,4 @@ Example of using STL data structures.
 1. `table_stats.cpp`: main program that reads columnar data and computes
    statistics.
 1. `table_data.txt`: data for `table_stats.exe`.
-1. `Makefile`: make file to build the applications.
+1. `CMakeLists.txt`: CMake file to build the applications.

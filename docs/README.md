@@ -110,6 +110,13 @@ If you plan to do C++ programming in a Linux or HPC environment you should
 be familiar with these as well.
 
 
+## Level
+
+* Introductory: 20 %
+* Intermediate: 40 %
+* Advanced: 40 %
+
+
 ## Trainer(s)
 
   * Geert Jan Bex ([geertjan.bex@uhasselt.be](mailto:geertjan.bex@uhasselt.be))

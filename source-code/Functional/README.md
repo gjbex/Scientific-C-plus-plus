@@ -11,3 +11,5 @@ Examples of functional programming style in C++.
 1. `PersistentBinaryTrees`: purely functional implementation of a doubly-linked list.
 1. `FibonacciGenerator`: illustration of how to define and use a generator in C++23.
 1. `Pendulum`: illustrations of how to implement closures in C++.
+1. `IIFE`: illustration of Immediately Invoked Function Expressions to do a complex
+   initialization of a const in C++.

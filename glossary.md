@@ -15,6 +15,9 @@ ADL: Argument-Dependent Lookup. A C++ feature that allows the compiler to
 consider functions in the namespaces of the argument types when resolving
 function calls.
 
+ALU: Arithmetic Logic Unit. A digital circuit within the CPU that performs
+arithmetic and logical operations on binary data.
+
 AOP: Aspect-Oriented Programming. A programming paradigm that aims to increase
 modularity by allowing the separation of cross-cutting concerns, such as logging
 or security, from the main business logic.

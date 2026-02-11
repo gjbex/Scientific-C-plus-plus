@@ -7,4 +7,4 @@ Example of using a namespace.
    `particle`..
 1. `particles_main.cpp`: main function for the particles application, using the
    `Particle` class in namespace `particle`.
-1. `Makefile`: make file for these examples.
+1. `CMakeLists.txt`: CMake file to build the applications.

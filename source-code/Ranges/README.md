@@ -16,6 +16,8 @@ the C++20 standard.
    range copy.
 1. `data.txt`: small data file to use for `input_ranges.cpp` application.
 1. `enumerate.cpp`: illustration of using `std::enumerate`.
+1. `projection.cpp`: illustrates the use of member pointer projections
+   in ranges algorithms.
 1. `CMakeLists.txt`: CMake file to build the applications.
 
 *Note:* you will need at least g++ 13.x to compile this succesfully.

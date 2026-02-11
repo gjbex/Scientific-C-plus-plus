@@ -17,3 +17,5 @@ add_executable(input_ranges.exe
     input_ranges.cpp)
 add_executable(enumerate.exe
     enumerate.cpp)
+add_executable(projection.exe
+    projection.cpp)

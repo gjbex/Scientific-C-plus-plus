@@ -1,6 +1,6 @@
 # NamespaceParticles
 
-Example of using a namespace.
+Example of defining and using a namespace.
 
 
 # What is it?

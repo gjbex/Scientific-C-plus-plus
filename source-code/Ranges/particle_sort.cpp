@@ -10,6 +10,7 @@ struct Particle {
 
 std::vector<Particle> init_particles(size_t n) {
     std::vector<Particle> particles;
+    particles.reserve(n);
     std::mt19937_64 engine;
     auto pos_distr = std::bind(std::normal_distribution<double>(0.0, 1.0),
                           std::ref(engine));

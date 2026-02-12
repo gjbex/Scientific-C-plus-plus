@@ -1,4 +1,5 @@
 #include <algorithm>
+#include <cmath>
 #include <functional>
 #include <iostream>
 #include <random>
@@ -28,8 +29,8 @@ std::ostream& operator<<(std::ostream& out, const Particle& particle) {
                << particle.mass;
 }
 
-double distance(const Particle& p) {
-    return p.x*p.x + p.y*p.y;
+double dist_from_origin(const Particle& p) {
+    return sqrt(p.x*p.x + p.y*p.y);
 }
 
 int main() {
@@ -44,15 +45,12 @@ int main() {
         std::cout << particle << std::endl;
     std::ranges::sort(
             particles,
-            [](const Particle& p1, const Particle& p2) { return distance(p1) < distance(p2); });
+            [](const Particle& p1, const Particle& p2) {
+                return dist_from_origin(p1) < dist_from_origin(p2);
+            }
+    );
     std::cout << "sorted by distance from origin:" << std::endl;
     for (const auto& particle: particles)
-        std::cout << particle << " at " << distance(particle) << std::endl;
+        std::cout << particle << " at " << dist_from_origin(particle) << std::endl;
     return 0;
 }
-
-
-bool dist_cmp(const Particle& p1, const Particle& p2) {
-    return distance(p1) < distance(p2);
-}
-

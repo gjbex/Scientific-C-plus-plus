@@ -1,6 +1,6 @@
 # IIFE
 
-IFFE stands for Immediately Invoked Function Expression. It is a design pattern
+IIFE stands for Immediately Invoked Function Expression. It is a design pattern
 that helps avoid poluting the namespace with one-off functions to do complex
 initialization work.
 

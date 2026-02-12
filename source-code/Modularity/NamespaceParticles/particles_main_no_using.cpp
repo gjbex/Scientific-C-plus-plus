@@ -4,8 +4,6 @@
 
 #include "particle.h"
 
-using namespace particle;
-
 int main() {
     auto engine {std::mt19937_64(1234)};
     auto pos_distr = std::bind(std::uniform_real_distribution<double>(-1.0, 1.0),

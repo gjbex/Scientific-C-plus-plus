@@ -18,6 +18,8 @@ the C++20 standard.
 1. `enumerate.cpp`: illustration of using `std::enumerate`.
 1. `projection.cpp`: illustrates the use of member pointer projections
    in ranges algorithms.
+1. `particle_sort.cpp`: example of using projections to sort a vector of particles by
+   their mass member and using a lambda function as a comparator.
 1. `CMakeLists.txt`: CMake file to build the applications.
 
 *Note:* you will need at least g++ 13.x to compile this succesfully.

@@ -1,4 +1,5 @@
 #include <algorithm>
+#include <cmath>
 #include <functional>
 #include <iostream>
 #include <random>
@@ -12,7 +13,7 @@ std::vector<Particle> init_particles(size_t n);
 std::ostream& operator<<(std::ostream& out, const Particle& particle);
 bool mass_cmp(const Particle& p1, const Particle& p2);
 bool dist_cmp(const Particle& p1, const Particle& p2);
-double distance(const Particle& p);
+double dist_from_origin(const Particle& p);
 
 int main() {
     const size_t n {5};
@@ -27,7 +28,7 @@ int main() {
     std::sort(particles.begin(), particles.end(), dist_cmp);
     std::cout << "sorted by distance from origin:" << std::endl;
     for (const auto& particle: particles)
-        std::cout << particle << " at " << distance(particle) << std::endl;
+        std::cout << particle << " at " << dist_from_origin(particle) << std::endl;
     return 0;
 }
 
@@ -54,11 +55,11 @@ bool mass_cmp(const Particle& p1, const Particle& p2) {
     return p1.mass < p2.mass;
 }
 
-double distance(const Particle& p) {
-    return p.x*p.x + p.y*p.y;
+double dist_from_origin(const Particle& p) {
+    return sqrt(p.x*p.x + p.y*p.y);
 }
 
 bool dist_cmp(const Particle& p1, const Particle& p2) {
-    return distance(p1) < distance(p2);
+    return dist_from_origin(p1) < dist_from_origin(p2);
 }
 

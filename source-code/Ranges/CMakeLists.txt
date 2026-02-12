@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.0)
+cmake_minimum_required(VERSION 3.20)
 project(ranges LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 23)
@@ -17,3 +17,7 @@ add_executable(input_ranges.exe
     input_ranges.cpp)
 add_executable(enumerate.exe
     enumerate.cpp)
+add_executable(projection.exe
+    projection.cpp)
+add_executable(particle_sort.exe
+    particle_sort.cpp)

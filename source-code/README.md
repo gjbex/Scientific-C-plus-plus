@@ -51,3 +51,5 @@ programming concepts and idiosyncracies particular to C++.
 1. `GeneralUtilities`: examples of using STL general utilities.
 1. `ErrorHandling`: examples of error handling.
 1. `IO`: examples of input/output  in C++.
+1. `CLI11`: examples of command line argument handling in C++ using the CLI11
+   library.

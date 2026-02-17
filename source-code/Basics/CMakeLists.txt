@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.20)
 
 # Set project name and C++ standard
 project(MyExecutables CXX)
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
@@ -20,6 +20,7 @@ set(APPL
     local_namespace_use
     data_parser
     arrays_vs_pointers
+    cl_arguments
 )
 
 # Add an executable for each .cpp file

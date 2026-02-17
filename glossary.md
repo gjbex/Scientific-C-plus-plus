@@ -146,6 +146,8 @@ its address taken. Rvalues typically appear on the right side of an assignment.
 SFINAE: Substitution Failure Is Not An Error. A C++ template metaprogramming
 technique that allows the compiler to ignore certain template instantiations
 that would result in errors, enabling more flexible and powerful template code.
+In modern C++, SFINAE is often replaced by concepts and requires-clauses for
+better readability and error messages.
 
 SIMD: Single Instruction, Multiple Data. A parallel computing architecture that
 allows a single instruction to be executed on multiple data points simultaneously,

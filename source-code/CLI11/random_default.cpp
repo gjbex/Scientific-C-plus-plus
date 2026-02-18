@@ -12,7 +12,7 @@ int main(int argc, char* argv[]) {
     std::mt19937 engine(seed);
     std::uniform_real_distribution<double> distr(a, b);
     for (int i = 0; i < n; ++i)
-        std::cout << distr(engine) << std::endl;
+        std::cout << distr(engine) << '\n';
 
     return 0;
 }

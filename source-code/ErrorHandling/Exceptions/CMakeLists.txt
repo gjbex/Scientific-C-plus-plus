@@ -7,3 +7,4 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 add_executable(fac.exe fac.cpp)
+add_executable(fac_custom_exceptions.exe fac_custom_exceptions.cpp)

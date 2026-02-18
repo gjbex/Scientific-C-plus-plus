@@ -7,4 +7,5 @@ Illustrates how to use exceptoin to do error handling.
 1. `fac.cpp`: C++ application that reads an argument from the command line,
    validates the value, computes the factorial and displays the output or
    the error message.
+1. `fac_custom_exceptions.cpp`: example of user-defined exceptions.
 1. `CMakeLists.txt`: CMake file to build the applications.

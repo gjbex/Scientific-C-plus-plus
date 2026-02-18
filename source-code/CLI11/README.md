@@ -4,7 +4,8 @@ CLI11 is a command line parser for C++11 and beyond. It is a single header
 library with no dependencies. It supports subcommands, multiple parsing styles,
 and more.
 
-It is a light-weight alternative to `boost::program_options`.
+It is a light-weight alternative to `boost::program_options` and can be found on
+[GitHub](https://github.com/CLIUtils/CLI11?tab=readme-ov-file#unicode-support).
 
 
 ## What is it?

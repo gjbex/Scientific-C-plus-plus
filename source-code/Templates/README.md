@@ -17,7 +17,7 @@ Code illustrations for chapter 5, Temaples in Stroustrup's
 1. `print_container_no_range_for.cpp`: using a template to print the elements
    of a random accessible container (plays well with valarray expressions).
 1. `DuckTyping`: example of using a template for duck typing.
-1. `Makefile`: make file to build the applications.
+1. `CMakeLists.txt`: CMake file to build the applications.
 1. `Grid`: templated data structure with friend function.
 1. `ArrayView`: template for creating multi-dimensional views on
    one-dimensional data; illustrates the use of variadic templates.

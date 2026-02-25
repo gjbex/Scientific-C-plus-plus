@@ -4,19 +4,19 @@
 class Stats {
 
     private:
-        double _sum;
-        int _n;
+        double sum_;
+        int n_;
 
     public:
-        Stats() : _sum {0.0}, _n {0} {};
-        int n() const { return _n; };
-        double avg() const { return _sum/_n; };
+        Stats() : sum_ {0.0}, n_ {0} {};
+        int n() const { return n_; };
+        double avg() const { return sum_/n_; };
         void add(double data);
 };
 
 void Stats::add(double data) {
-    _sum += data;
-    _n++;
+    sum_ += data;
+    n_++;
 }
 
 int main() {

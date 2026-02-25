@@ -2,7 +2,9 @@
 #include <cmath>
 #include <cstdlib>
 #include <iostream>
+#include <memory>
 #include <random>
+#include <valarray>
 
 struct Point {
     public:

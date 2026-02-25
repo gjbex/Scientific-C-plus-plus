@@ -3,8 +3,6 @@
 #include <cstdlib>
 #include <iostream>
 #include <memory>
-#include <random>
-#include <valarray>
 
 struct Point {
     public:
@@ -12,26 +10,28 @@ struct Point {
         double y;
 
         Point();
-        static void reset() { engine_.seed(1234); }
+        static void reset() { x0_ = 0.0; y0_ = 0.0; }
 
     private:
-        static std::mt19937_64 engine_;
-        static std::normal_distribution<double> distr_;
+        static double x0_;
+        static double y0_;
 };
 
-std::mt19937_64 Point::engine_(1234);
-std::normal_distribution<double> Point::distr_(0.0, 1.0);
+double Point::x0_ = 0.0;
+double Point::y0_ = 0.0;
+
 
 Point::Point() {
-    x = distr_(engine_);
-    y = distr_(engine_);
+    x = x0_;
+    y = y0_;
+    x0_ += 0.000001;
+    y0_ += 0.000001;
 }
 
 using my_time_t = std::chrono::nanoseconds;
-using Vector = std::valarray<double>;
 
 int main() {
-    const std::size_t i_max {10000000};
+    const std::size_t i_max {2'000'000'000};
     double dist {0.0};
     Point::reset();
     auto start_time = std::chrono::steady_clock::now();
@@ -44,7 +44,7 @@ int main() {
     auto end_time = std::chrono::steady_clock::now();
     auto duration = std::chrono::duration_cast<my_time_t>(end_time - start_time);
     std::cerr << "time: " << duration.count()*1.0e-9 << " s" << std::endl;
-    std::cout << "mean distance = " << dist << std::endl;
+    std::cout << "mean distance = " << dist/i_max << std::endl;
 
     Point::reset();
     dist = 0.0;
@@ -57,7 +57,7 @@ int main() {
     end_time = std::chrono::steady_clock::now();
     duration = std::chrono::duration_cast<my_time_t>(end_time - start_time);
     std::cerr << "time: " << duration.count()*1.0e-9 << " s" << std::endl;
-    std::cout << "mean distance = " << dist << std::endl;
+    std::cout << "mean distance = " << dist/i_max << std::endl;
 
     return 0;
 }

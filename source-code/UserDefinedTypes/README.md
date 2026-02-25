@@ -14,7 +14,9 @@ C++".
    (very bare bones, just illustration).
 1. `function_objects.cpp`: illustration of overloading the `operator()` to
    create function objects.
-1. `placement_new.cpp`: illustration of placement new with timing.
+1. `placement_new.cpp`: illustration of placement new with timing.  **Note**:
+   performance differences are only observed when compiling without
+   optimization.
 1. `streamin_stats.cpp`: implementation of `Stats` class for statistics on
    streaming data..
 1. `CMakeLIsts.txt`: CMake file to build the applictions.

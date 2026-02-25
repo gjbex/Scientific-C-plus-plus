@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 
 class Stats {
 
@@ -19,11 +20,11 @@ void Stats::add(double data) {
 }
 
 int main() {
-    const int n {5};
-    double data[n] {1.2, 2.3, 3.4, 4.5, 5.6};
+    std::vector<double> data {1.2, 2.3, 3.4, 4.5, 5.6};
     Stats stats;
-    for (int i = 0; i < n; i++)
-        stats.add(data[i]);
+    for (const auto& value: data) {
+        stats.add(value);
+    }
     std::cout << "average = " << stats.avg() << " for "
               << stats.n() << " data points" << std::endl;
     return 0;

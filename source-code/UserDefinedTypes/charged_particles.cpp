@@ -9,26 +9,26 @@ enum class Charge {negative = -1, positive = 1};
 
 class Particle {
     private:
-        double _x, _y, _z;
-        double _mass;
-        Charge _charge;
+        double x_, y_, z_;
+        double mass_;
+        Charge charge_;
     public:
         Particle(function<double()> pos_distr,
                  function<double()> mass_distr,
                  function<int()> charge_distr) :
-            _x {pos_distr()},
-            _y {pos_distr()},
-            _z {pos_distr()},
-            _mass {mass_distr()},
-            _charge {charge_distr() == 0 ? Charge::negative :
+            x_ {pos_distr()},
+            y_ {pos_distr()},
+            z_ {pos_distr()},
+            mass_ {mass_distr()},
+            charge_ {charge_distr() == 0 ? Charge::negative :
                                            Charge::positive}
             {};
-        double x() const { return _x; }
-        double y() const { return _y; }
-        double z() const { return _z; }
-        double mass() const {return _mass; }
-        Charge charge() const {return _charge; }
-        int charge_val() const {return (int) _charge; }
+        double x() const { return x_; }
+        double y() const { return y_; }
+        double z() const { return z_; }
+        double mass() const {return mass_; }
+        Charge charge() const {return charge_; }
+        int charge_val() const {return (int) charge_; }
         void move(double dx, double dy, double dz);
         double dist(const Particle& other) const;
         double e_force(const Particle& other) const;
@@ -62,15 +62,15 @@ inline double sqr(double x) {
 }
 
 void Particle::move(double dx, double dy, double dz) {
-    _x += dx;
-    _y += dy;
-    _z += dz;
+    x_ += dx;
+    y_ += dy;
+    z_ += dz;
 }
 
 double Particle::dist(const Particle& other) const {
-    return sqrt(sqr(_x - other.x()) + 
-                sqr(_y - other.y()) +
-                sqr(_z - other.z()));
+    return sqrt(sqr(x_ - other.x()) + 
+                sqr(y_ - other.y()) +
+                sqr(z_ - other.z()));
 }
 
 double Particle::e_force(const Particle& other) const {

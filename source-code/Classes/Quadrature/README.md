@@ -14,4 +14,4 @@ Example of a class hierarchy with an abstract base class.
 1. `gaussian_quad.cpp`: implementation of `GaussianQuad` methods.
 1. `main_quad.cpp`: main function that drives the quadrature using an algorithm
    determined at runtime, either based on `SimpsonQuad`, or `GaussianQuad`.
-1. `Makefile`: make file to build the application.
+1. `CMakeLists.txt`: CMake file to build the application.

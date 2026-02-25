@@ -15,7 +15,7 @@ Code illustrations for chapter 2, User defined types in Stroustrup's
 1. `placement_new.cpp`: illustration of placement new with timing.
 1. `streamin_stats.cpp`: implementation of `Stats` class for statistics
     on streaming data..
-1. `Makefile`: make file to build the applictions.
+1. `CMakeLIsts.txt`: CMake file to build the applictions.
 1. `ObjectLifeCycle`: illustration of object life cycle.
 1. `TableStats`: Example of using STL data structures.
 1. `RuleOfFive`: Illustration of the rule of five when resource handling

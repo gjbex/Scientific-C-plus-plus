@@ -7,7 +7,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
-  add_compile_options(-O2 -g -Wall -Wextra -Wpedantic)
+  add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
 
 set(EXECUTABLE_SOURCES

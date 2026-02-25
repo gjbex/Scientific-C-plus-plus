@@ -60,6 +60,6 @@ double Particle::dist(const Particle& other) const {
 }
 
 ostream& operator<<(ostream& out, const Particle& p) {
-    return out << "(" << p.x() << ", " << p.y() << ", " << p.z() << ")"
-           << ", mass = " << p.mass();
+    return out << "(" << p.x_ << ", " << p.y_ << ", " << p.z_ << ")"
+           << ", mass = " << p.mass_;
 }

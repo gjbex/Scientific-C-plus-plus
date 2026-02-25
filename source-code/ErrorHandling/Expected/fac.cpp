@@ -61,10 +61,5 @@ int main(int argc, char *argv[]) {
         .and_then(fac)
         .and_then(show_result)
         .or_else(show_error) ;
-    if (result) {
-        return 0;
-    } else {
-        return 1;
-    }
-    return 0;
+    return result ? 0 : 1;
 }

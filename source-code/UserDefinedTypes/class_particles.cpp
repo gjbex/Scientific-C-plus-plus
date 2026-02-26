@@ -3,7 +3,7 @@
 #include <iostream>
 #include <random>
 
-class Particle {
+struct Particle {
     private:
         double x_, y_, z_;
         double mass_;

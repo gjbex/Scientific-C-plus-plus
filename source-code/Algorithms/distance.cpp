@@ -4,6 +4,8 @@
 #include <numeric>
 #include <vector>
 
+using std::sqrt;
+
 int main() {
     std::vector<double> x_coords;
     std::vector<double> y_coords;

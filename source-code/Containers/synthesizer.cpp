@@ -7,6 +7,8 @@
 #include <valarray>
 #include <vector>
 
+using std::cos;
+
 
 using wave_t = std::pair<double, double>;
 

@@ -6,6 +6,8 @@
 #include <tbb/tbb.h>
 #include "terrain.h"
 
+using std::atan2;
+
 using my_time_t = std::chrono::nanoseconds;
 
 auto compute_visibility(const Terrain& terrain) {

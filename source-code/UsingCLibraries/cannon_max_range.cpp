@@ -6,6 +6,11 @@
 #include <gsl/gsl_min.h>
 #include <gsl/gsl_odeiv2.h>
 
+using std::cos;
+using std::exp;
+using std::sin;
+using std::sqrt;
+
 const double g {9.81};        /* m/s^2 */
 const double v_0 {700.0};     /* m/s */
 const double B2_m {4.0e-5};   /* 1/m */

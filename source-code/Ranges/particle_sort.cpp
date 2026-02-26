@@ -5,6 +5,8 @@
 #include <random>
 #include <vector>
 
+using std::sqrt;
+
 struct Particle {
     double x, y, mass;
 };

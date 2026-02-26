@@ -3,6 +3,8 @@
 #include <iostream>
 #include <random>
 
+using std::sqrt;
+
 struct Particle {
     private:
         double x_, y_, z_;

@@ -1,6 +1,8 @@
 #include <cmath>
 #include "equations.h"
 
+using std::abs;
+
 std::vector<double> solve_serial(const Equations& eqns) {
     if (eqns.nr_eqns() == 0)
         throw std::invalid_argument("no equations in set");

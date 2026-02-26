@@ -4,6 +4,8 @@
 #include <iostream>
 #include <vector>
 
+using std::sqrt;
+
 bool is_divisible_by(size_t m, size_t n) {
     return m % n == 0;
 }

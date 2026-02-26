@@ -3,6 +3,9 @@
 
 #include "particle.h"
 
+using std::sqrt;
+
+
 namespace particle {
 
     inline double sqr(double x) {

@@ -2,6 +2,8 @@
 #include <iostream>
 #include <vector>
 
+using std::sqrt;
+
 struct Stats {
     double mean;
     double stddev;

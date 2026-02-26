@@ -4,6 +4,9 @@
 #include <limits>
 #include "terrain.h"
 
+using std::abs;
+using std::atan2;
+
 auto compute_line_of_sight(const Terrain& terrain) {
     std::vector<double> los;
     double max_angle {-std::numeric_limits<double>::max()};

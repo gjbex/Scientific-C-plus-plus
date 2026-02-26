@@ -2,11 +2,11 @@
 #include <iostream>
 #include <vector>
 #include <stdexcept>
+#include "simple_stats.h"
+#include "stats.h"
 
 using std::fabs;
 using std::sqrt;
-#include "simple_stats.h"
-#include "stats.h"
 
 int main() {
     std::vector<double> data {1.0, 2.0, 3.0, 4.0, 5.0};

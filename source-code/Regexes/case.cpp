@@ -2,17 +2,16 @@
 #include <regex>
 #include <vector>
 
-using namespace std;
 
 int main() {
-    regex expr {R"([acgt]+)"};
-    regex expr_icase(R"([acgt]+)", regex::icase);
-    const vector<string> strs {"aagt", "abgt", "AAGT", "ABGT"};
+    std::regex expr {R"([acgt]+)"};
+    std::regex expr_icase(R"([acgt]+)", std::regex::icase);
+    const std::vector<std::string> strs {"aagt", "abgt", "AAGT", "ABGT"};
     for (auto str: strs) {
-        if (regex_match(str, expr))
-            cout << "case sensitive: " << str << endl;
-        if (regex_match(str, expr_icase))
-            cout << "case insensitive: " << str << endl;
+        if (std::regex_match(str, expr))
+            std::cout << "case sensitive: " << str << std::endl;
+        if (std::regex_match(str, expr_icase))
+            std::cout << "case insensitive: " << str << std::endl;
     }
     return 0;
 }

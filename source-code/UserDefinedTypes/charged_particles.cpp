@@ -3,7 +3,6 @@
 #include <iostream>
 #include <random>
 
-using namespace std;
 
 enum class Charge {negative = -1, positive = 1};
 
@@ -13,9 +12,9 @@ class Particle {
         double mass_;
         Charge charge_;
     public:
-        Particle(function<double()> pos_distr,
-                 function<double()> mass_distr,
-                 function<int()> charge_distr) :
+        Particle(std::function<double()> pos_distr,
+                 std::function<double()> mass_distr,
+                 std::function<int()> charge_distr) :
             x_ {pos_distr()},
             y_ {pos_distr()},
             z_ {pos_distr()},
@@ -32,28 +31,28 @@ class Particle {
         void move(double dx, double dy, double dz);
         double dist(const Particle& other) const;
         double e_force(const Particle& other) const;
-        friend ostream& operator<<(ostream& out, const Particle& p);
+        friend std::ostream& operator<<(std::ostream& out, const Particle& p);
 };
 
-ostream& operator<<(ostream& out, const Particle& p);
+std::ostream& operator<<(std::ostream& out, const Particle& p);
 
 int main() {
-    auto engine {mt19937_64(1234)};
-    auto pos_distr = bind(uniform_real_distribution<double>(-1.0, 1.0),
-                          ref(engine));
-    auto mass_distr = bind(uniform_real_distribution<double>(0.0, 1.0),
-                           ref(engine));
-    auto charge_distr = bind(uniform_int_distribution<int>(0, 1),
-                             ref(engine));
+    auto engine {std::mt19937_64(1234)};
+    auto pos_distr = std::bind(std::uniform_real_distribution<double>(-1.0, 1.0),
+                          std::ref(engine));
+    auto mass_distr = std::bind(std::uniform_real_distribution<double>(0.0, 1.0),
+                           std::ref(engine));
+    auto charge_distr = std::bind(std::uniform_int_distribution<int>(0, 1),
+                             std::ref(engine));
     Particle p1(pos_distr, mass_distr, charge_distr);
     Particle p2(pos_distr, mass_distr, charge_distr);
-    cout << p1 << endl << p2 << endl;
+    std::cout << p1 << std::endl << p2 << std::endl;
     p1.move(0.5, 0.5, 0.5);
-    cout << "moved: " << p1 << endl;
-    cout << "x = " << p1.x() << ", y = " << p1.y() << ", z = " << p1.z()
-         << endl;
-    cout << "distance = " << p1.dist(p2) << endl;
-    cout << "force = " << p1.e_force(p2) << endl;
+    std::cout << "moved: " << p1 << std::endl;
+    std::cout << "x = " << p1.x() << ", y = " << p1.y() << ", z = " << p1.z()
+         << std::endl;
+    std::cout << "distance = " << p1.dist(p2) << std::endl;
+    std::cout << "force = " << p1.e_force(p2) << std::endl;
     return 0;
 }
 
@@ -68,7 +67,7 @@ void Particle::move(double dx, double dy, double dz) {
 }
 
 double Particle::dist(const Particle& other) const {
-    return sqrt(sqr(x_ - other.x()) + 
+    return std::sqrt(sqr(x_ - other.x()) + 
                 sqr(y_ - other.y()) +
                 sqr(z_ - other.z()));
 }
@@ -80,7 +79,7 @@ double Particle::e_force(const Particle& other) const {
     return -k_c*charge_val()*other.charge_val()*sqr(q_e/r);
 }
 
-ostream& operator<<(ostream& out, const Particle& p) {
+std::ostream& operator<<(std::ostream& out, const Particle& p) {
     return out << "(" << p.x() << ", " << p.y() << ", " << p.z() << ")"
            << ", mass = " << p.mass()
            << ", charge = " << p.charge_val();

@@ -1,17 +1,16 @@
 #include <iostream>
 
-using namespace std;
 
 int gcd(int x, int y);
 
 int main(int argc, char *argv[]) {
     if (argc < 3) {
-        cerr << "#error: expecting two integers as arguments" << endl;
+        std::cerr << "#error: expecting two integers as arguments" << std::endl;
         return 1;
     }
-    int x = stoi(string(argv[1]));
-    int y = stoi(string(argv[2]));
-    cout << gcd(x, y) << endl;
+    int x = std::stoi(std::string(argv[1]));
+    int y = std::stoi(std::string(argv[2]));
+    std::cout << gcd(x, y) << std::endl;
     return 0;
 }
 

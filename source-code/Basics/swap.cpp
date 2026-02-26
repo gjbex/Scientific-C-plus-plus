@@ -1,6 +1,5 @@
 #include <iostream>
 
-using namespace std;
 
 void swap(double& x, double& y) {
     double tmp {x};
@@ -17,13 +16,13 @@ void swap(int& x, int& y) {
 int main() {
     double x {3.5};
     double y {5.7};
-    cout << x << " <-> " << y << endl;
+    std::cout << x << " <-> " << y << std::endl;
     swap(x, y);
-    cout << "swqpped: " <<  x << " <-> " << y << endl;
+    std::cout << "swqpped: " <<  x << " <-> " << y << std::endl;
     int a {3};
     int b {5};
-    cout << a << " <-> " << b << endl;
+    std::cout << a << " <-> " << b << std::endl;
     swap(a, b);
-    cout << "swqpped: " <<  a << " <-> " << b << endl;
+    std::cout << "swqpped: " <<  a << " <-> " << b << std::endl;
     return 0;
 }

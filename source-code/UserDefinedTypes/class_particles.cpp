@@ -26,10 +26,12 @@ struct Particle {
 
 int main() {
     auto engine {std::mt19937_64(1234)};
-    auto pos_distr = std::bind(std::uniform_real_distribution<double>(-1.0, 1.0),
-                          std::ref(engine));
-    auto mass_distr = std::bind(std::uniform_real_distribution<double>(0.0, 1.0),
-                           std::ref(engine));
+    auto pos_distr = [&engine] () {
+        return std::uniform_real_distribution<double>(-1.0, 1.0)(engine);
+    };
+    auto mass_distr = [&engine] () {
+        return std::uniform_real_distribution<double>(0.0, 1.0)(engine);
+    };
     Particle p1(pos_distr, mass_distr);
     Particle p2(pos_distr, mass_distr);
     std::cout << p1 << std::endl << p2 << std::endl;

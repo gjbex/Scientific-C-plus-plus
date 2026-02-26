@@ -3,6 +3,8 @@
 #include <iostream>
 #include <random>
 
+using std::sqrt;
+
 
 enum class Charge {negative = -1, positive = 1};
 
@@ -67,7 +69,7 @@ void Particle::move(double dx, double dy, double dz) {
 }
 
 double Particle::dist(const Particle& other) const {
-    return std::sqrt(sqr(x_ - other.x()) + 
+    return sqrt(sqr(x_ - other.x()) + 
                 sqr(y_ - other.y()) +
                 sqr(z_ - other.z()));
 }

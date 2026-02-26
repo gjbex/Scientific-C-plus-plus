@@ -4,6 +4,8 @@
 #include <iostream>
 #include <vector>
 
+using std::sqrt;
+
 
 struct Stats {
     double mean, stddev, median;
@@ -41,7 +43,7 @@ Stats compute_stats(std::vector<double> data) {
     }
     Stats stats;
     stats.mean = sum/n;
-    stats.stddev = std::sqrt(sum2/n - stats.mean*stats.mean);
+    stats.stddev = sqrt(sum2/n - stats.mean*stats.mean);
     std::sort(data.begin(), data.end());
     int middle {n/2};
     stats.median = n % 2 == 1 ? data.at(middle) :

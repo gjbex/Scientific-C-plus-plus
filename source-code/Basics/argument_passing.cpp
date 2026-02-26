@@ -3,6 +3,8 @@
 #include <iostream>
 #include <vector>
 
+using std::sqrt;
+
 
 std::vector<double> init_vector(std::size_t n);
 void update_vector(std::vector<double>& v);
@@ -31,7 +33,7 @@ std::vector<double> init_vector(std::size_t n) {
 
 void update_vector(std::vector<double>& v) {
     std::generate(v.begin(), v.end(),
-             [] () { static double x {1.0}; return std::sqrt(x += 3.0); });
+             [] () { static double x {1.0}; return sqrt(x += 3.0); });
     std::cout << "first value " << v[0] << " at " << &v[0] << std::endl;
     std::cout << "last value " << v[v.size() - 1] << " at "
          << &v[v.size() - 1] << std::endl;

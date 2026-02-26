@@ -4,6 +4,8 @@
 #include <iostream>
 #include <memory>
 
+using std::sqrt;
+
 struct Point {
     public:
         double x;
@@ -38,7 +40,7 @@ int main() {
     Point* point_ptr {(Point*) malloc(sizeof(Point))};
     for (std::size_t i = 0; i < i_max; ++i) {
         Point* p = new(point_ptr) Point();
-        dist += std::sqrt(p->x*p->x + p->y*p->y);
+        dist += sqrt(p->x*p->x + p->y*p->y);
     }
     free(point_ptr);
     auto end_time = std::chrono::steady_clock::now();
@@ -51,7 +53,7 @@ int main() {
     start_time = std::chrono::steady_clock::now();
     for (std::size_t i = 0; i < i_max; ++i) {
         Point* p = new Point();
-        dist += std::sqrt(p->x*p->x + p->y*p->y);
+        dist += sqrt(p->x*p->x + p->y*p->y);
         delete p;
     }
     end_time = std::chrono::steady_clock::now();

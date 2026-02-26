@@ -2,6 +2,7 @@
 #include <iomanip>
 #include <iostream>
 
+using std::sqrt;
 
 void init_array(double v[], int n);
 void print_array(const double v[], int n);
@@ -18,7 +19,7 @@ int main() {
 
 void init_array(double v[], int n) {
     for (int i = 0; i < n; i++)
-        v[i] = std::sqrt((double) i);
+        v[i] = sqrt((double) i);
 }
 
 void print_array(const double v[], int n) {

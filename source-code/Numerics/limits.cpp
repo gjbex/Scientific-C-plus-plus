@@ -2,6 +2,10 @@
 #include <iostream>
 #include <limits>
 
+using std::exp;
+using std::isfinite;
+using std::sqrt;
+
 
 int main() {
     std::cout << std::numeric_limits<short>::min() << " < int < "
@@ -24,11 +28,11 @@ int main() {
          << std::endl;
     std::cout << "long double digits: " << std::numeric_limits<long double>::digits10 << std::endl;
     double x {1000.0};
-    if (!std::isfinite(exp(x)))
+    if (!isfinite(exp(x)))
         std::cout << "exp(" << x << ") is infinity: " << exp(x)
                   << std::endl;
     x = -1.0;
-    if (!std::isfinite(sqrt(x)))
+    if (!isfinite(sqrt(x)))
         std::cout << "sqrt(" << x << ") is NaN: " << sqrt(x) << std::endl;
     return 0;
 }

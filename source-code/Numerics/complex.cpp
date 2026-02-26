@@ -9,7 +9,7 @@ int main() {
     std::cout << "a.re = " << std::real(a) << ", a.im = " << std::imag(a) << std::endl;
     std::complex<double> b {-3.0 + 2.0i};
     std::cout << a << " + " << b << " = " << a + b << std::endl;
-    std::cout << "sqrt(" << a << ") = " << std::sqrt(a) << std::endl;
+    std::cout << "sqrt(" << a << ") = " << sqrt(a) << std::endl;
     const std::size_t v_size {5};
     std::valarray<std::complex<double>> v(v_size), w(v_size);
     v[0] = a;

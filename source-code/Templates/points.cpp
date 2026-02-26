@@ -2,6 +2,8 @@
 #include <cmath>
 #include <iostream>
 
+using std::sqrt;
+
 using Position = std::array<double, 3>;
 
 inline double sqr(double x) { return x*x; }
@@ -10,7 +12,7 @@ double distance(const Position& p1, const Position& p2) {
     double dist {0.0};
     for (size_t i = 0; i < p1.size(); i++)
         dist += sqr(p1[i] - p2[i]);
-    return std::sqrt(dist);
+    return sqrt(dist);
 }
 
 int main() {

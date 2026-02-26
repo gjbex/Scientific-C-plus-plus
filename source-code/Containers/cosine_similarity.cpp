@@ -5,6 +5,8 @@
 #include <random>
 #include <valarray>
 
+using std::sqrt;
+
 
 using Vector = std::valarray<double>;
 using my_time_t = std::chrono::nanoseconds;
@@ -57,9 +59,9 @@ void print_vector(const Vector& v) {
 double cos_similarity(const Vector& v1, const Vector& v2) {
     const double init {0.0};
     double r {std::inner_product(std::cbegin(v1), std::cend(v1), std::cbegin(v2), init)};
-    double v1_norm {std::sqrt(std::inner_product(std::cbegin(v1), std::cend(v1),
+    double v1_norm {sqrt(std::inner_product(std::cbegin(v1), std::cend(v1),
                                        std::cbegin(v1), init))};
-    double v2_norm {std::sqrt(std::inner_product(std::cbegin(v2), std::cend(v2),
+    double v2_norm {sqrt(std::inner_product(std::cbegin(v2), std::cend(v2),
                                        std::cbegin(v2), init))};
     return r/(v1_norm*v2_norm);
 }
@@ -73,5 +75,5 @@ double cos_similarity_fast(const Vector& v1, const Vector& v2) {
         n1 += v1[i]*v1[i];
         n2 += v2[i]*v2[i];
     }
-    return r/std::sqrt(n1*n2);
+    return r/sqrt(n1*n2);
 }

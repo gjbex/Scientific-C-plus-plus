@@ -5,6 +5,9 @@
 #include <iostream>
 #include <valarray>
 
+using std::abs;
+using std::sqrt;
+
 using my_time_t = std::chrono::nanoseconds;
 
 using cmplx = std::complex<double>;
@@ -66,7 +69,7 @@ std::valarray<cmplx> z_values(const std::valarray<double>& x_coords,
 int iterate_z(cmplx z, const cmplx& c, std::size_t max_iters) {
     std::size_t n {0};
     const std::complex<double> z_in {z};
-    while (std::abs(z) < 2.0 && n++ < max_iters)
+    while (abs(z) < 2.0 && n++ < max_iters)
         z = z*z + c;
     return n;
 }
@@ -81,7 +84,7 @@ std::valarray<int> iterate_zs(std::valarray<cmplx>& zs, const std::complex<doubl
 }
 
 void print_results(const std::valarray<int>& ns) {
-    std::size_t steps = ((std::size_t) std::sqrt(ns.size()) + 0.1);
+    std::size_t steps = ((std::size_t) sqrt(ns.size()) + 0.1);
     std::size_t count {0};
     for (auto n: ns) {
         std::cout << n;

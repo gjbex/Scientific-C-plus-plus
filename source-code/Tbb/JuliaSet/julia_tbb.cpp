@@ -6,6 +6,8 @@
 #include <tbb/tbb.h>
 #include <valarray>
 
+using std::sqrt;
+
 using my_time_t = std::chrono::nanoseconds;
 
 using Complex_t = std::complex<double>;
@@ -83,7 +85,7 @@ Img_t iterate_zs(Z_t& zs, const Complex_t& c, std::size_t max_iters) {
 }
 
 void print_results(const Img_t& ns) {
-    std::size_t steps = ((std::size_t) std::sqrt(ns.size()) + 0.1);
+    std::size_t steps = ((std::size_t) sqrt(ns.size()) + 0.1);
     std::size_t count {0};
     for (auto n: ns) {
         std::cout << n;

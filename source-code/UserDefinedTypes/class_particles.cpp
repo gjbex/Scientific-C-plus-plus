@@ -3,15 +3,13 @@
 #include <iostream>
 #include <random>
 
-using namespace std;
-
 class Particle {
     private:
         double x_, y_, z_;
         double mass_;
     public:
-        Particle(function<double()> pos_distr,
-                 function<double()> mass_distr) :
+        Particle(std::function<double()> pos_distr,
+                 std::function<double()> mass_distr) :
             x_ {pos_distr()},
             y_ {pos_distr()},
             z_ {pos_distr()},
@@ -22,24 +20,24 @@ class Particle {
         double mass() const {return mass_; }
         void move(double dx, double dy, double dz);
         double dist(const Particle& other) const;
-        friend ostream& operator<<(ostream& out, const Particle& p);
+        friend std::ostream& operator<<(std::ostream& out, const Particle& p);
 };
 
 
 int main() {
-    auto engine {mt19937_64(1234)};
-    auto pos_distr = bind(uniform_real_distribution<double>(-1.0, 1.0),
-                          ref(engine));
-    auto mass_distr = bind(uniform_real_distribution<double>(0.0, 1.0),
-                           ref(engine));
+    auto engine {std::mt19937_64(1234)};
+    auto pos_distr = std::bind(std::uniform_real_distribution<double>(-1.0, 1.0),
+                          std::ref(engine));
+    auto mass_distr = std::bind(std::uniform_real_distribution<double>(0.0, 1.0),
+                           std::ref(engine));
     Particle p1(pos_distr, mass_distr);
     Particle p2(pos_distr, mass_distr);
-    cout << p1 << endl << p2 << endl;
+    std::cout << p1 << std::endl << p2 << std::endl;
     p1.move(0.5, 0.5, 0.5);
-    cout << "moved: " << p1 << endl;
-    cout << "x = " << p1.x() << ", y = " << p1.y() << ", z = " << p1.z()
-         << endl;
-    cout << "distance = " << p1.dist(p2) << endl;
+    std::cout << "moved: " << p1 << std::endl;
+    std::cout << "x = " << p1.x() << ", y = " << p1.y() << ", z = " << p1.z()
+         << std::endl;
+    std::cout << "distance = " << p1.dist(p2) << std::endl;
     return 0;
 }
 
@@ -59,7 +57,7 @@ double Particle::dist(const Particle& other) const {
                 sqr(z_ - other.z()));
 }
 
-ostream& operator<<(ostream& out, const Particle& p) {
+std::ostream& operator<<(std::ostream& out, const Particle& p) {
     return out << "(" << p.x_ << ", " << p.y_ << ", " << p.z_ << ")"
            << ", mass = " << p.mass_;
 }

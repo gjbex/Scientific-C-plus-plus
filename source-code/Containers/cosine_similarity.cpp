@@ -35,7 +35,7 @@ int main() {
         dummy += cos_similarity_fast(v1, v2);
         end_time = std::chrono::steady_clock::now();
         duration = std::chrono::duration_cast<my_time_t>(end_time - start_time); 
-        time_fast = duration.count();
+        time_fast += duration.count();
     }
     std::cout << "cosine_similarity " << time << " ns" << std::endl;
     std::cout << "cosine_similarity_fast " << time_fast << " ns" << std::endl;

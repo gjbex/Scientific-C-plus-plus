@@ -10,5 +10,5 @@ OpenMP.
 1. `julia_omp.cpp`: OpenMP implementation of Julia set.
 1. `julia_tasks_omp.cpp`: OpenMP tasks implementation of Julia set
     (*Note:* doesn't work with Intel 2018a).
-1. `Makefile`: make file to build the applications.
+1. `CMakeLists.txt`: CMake configuration file to build the applications.
 1. `plot_julia.sh`: bash script to plot the Julia set using `gnuplot`.

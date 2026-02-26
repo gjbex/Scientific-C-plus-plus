@@ -3,6 +3,9 @@
 
 #include "static_particle.h"
 
+using std::sqrt;
+
+
 inline double sqr(double x) {
     return x*x;
 }

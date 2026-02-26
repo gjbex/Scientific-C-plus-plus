@@ -5,6 +5,9 @@
 
 #include "stats.h"
 
+using std::sqrt;
+
+
 void Stats::add(const double value) {
     ++nr_values_;
     sum_ += value;

@@ -2,6 +2,8 @@
 #include <iomanip>
 #include "terrain.h"
 
+using std::ceil;
+
 Terrain::Terrain(const size_t n, const double distance,
                  const double delta_mean, const double delta_stddev,
                  const double flat_fraction, const Seed_t seed) {

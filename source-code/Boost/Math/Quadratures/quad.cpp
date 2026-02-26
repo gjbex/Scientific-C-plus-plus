@@ -3,6 +3,8 @@
 #include <functional>
 #include <iostream>
 
+using std::tanh;
+
 int main(int argc, char* argv[]) {
     using namespace boost::math::quadrature;
     if (argc != 2) {

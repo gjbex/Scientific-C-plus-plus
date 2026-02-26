@@ -1,14 +1,13 @@
 #include <iostream>
 #include <regex>
 
-using namespace std;
 
 int main() {
-    regex expr {R"((\w+)\s+(\d+))"};
-    string line;
-    while (getline(cin, line)) {
-        string new_line = regex_replace(line, expr, "$1_$2");
-        cout << new_line << endl;
+    std::regex expr {R"((\w+)\s+(\d+))"};
+    std::string line;
+    while (std::getline(std::cin, line)) {
+        std::string new_line = std::regex_replace(line, expr, "$1_$2");
+        std::cout << new_line << std::endl;
     }
     return 0;
 }

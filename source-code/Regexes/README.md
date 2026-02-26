@@ -17,4 +17,4 @@ in Stroustrup's "A tour of C++".
 1. `word_counter.cpp`: illustration of using a regular expression iterator
     to tokenize a text and count the words occurring in it.
 1. `text.txt`: sample text to count words in.
-1. `Makefile`: make file to build the applications.
+1. `CMakeLists.txt`: CMake configuration file to build the applications.

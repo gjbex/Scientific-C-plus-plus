@@ -6,4 +6,4 @@ Example of separate compilation.
     data (very bare bones, just illustration).
 1. `stats.cpp`: implementation of `Stats` class.
 1. `stats_compute.cpp`: main function to drive the `Stats` class usage.
-1. `Makefile`: make file for these examples.
+1. `CMakeLists.txt`: CMake configuration file for these examples.

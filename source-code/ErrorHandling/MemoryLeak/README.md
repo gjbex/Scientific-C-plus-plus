@@ -8,7 +8,7 @@ handling.
     handling.
 1. `memory_leak_fixed.cpp`: illustrates using RAII to ensure correct resource
     management.
-1. `Makefile`: make file for these examples.
+1. `CMakeLists.txt`: CMake configuration file for these examples.
 
 ## How to use it?
 Run `memory_leak.exe` and `memory_leak_fixed.exe` through valgrind with -1 and 5

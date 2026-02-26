@@ -1,6 +1,8 @@
 #include <iostream>
 #include <cmath>
 
+using std::sqrt;
+
 double distance(double x, double y);
 
 int main(int argc __attribute__((unused)),
@@ -14,6 +16,5 @@ int main(int argc __attribute__((unused)),
 }
 
 double distance(double x, double y) {
-    using namespace std;
     return sqrt(x*x + y*y);
 }

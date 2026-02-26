@@ -5,18 +5,19 @@
 #include <iostream>
 #include <valarray>
 
-using namespace std;
-using my_time_t = chrono::nanoseconds;
+using std::sqrt;
 
-using cmplx = complex<double>;
+using my_time_t = std::chrono::nanoseconds;
 
-valarray<double> coordinates(double min_coord, double max_coord,
-                             size_t steps);
-valarray<cmplx> z_values(const valarray<double>& x_coords,
-                         const valarray<double>& y_coords);
-valarray<int> iterate_zs(valarray<cmplx>& zs, const complex<double>& c,
-                         size_t max_iters);
-void print_results(const valarray<int>& ns);
+using cmplx = std::complex<double>;
+
+std::valarray<double> coordinates(double min_coord, double max_coord,
+                             std::size_t steps);
+std::valarray<cmplx> z_values(const std::valarray<double>& x_coords,
+                         const std::valarray<double>& y_coords);
+std::valarray<int> iterate_zs(std::valarray<cmplx>& zs, const std::complex<double>& c,
+                         std::size_t max_iters);
+void print_results(const std::valarray<int>& ns);
 
 int main(int argc, char *argv[]) {
     const cmplx c(-0.62772, - 0.42193);
@@ -24,71 +25,71 @@ int main(int argc, char *argv[]) {
     const double x2 {1.8};
     const double y1 {-1.8};
     const double y2 {1.8};
-    const size_t max_iters {255};
-    size_t steps {100};
+    const std::size_t max_iters {255};
+    std::size_t steps {100};
     if (argc > 1)
-        steps = stoi(argv[1]);
-    valarray<double> x_coords = coordinates(x1, x2, steps);
-    valarray<double> y_coords = coordinates(y1, y2, steps);
-    valarray<cmplx> zs = z_values(x_coords, y_coords);
-    auto start_time = chrono::steady_clock::now();
-    valarray<int> ns = iterate_zs(zs, c, max_iters);
-    auto end_time = chrono::steady_clock::now();
-    auto duration = chrono::duration_cast<my_time_t>(end_time - start_time);
-    cerr << "time: " << duration.count()*1.0e-9 << " s" << endl;
+        steps = std::stoi(argv[1]);
+    std::valarray<double> x_coords = coordinates(x1, x2, steps);
+    std::valarray<double> y_coords = coordinates(y1, y2, steps);
+    std::valarray<cmplx> zs = z_values(x_coords, y_coords);
+    auto start_time = std::chrono::steady_clock::now();
+    std::valarray<int> ns = iterate_zs(zs, c, max_iters);
+    auto end_time = std::chrono::steady_clock::now();
+    auto duration = std::chrono::duration_cast<my_time_t>(end_time - start_time);
+    std::cerr << "time: " << duration.count()*1.0e-9 << " s" << std::endl;
     print_results(ns);
     return 0;
 }
 
-valarray<double> coordinates(double min_coord, double max_coord,
-                             size_t steps) {
-    valarray<double> coords(steps);
+std::valarray<double> coordinates(double min_coord, double max_coord,
+                             std::size_t steps) {
+    std::valarray<double> coords(steps);
     const double step {(max_coord - min_coord)/steps};
     double value {min_coord};
-    for (size_t i = 0; i < steps; i++) {
+    for (std::size_t i = 0; i < steps; i++) {
         coords[i] = value;
         value += step;
     }
     return coords;
 }
 
-valarray<cmplx> z_values(const valarray<double>& x_coords,
-                         const valarray<double>& y_coords) {
-    valarray<cmplx> zs(x_coords.size()*y_coords.size());
-    size_t i {0};
+std::valarray<cmplx> z_values(const std::valarray<double>& x_coords,
+                         const std::valarray<double>& y_coords) {
+    std::valarray<cmplx> zs(x_coords.size()*y_coords.size());
+    std::size_t i {0};
     for (auto y: y_coords)
         for (auto x: x_coords) {
-            complex<double> z(x, y);
+            std::complex<double> z(x, y);
             zs[i++] = z;
         }
     return zs;
 }
 
-int iterate_z(cmplx z, const cmplx& c, size_t max_iters) {
-    size_t n {0};
-    while (real(z)*real(z) + imag(z)*imag(z) < 4.0 && n++ < max_iters)
+int iterate_z(cmplx z, const cmplx& c, std::size_t max_iters) {
+    std::size_t n {0};
+    while (std::real(z)*std::real(z) + std::imag(z)*std::imag(z) < 4.0 && n++ < max_iters)
         z = z*z + c;
     return n;
 }
 
-valarray<int> iterate_zs(valarray<cmplx>& zs, const complex<double>& c,
-                         size_t max_iters) {
-    valarray<int> ns(zs.size());
+std::valarray<int> iterate_zs(std::valarray<cmplx>& zs, const std::complex<double>& c,
+                         std::size_t max_iters) {
+    std::valarray<int> ns(zs.size());
 #pragma omp parallel for default(none) shared(zs, c, max_iters, ns) \
                          schedule(runtime)
-    for (size_t i = 0; i < zs.size(); i++)
+    for (std::size_t i = 0; i < zs.size(); i++)
         ns[i] = iterate_z(zs[i], c, max_iters);
     return ns;
 }
 
-void print_results(const valarray<int>& ns) {
-    size_t steps = ((size_t) sqrt(ns.size()) + 0.1);
-    size_t count {0};
+void print_results(const std::valarray<int>& ns) {
+    std::size_t steps = ((std::size_t) sqrt(ns.size()) + 0.1);
+    std::size_t count {0};
     for (auto n: ns) {
-        cout << n;
+        std::cout << n;
         if (++count % steps == 0)
-            cout << endl;
+            std::cout << std::endl;
         else
-            cout << " ";
+            std::cout << " ";
     }
 }

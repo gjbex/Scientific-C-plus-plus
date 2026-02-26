@@ -3,7 +3,6 @@
 #include <queue>
 #include <random>
 
-using namespace std;
 
 class Particle {
     private:
@@ -11,14 +10,14 @@ class Particle {
         int _id;
         double _mass;
         int _x, _y;
-        function<double()> _time_distr;
-        mt19937_64* _engine;
+        std::function<double()> _time_distr;
+        std::mt19937_64* _engine;
     public:
-        Particle(int id, double mass, int x, int y, mt19937_64* engine) :
+        Particle(int id, double mass, int x, int y, std::mt19937_64* engine) :
             _id {id}, _mass {mass}, _x {x}, _y {y}, _engine {engine}
         {
-            _time_distr = bind(gamma_distribution<double>(1.0, _mass),
-                               ref(*_engine));
+            _time_distr = std::bind(std::gamma_distribution<double>(1.0, _mass),
+                               std::ref(*_engine));
             _time = _time_distr();
         };
         double mass() const { return _mass; };
@@ -32,26 +31,26 @@ class Particle {
         void update(int x, int y) {
             _time += _time_distr(); _x = x; _y = y;
         };
-        friend ostream& operator<<(ostream& out, const Particle& p);
+        friend std::ostream& operator<<(std::ostream& out, const Particle& p);
 };
 
 
 bool cmp(const Particle& p1, const Particle& p2);
-using cmp_t = function<bool(const Particle&, const Particle&)>;
-using Particle_queue =  priority_queue<Particle, vector<Particle>, cmp_t>;
+using cmp_t = std::function<bool(const Particle&, const Particle&)>;
+using Particle_queue =  std::priority_queue<Particle, std::vector<Particle>, cmp_t>;
 
 class System {
     private:
-        size_t _nr_patricles, _grid_size;
+        std::size_t _nr_patricles, _grid_size;
         Particle_queue* _queue;
         bool* _grid;
-        mt19937_64* _engine;
-        uniform_int_distribution<int> _pos_distr;
-        poisson_distribution<int> _mass_distr;
-        uniform_int_distribution<int> _move_distr;
+        std::mt19937_64* _engine;
+        std::uniform_int_distribution<int> _pos_distr;
+        std::poisson_distribution<int> _mass_distr;
+        std::uniform_int_distribution<int> _move_distr;
         int* find_moves(const Particle& particle);
     public:
-        System(size_t nr_particles, size_t grid_size);
+        System(std::size_t nr_particles, std::size_t grid_size);
         ~System();
         void print_grid() const;
         void print_queue() const;

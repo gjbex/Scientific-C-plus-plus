@@ -4,6 +4,9 @@
 
 #include "pendulum_utils.h"
 
+using std::cos;
+
+
 const double pi {std::numbers::pi};
 
 double pendulum_func(double t, double freq) {

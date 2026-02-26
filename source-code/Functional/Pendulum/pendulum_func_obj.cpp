@@ -3,6 +3,9 @@
 
 #include "pendulum_utils.h"
 
+using std::cos;
+
+
 class Pendulum {
     private:
         double freq_;

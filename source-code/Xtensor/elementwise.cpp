@@ -6,6 +6,8 @@
 #include <xtensor/xvectorize.hpp>
 #include <xtensor/xview.hpp>
 
+using std::sqrt;
+
 int main(int argc, char *argv[]) {
     size_t nr_rows {3};
     size_t nr_cols {4};

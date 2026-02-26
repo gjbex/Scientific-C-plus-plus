@@ -1,18 +1,17 @@
 #include <iostream>
 
-using namespace std;
 
 int main() {
     int i {3};
-    cout << "out of block: " << i << endl;
+    std::cout << "out of block: " << i << std::endl;
     {
-        cout << "in block before declaration: " << i << endl;
+        std::cout << "in block before declaration: " << i << std::endl;
         int i {5};
-        cout << "in block after declaration: " << i <<  endl;
+        std::cout << "in block after declaration: " << i <<  std::endl;
     }
-    cout << "out of block before for: " << i << endl;
+    std::cout << "out of block before for: " << i << std::endl;
     for (int i = 10; i < 13; i++)
-        cout << "in for: " << i << endl;
-    cout << "out of block after for: " << i << endl;
+        std::cout << "in for: " << i << std::endl;
+    std::cout << "out of block after for: " << i << std::endl;
     return 0;
 }

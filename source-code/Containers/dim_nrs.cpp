@@ -1,17 +1,16 @@
 #include <iostream>
 #include <unordered_set>
 
-using namespace std;
 
 int main(void) {
-    string col1, col2, col3;
-    cin >> col1 >> col2 >> col3;
+    std::string col1, col2, col3;
+    std::cin >> col1 >> col2 >> col3;
     int id, dim_nr;
     double temp;
-    unordered_set<int> dim_nrs;
-    while (cin >> id >> dim_nr >> temp)
+    std::unordered_set<int> dim_nrs;
+    while (std::cin >> id >> dim_nr >> temp)
         dim_nrs.insert(dim_nr);
     for (auto dim_nr: dim_nrs)
-        cout << dim_nr << endl;
+        std::cout << dim_nr << std::endl;
     return 0;
 }

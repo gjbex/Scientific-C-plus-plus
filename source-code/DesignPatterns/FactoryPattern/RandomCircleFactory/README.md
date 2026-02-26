@@ -19,12 +19,13 @@ Illustration of a factory class.
     circles that overlap another as a function of the number of circles.
 1. `plot_overlap_data.plt`: gnuplot script to plot the overlap data to the
     screen.
-1. `Makefile`: make file to build the applications.
+1. `CMakeLists.txt`: CMake configuration file to build the applications.
 
 
 ## How to use?
 
-Use `make` to generate the overlap plot, i.e.,
+Use the CMake custom target `plot` to generate the overlap plot, i.e.,
 ```bash
-$ make plot
+$ cmake -S . -B build
+$ cmake --build build --target plot
 ```

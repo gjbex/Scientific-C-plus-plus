@@ -11,7 +11,7 @@ C/C++ code.
   1. `calc_sum_function.nsm`: assembly implementation that is 7 % faster.
   1. `calc.cpp`: C++ program that uses the assembly function.
   1. `timing.cpp`: C++ program that times the assembly function.
-  1. `Makefile`: make file to build the applications.
+  1. `CMakeLists.txt`: CMake configuration file to build the applications.
 
 ## How to use it?
 

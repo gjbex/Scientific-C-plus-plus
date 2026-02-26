@@ -9,4 +9,4 @@ from C++.
     differential equations, and to find the extremum of the range function.
 1. `minimum.cpp`: very simple example using Brent's method to compute
     the minimum of a quadratic function.
-1. `Makefile`: make file to build the application.
+1. `CMakeLists.txt`: CMake configuration file to build the application.

@@ -6,4 +6,4 @@ Some experiments with the Boost implementation of coroutines.
 
 1. `range.cpp`: coroutine implementation of Python's `range` function,
     similar to using a generator function in Python.
-2. `Makefile`: make file to build the appliations.
+2. `CMakeLists.txt`: CMake configuration file to build the appliations.

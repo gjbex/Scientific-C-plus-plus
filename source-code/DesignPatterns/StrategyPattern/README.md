@@ -13,4 +13,4 @@ objects or functions/method calls.
 1. `cycle_finder.cpp`: implmentation of the `CycleFinder` class
    methods.
 1. `main.cpp`: application to run cellular automata.
-1. `Makefile`: make file to build the applications.
+1. `CMakeLists.txt`: CMake configuration file to build the applications.

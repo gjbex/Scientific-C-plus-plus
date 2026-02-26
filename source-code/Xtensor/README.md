@@ -14,4 +14,4 @@ Illustration of how to use Xtensor, QuantStack numpy-like library for C++.
     matrix, and prints the differences between the reconstructed and
     original matrices.
   1. `matrix.csv`: CSV file with the element of a 2D floating point array.
-  1. `Makefile`: make file to build the applicatons.
+  1. `CMakeLists.txt`: CMake configuration file to build the applicatons.

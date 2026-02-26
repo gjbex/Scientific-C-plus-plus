@@ -5,4 +5,4 @@ operations,
 ## What is it?
 1. `boost_vector.cpp`: illustration of vectors and vector operations
     using Boost.
-1. `Makefile`: make file to build the code.
+1. `CMakeLists.txt`: CMake configuration file to build the code.

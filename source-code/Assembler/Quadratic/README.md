@@ -12,11 +12,11 @@ compute is `(3.14*x - 2.4) + 1.9`
   1. `quad_calc_inline.cpp`: C++ application that calls an inline C++
     function.  Intended for disassembling to illustrate what a smart
     compiler can do.
-  1. `Makefile`: make file to build the applications.
+  1. `CMakeLists.txt`: CMake configuration file to build the applications.
 
 ## How to use it?
 
-The make file builds three applciations:
+CMake builds three applciations:
 
   * `quad_calc.exe`: takes a floating point command line argument, and
     prints the result computed by the assembly function to standard output.

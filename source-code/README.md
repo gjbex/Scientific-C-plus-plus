@@ -53,3 +53,7 @@ programming concepts and idiosyncracies particular to C++.
 1. `IO`: examples of input/output  in C++.
 1. `CLI11`: examples of command line argument handling in C++ using the CLI11
    library.
+1. `build_all.sh`: Bash script to build all the examples in this repository,
+   using CMake. Note that some example may fail to build, depending on the
+   software installed on your system.  The primary intention of this script is
+   test the build process of all examples.

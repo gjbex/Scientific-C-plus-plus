@@ -37,8 +37,8 @@ int main() {
         duration = std::chrono::duration_cast<my_time_t>(end_time - start_time); 
         time_fast += duration.count();
     }
-    std::cout << "cosine_similarity " << time << " ns" << std::endl;
-    std::cout << "cosine_similarity_fast " << time_fast << " ns" << std::endl;
+    std::cout << "cosine_similarity " << time/1.0e6 << " ms" << std::endl;
+    std::cout << "cosine_similarity_fast " << time_fast/1.0e6 << " ms" << std::endl;
     return 0;
 }
 

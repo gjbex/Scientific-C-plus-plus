@@ -19,10 +19,8 @@ Velocity compute_velocity(const Length dx, const Time dt) {
 using Point = std::tuple<Length, Length>;
 
 Length distance(const Point& p1, const Point& p2) {
-    Length x1 {std::get<0>(p1)};
-    Length x2 {std::get<0>(p2)};
-    Length y1 {std::get<1>(p1)};
-    Length y2 {std::get<1>(p2)};
+    auto [x1, y1] = p1;
+    auto [x2, y2] = p2;
     return sqrt((x1 - x2)*(x1 - x2) + (y1 - y2)*(y1 - y2));
 }
 

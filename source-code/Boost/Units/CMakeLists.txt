@@ -16,7 +16,7 @@ set(common_cxx_options
 
 add_executable(units_okay units_okay.cpp)
 set_target_properties(units_okay PROPERTIES OUTPUT_NAME "units_okay.exe")
-target_compile_features(units_okay PRIVATE cxx_std_14)
+target_compile_features(units_okay PRIVATE cxx_std_17)
 target_compile_options(units_okay PRIVATE ${common_cxx_options})
 target_link_libraries(units_okay PRIVATE Boost::headers)
 

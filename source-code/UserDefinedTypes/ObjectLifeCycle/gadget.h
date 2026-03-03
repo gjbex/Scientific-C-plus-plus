@@ -13,7 +13,7 @@ struct Gadget {
         Gadget() : value_ {0}, id_ {++id_counter_} {
             std::cerr << "Gadget " << id_ << "()" << std::endl;
         };
-        Gadget(int value) : value_ {value}, id_ {++id_counter_} {
+        explicit Gadget(int value) : value_ {value}, id_ {++id_counter_} {
             std::cerr << "Gadget " << id_ << "(" << value_ << ")"
                       << std::endl;
         };

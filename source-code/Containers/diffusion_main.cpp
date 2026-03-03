@@ -18,13 +18,13 @@ int main(int argc, char *argv[]) {
         try {
             switch (opt) {
                 case 't':
-                    max_time = stod(optarg);
+                    max_time = std::stod(optarg);
                     break;
                 case 'p':
-                    nr_particles = stoi(optarg);
+                    nr_particles = std::stoi(optarg);
                     break;
                 case 'g':
-                    grid_size = stoi(optarg);
+                    grid_size = std::stoi(optarg);
                     break;
                 case 'h':
                     print_help(std::cout);
@@ -36,9 +36,9 @@ int main(int argc, char *argv[]) {
                     print_help(std::cerr);
                     return 1;
             }
-        } catch (invalid_argument& e) {
+        } catch (std::invalid_argument& e) {
             std::cerr << "# error: invalid argument for option -"
-                      << opt << endl;
+                      << opt << std::endl;
             print_help(std::cerr);
             return 1;
         }
@@ -47,10 +47,10 @@ int main(int argc, char *argv[]) {
     System system(nr_particles, grid_size);
     system.print_grid();
     while (time < max_time) {
-        if (is_verbose)
-            cout << "time = " << time << endl;
-        if (is_verbose)
+        if (is_verbose) {
+            std::cout << "time = " << time << std::endl;
             system.print_queue();
+        }
         time += system.update();
     }
     system.print_grid();

@@ -7,3 +7,5 @@ Some examples of I/O in C++.
 
 1. `binary_io/`: illustration of reading a binary file in C++ that was
    created using a Fortran application.
+1. `print_format`: examples of using `std::format` and `std::print` for
+   formatted output in C++23.

@@ -24,7 +24,7 @@ std::vector<Gadget> get_lots_of_gadgets(int n) {
     std::vector<Gadget> gadgets;
     gadgets.reserve(n);
     for (int i = 0; i < n; ++i)
-        gadgets.emplace_back(i);
+        gadgets.emplace_back(-1 - i);
     std::cerr << "vector fill done" << std::endl;
     return gadgets;
 }
@@ -32,7 +32,7 @@ std::vector<Gadget> get_lots_of_gadgets(int n) {
 int main() {
     std::cerr << "### declations with initialization" << std::endl;
     Gadget g1;
-    Gadget g2(5);
+    Gadget g2(-5);
     Gadget g3 {g2};
     std::cerr << std::endl;
 
@@ -50,7 +50,7 @@ int main() {
     std::cerr << std::endl;
 
     std::cerr << "### return stack variable" << std::endl;
-    Gadget g4 = get_gadget(19);
+    Gadget g4 = get_gadget(-19);
     std::cerr << "Gadget " << g4.id() << " returned by get_gadget"
               << std::endl;
     std::cerr << std::endl;
@@ -59,14 +59,14 @@ int main() {
     std::vector<Gadget> gadgets1;
     gadgets1.reserve(3);
     for (int i = 0; i < 3; i++)
-        gadgets1.push_back(Gadget(i));
+        gadgets1.push_back(Gadget(-10 - i));
     std::cerr << std::endl;
 
     std::cerr << "### adding to vector using emplace_back" << std::endl;
     std::vector<Gadget> gadgets2;
     gadgets2.reserve(10);
     for (int i = 0; i < 3; i++)
-        gadgets2.emplace_back(i);
+        gadgets2.emplace_back(-20 - i);
     std::cerr << std::endl;
     
     std::cerr << "### calling get_lots_of_gadgets" << std::endl;

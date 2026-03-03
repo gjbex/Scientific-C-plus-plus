@@ -40,6 +40,10 @@ int main() {
     g1 = g2;
     std::cerr << std::endl;
 
+    std::cerr << "### assigning rvalue" << std::endl;
+    g1 = Gadget(-13);
+    std::cerr << std::endl;
+
     std::cerr << "### calling greet_by_value with " << g1.id() << std::endl;
     greet_by_value(g1);
     std::cerr << std::endl;

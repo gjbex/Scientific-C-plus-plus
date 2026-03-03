@@ -8,10 +8,10 @@ std::ostream& operator<<(std::ostream& out, const Particle& p) {
 System::System(size_t nr_particles, size_t grid_size) {
     _nr_patricles = nr_particles;
     _grid_size = grid_size;
-    _engine = new mt19937_64(1234);
-    _pos_distr = uniform_int_distribution<int>(0, _grid_size - 1);
-    _mass_distr = poisson_distribution<int>(3);
-    _move_distr = uniform_int_distribution<int>(0, 3);
+    _engine = new std::mt19937_64(1234);
+    _pos_distr = std::uniform_int_distribution<int>(0, _grid_size - 1);
+    _mass_distr = std::poisson_distribution<int>(3);
+    _move_distr = std::uniform_int_distribution<int>(0, 3);
     _grid = new bool[_grid_size*_grid_size];
     for (size_t i = 0; i < _grid_size*_grid_size; i++)
         _grid[i] = false;
@@ -36,7 +36,7 @@ void System::print_queue() const {
     Particle_queue io_queue = *_queue;
     while (!io_queue.empty()) {
         Particle particle = io_queue.top();
-        cout << particle << endl;
+        std::cout << particle << std::endl;
         io_queue.pop();
     }
 }
@@ -105,8 +105,8 @@ double System::update() {
         _queue->push(particle);
         return delta_t;
     } else {
-        cerr << "# error: empty queue" << endl;
-        terminate();
+        std::cerr << "# error: empty queue" << std::endl;
+        std::terminate();
     }
 }
 

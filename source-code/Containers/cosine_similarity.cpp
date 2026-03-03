@@ -1,12 +1,14 @@
 #include <chrono>
-#include <iostream>
 #include <cmath>
+#include <functional>
+#include <iostream>
 #include <numeric>
 #include <random>
+#include <ranges>
+#include <tuple>
 #include <valarray>
 
 using std::sqrt;
-
 
 using Vector = std::valarray<double>;
 using my_time_t = std::chrono::nanoseconds;
@@ -16,29 +18,31 @@ void print_vector(const Vector& v);
 double cos_similarity(const Vector& v1, const Vector& v2);
 double cos_similarity_fast(const Vector& v1, const Vector& v2);
 
-int main() {
-    const std::size_t nr_iters {100};
-    const std::size_t n {100000};
+std::tuple<double, double> time(std::function<double(const Vector&, const Vector&)> f, const std::size_t n, const std::size_t nr_iters) {
     std::mt19937_64 engine;
-    double dummy {0.0};
-    my_time_t::rep time {0};
-    my_time_t::rep time_fast {0};
+    double total_time {0.0};
+    double avg {0.0};
     for (std::size_t iter_nr = 0; iter_nr < nr_iters; iter_nr++) {
         Vector v1 {init_vector(n, engine)};
         Vector v2 {init_vector(n, engine)};
         auto start_time = std::chrono::steady_clock::now();
-        dummy += cos_similarity(v1, v2);
+        avg += f(v1, v2);
         auto end_time = std::chrono::steady_clock::now();
         auto duration = std::chrono::duration_cast<my_time_t>(end_time - start_time); 
-        time += duration.count();
-        start_time = std::chrono::steady_clock::now();
-        dummy += cos_similarity_fast(v1, v2);
-        end_time = std::chrono::steady_clock::now();
-        duration = std::chrono::duration_cast<my_time_t>(end_time - start_time); 
-        time_fast = duration.count();
+        total_time += duration.count();
     }
-    std::cout << "cosine_similarity " << time << " ns" << std::endl;
-    std::cout << "cosine_similarity_fast " << time_fast << " ns" << std::endl;
+    return std::make_tuple(total_time, avg/nr_iters);
+}
+
+int main() {
+    const std::size_t nr_iters {100};
+    const std::size_t n {100000};
+    auto [time_naive, avg] = time(cos_similarity, n, nr_iters);
+    auto [time_fast, avg_fast] = time(cos_similarity_fast, n, nr_iters);
+    std::cout << "average cosine similarity: " << avg << std::endl;
+    std::cout << "average cosine similarity fast: " << avg_fast << std::endl;
+    std::cout << "cosine_similarity " << time_naive/1.0e6 << " ms" << std::endl;
+    std::cout << "cosine_similarity_fast " << time_fast/1.0e6 << " ms" << std::endl;
     return 0;
 }
 

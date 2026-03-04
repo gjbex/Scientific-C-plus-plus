@@ -25,3 +25,5 @@ C++".
 1. `RuleOfFive`: Illustration of the rule of five when resource handling is
    required.
 1. `Matrices`: another illustration of the rule of five, using smart pointers.
+1. `Explicit`: Illustration of the `explicit` keyword to prevent implicit
+   conversions.

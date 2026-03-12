@@ -1,42 +1,43 @@
 #include <chrono>
+#include <cstdlib>
 #include <iostream>
-#include <tbb/tbb.h>
 
-class FibTask : public tbb::task {
+#include <oneapi/tbb/task_group.h>
+
+class FibTask {
     private:
-        long n_;
-        long* result_;
         static long task_threshold_;
-        void fib(long n, long* result) {
+
+        static void fib_serial(long n, long* result) {
             if (n < 2) {
                 *result = 1;
             } else {
-                long result_n_1;
-                long result_n_2;
-                fib(n - 1, &result_n_1);
-                fib(n - 2, &result_n_2);
+                long result_n_1 {0};
+                long result_n_2 {0};
+                fib_serial(n - 1, &result_n_1);
+                fib_serial(n - 2, &result_n_2);
                 *result = result_n_1 + result_n_2;
             }
         }
+
     public:
-        FibTask(long n, long* result) : n_ {n}, result_ {result} {}
-        tbb::task* execute() {
-            if (n_ < task_threshold_) {
-                fib(n_, result_);
+        static void run(long n, long* result) {
+            if (n < task_threshold_) {
+                fib_serial(n, result);
             } else {
-                long result_n_1;
-                long result_n_2;
-                tbb::task_list list;
-                list.push_back(*new(allocate_child()) FibTask(n_ - 1, &result_n_1));
-                list.push_back(*new(allocate_child()) FibTask(n_ - 2, &result_n_2));
-                set_ref_count(3);
-                spawn_and_wait_for_all(list);
-                *result_ = result_n_1 + result_n_2;
+                long result_n_1 {0};
+                long result_n_2 {0};
+                oneapi::tbb::task_group task_group;
+                task_group.run([&] { run(n - 1, &result_n_1); });
+                task_group.run([&] { run(n - 2, &result_n_2); });
+                task_group.wait();
+                *result = result_n_1 + result_n_2;
             }
-            return nullptr;
         }
+
         static long task_threshold() { return task_threshold_; }
-        static void set_task_threshold(const long task_threshold) {
+
+        static void set_task_threshold(long task_threshold) {
             task_threshold_ = task_threshold;
         }
 };
@@ -58,10 +59,9 @@ int main(int argc, char* argv[]) {
     if (argc > 2)
         FibTask::set_task_threshold(std::stol(argv[2]));
     std::cout << "task threshold: " << FibTask::task_threshold() << std::endl;
-    long result;
+    long result {0};
     auto start_time = std::chrono::steady_clock::now();
-    auto task = new(tbb::task::allocate_root()) FibTask(n, &result);
-    tbb::task::spawn_root_and_wait(*task);
+    FibTask::run(n, &result);
     auto end_time = std::chrono::steady_clock::now();
     auto duration = std::chrono::duration_cast<my_time_t>(end_time - start_time);
     std::cout << "fib(" << n << ") = " << result << std::endl;

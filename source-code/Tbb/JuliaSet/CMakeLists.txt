@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-find_package(TBB REQUIRED)
+include(${CMAKE_CURRENT_SOURCE_DIR}/../cmake/FetchTBB.cmake)
 find_package(OpenMP REQUIRED)
 
 add_executable(julia_abs.exe julia_abs.cpp)

@@ -1,6 +1,5 @@
 add_executable(terrain.exe terrain.cpp terrain_main.cpp)
-target_include_directories(terrain.exe PRIVATE ${Boost_INCLUDE_DIRS})
-target_link_libraries(terrain.exe PRIVATE ${Boost_LIBRARIES})
+target_link_libraries(terrain.exe PRIVATE Boost::program_options)
 
 add_executable(los_serial.exe terrain.cpp line_of_sight_serial.cpp)
 

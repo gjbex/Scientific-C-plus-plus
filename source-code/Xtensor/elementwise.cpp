@@ -1,10 +1,11 @@
 #include <cmath>
 #include <iostream>
 #include <vector>
-#include <xtensor/xarray.hpp>
-#include <xtensor/xio.hpp>
-#include <xtensor/xvectorize.hpp>
-#include <xtensor/xview.hpp>
+#include <xtensor/containers/xarray.hpp>
+#include <xtensor/core/xvectorize.hpp>
+#include <xtensor/io/xio.hpp>
+#include <xtensor/misc/xmanipulation.hpp>
+#include <xtensor/views/xview.hpp>
 
 using std::sqrt;
 

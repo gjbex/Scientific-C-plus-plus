@@ -1,10 +1,11 @@
+#include <cmath>
 #include <fstream>
 #include <istream>
 #include <iostream>
-#include <xtensor/xarray.hpp>
-#include <xtensor/xcsv.hpp>
-#include <xtensor/xio.hpp>
-#include <xtensor/xview.hpp>
+#include <xtensor/containers/xarray.hpp>
+#include <xtensor/io/xcsv.hpp>
+#include <xtensor/io/xio.hpp>
+#include <xtensor/views/xview.hpp>
 #include <xtensor-blas/xlinalg.hpp>
 
 int main(int argc, char *argv[]) {
@@ -25,7 +26,7 @@ int main(int argc, char *argv[]) {
     std::cout << "U:" << std::endl << U << std::endl;
     std::cout << "s:" << std::endl << s << std::endl;
     std::cout << "V:" << std::endl << V << std::endl;
-    auto Delta = fabs(xt::linalg::dot(U*s, V) - A);
+    auto Delta = xt::abs(xt::linalg::dot(U*s, V) - A);
     std::cout << "b:" << std::endl << Delta << std::endl;
     return 0;
 }

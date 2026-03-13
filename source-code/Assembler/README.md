@@ -12,3 +12,10 @@ from C/C++.
   1. `QuadCalc`: assembly function that takes a double precision floating
     point value and computes a quadratic expression.  Illustrates why it is
     hard to beat a good compiler.
+
+
+## Requirements
+
+  1. NASM assembler
+  1. GNU C/C++ compiler (g++)
+  1. Linux operating system (or WSL on Windows)

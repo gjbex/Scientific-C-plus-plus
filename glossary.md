@@ -143,6 +143,10 @@ identification.
 Rvalue: An expression that does not refer to a memory location and cannot have
 its address taken. Rvalues typically appear on the right side of an assignment.
 
+SBO: Small Buffer Optimization. A technique used in C++ to optimize the storage
+of small objects by using a small buffer within the object itself, avoiding
+heap allocation for small sizes.
+
 SFINAE: Substitution Failure Is Not An Error. A C++ template metaprogramming
 technique that allows the compiler to ignore certain template instantiations
 that would result in errors, enabling more flexible and powerful template code.

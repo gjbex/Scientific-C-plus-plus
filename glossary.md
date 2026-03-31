@@ -143,6 +143,9 @@ identification.
 Rvalue: An expression that does not refer to a memory location and cannot have
 its address taken. Rvalues typically appear on the right side of an assignment.
 
+RVO: Return Value Optimization. A compiler optimization technique that eliminates
+the temporary object created when a function returns a value, improving performance.
+
 SBO: Small Buffer Optimization. A technique used in C++ to optimize the storage
 of small objects by using a small buffer within the object itself, avoiding
 heap allocation for small sizes.

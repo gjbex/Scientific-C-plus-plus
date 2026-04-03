@@ -1,7 +1,7 @@
-# Quadrature with CRTP
+# Quadrature
 
-Example of using the Curiously Repeating Template Pattern (CRTP) for compile
-time polymorphism.
+Example of replacing the CRTP pattern with this-deduction.
+
 
 ## What is it?
 1. `quad.h`: template class to wrap the actual class.

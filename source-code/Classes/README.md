@@ -15,3 +15,6 @@ Code illustrations for chapter 4, Classes in Stroustrup's
    a mix-in class.
 1. `Quadrature_CRTP`: illustration of the Curiously Repeating Template
    Pattern (CRTP) to avoid runtime polymorphism.
+1. `Quadrature_deduce_this`: a variant of `Quadrature_CRTP` that uses C++23's this-deduction to
+  avoid the need for the derived class to specify its own type as a
+  template parameter.

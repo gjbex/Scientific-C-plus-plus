@@ -1,3 +1,6 @@
+# Codex CLI lock files
+.codex
+
 # Prerequisites
 *.d
 

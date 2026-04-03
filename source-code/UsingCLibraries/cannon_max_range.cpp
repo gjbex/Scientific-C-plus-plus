@@ -17,8 +17,8 @@ const double B2_m {4.0e-5};   /* 1/m */
 const double y_d {1.0e4};     /* m */
 const double PI {3.14159265359};
 
-int func(double t __attribute__((unused)), const double y[], double f[],
-         void *params __attribute__((unused)));
+int func([[maybe_unused]] double t, const double y[], double f[],
+         [[maybe_unused]] void *params);
 double shot_range(const double alpha, void *params);
 double deg2rad(const double angle);
 double rad2deg(const double angle);
@@ -77,8 +77,8 @@ int main(int argc, char *argv[]) {
 #define DY_DT  f[2]
 #define DVY_DT f[3]
 
-int func(double t __attribute__((unused)), const double y[], double f[],
-         void *params __attribute__((unused))) {
+int func([[maybe_unused]] double t, const double y[], double f[],
+         [[maybe_unused]] void *params) {
     double v {sqrt(V_X*V_X + V_Y*V_Y)};
     double corr {exp(-Y/y_d)};
     DX_DT  = V_X;
@@ -89,7 +89,7 @@ int func(double t __attribute__((unused)), const double y[], double f[],
 }
 
 double shot_range(const double alpha, void *params) {
-    gsl_odeiv2_system sys = {func, NULL, 4, NULL};
+    gsl_odeiv2_system sys = {func, nullptr, 4, nullptr};
     auto driver = gsl_odeiv2_driver_alloc_y_new(
             &sys, gsl_odeiv2_step_rkf45, 1.0e-6, 1.0e-6, 0.0
     );

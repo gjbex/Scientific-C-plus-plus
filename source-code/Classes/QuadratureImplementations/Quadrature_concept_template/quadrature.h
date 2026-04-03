@@ -5,10 +5,10 @@
 
 #include "integrand.h"
 
-template<typename T, typename F>
-concept Quadrature = Integrand<F> &&
-    requires(const T& t, const F& f, double a, double b) {
-        { t.integrate(f, a, b) } -> std::convertible_to<double>;
+template<typename QuadratureMethod, typename Function>
+concept Quadrature = Integrand<Function> &&
+    requires(const QuadratureMethod& q, const Function& f, double a, double b) {
+        { q.integrate(f, a, b) } -> std::convertible_to<double>;
     };
 
 #endif

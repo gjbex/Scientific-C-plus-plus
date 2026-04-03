@@ -19,5 +19,7 @@ Code illustrations for chapter 4, Classes in Stroustrup's
 1. `Quadrature_deduce_this`: a variant of `Quadrature_CRTP` that uses C++23's
    this-deduction to avoid the need for the derived class to specify its own
    type as a template parameter.
+1. `Quadrature_duck_typing`: a variant of `Quadrature` that uses duck typing to
+   avoid the need for an abstract base class or CRTP.
 1. `Mixin`: illustration of using multiple inheritance to implement a mix-in
    class.

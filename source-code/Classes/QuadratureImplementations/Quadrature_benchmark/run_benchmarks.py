@@ -29,8 +29,8 @@ EXECUTABLES = {
     "runtime_virtual": "bench_runtime.exe",
     "crtp_static": "bench_crtp.exe",
     "duck_typing_static": "bench_duck_typing.exe",
+    "duck_typing_template_static": "bench_duck_typing_template.exe",
 }
-METHODS = ("simpson", "gaussian")
 
 
 @dataclass(frozen=True)
@@ -38,7 +38,6 @@ class BenchmarkSummary:
     """Store one benchmark result row."""
 
     dispatch: str
-    method: str
     mean_seconds: float
     stddev_seconds: float
     ns_per_integral: float
@@ -51,6 +50,7 @@ def parse_arguments() -> argparse.Namespace:
 
     parser = argparse.ArgumentParser(
         description="Benchmark quadrature dispatch variants.",
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter,
     )
     parser.add_argument(
         "--build-dir",
@@ -61,7 +61,7 @@ def parse_arguments() -> argparse.Namespace:
     parser.add_argument(
         "--repetitions",
         type=int,
-        default=2_000_000,
+        default=100_000,
         help="Number of workload repetitions per timed process.",
     )
     parser.add_argument(
@@ -191,7 +191,6 @@ def parse_key_value_output(output: str) -> dict[str, str]:
 
 def benchmark_command(
     executable: Path,
-    method: str,
     repetitions: int,
     simpson_panels: int,
 ) -> list[str]:
@@ -199,7 +198,6 @@ def benchmark_command(
 
     return [
         str(executable),
-        method,
         str(repetitions),
         str(simpson_panels),
     ]
@@ -261,39 +259,35 @@ def print_context(args: argparse.Namespace, backend: str) -> None:
 
 
 def run_sanity_checks(args: argparse.Namespace) -> dict[str, str]:
-    """Verify matching checksums across dispatch variants for each method."""
+    """Verify matching checksums across dispatch variants."""
 
     print("# Sanity checks")
-    reference_checksums: dict[str, str] = {}
-    for method in METHODS:
-        for dispatch, executable_name in EXECUTABLES.items():
-            command = benchmark_command(
-                args.build_dir / executable_name,
-                method,
-                args.sanity_repetitions,
-                args.simpson_panels,
+    reference_checksum = ""
+    for dispatch, executable_name in EXECUTABLES.items():
+        command = benchmark_command(
+            args.build_dir / executable_name,
+            args.sanity_repetitions,
+            args.simpson_panels,
+        )
+        logging.info("sanity check dispatch=%s", dispatch)
+        output = parse_key_value_output(run_case(command))
+        checksum = output["checksum"]
+        if not reference_checksum:
+            reference_checksum = checksum
+        if not math.isclose(
+            float(checksum),
+            float(reference_checksum),
+            rel_tol=1.0e-14,
+            abs_tol=1.0e-12,
+        ):
+            msg = (
+                f"Checksum mismatch for dispatch={dispatch}: "
+                f"{checksum} != {reference_checksum}"
             )
-            logging.info("sanity check dispatch=%s method=%s", dispatch, method)
-            output = parse_key_value_output(run_case(command))
-            checksum = output["checksum"]
-            reference = reference_checksums.setdefault(method, checksum)
-            if not math.isclose(
-                float(checksum),
-                float(reference),
-                rel_tol=1.0e-14,
-                abs_tol=1.0e-12,
-            ):
-                msg = (
-                    f"Checksum mismatch for method={method}, "
-                    f"dispatch={dispatch}: {checksum} != {reference}"
-                )
-                raise RuntimeError(msg)
-            print(
-                f"sanity_ok dispatch={dispatch} method={method} "
-                f"checksum={checksum}"
-            )
+            raise RuntimeError(msg)
+        print(f"sanity_ok dispatch={dispatch} checksum={checksum}")
     print()
-    return reference_checksums
+    return {"simpson": reference_checksum}
 
 
 def time_with_hyperfine(command: list[str], warmup_runs: int, runs: int) -> tuple[float, float]:
@@ -356,51 +350,48 @@ def run_benchmark_table(
 
     print("# Timing results")
     print(
-        f"{'dispatch':<22} {'method':<10} {'mean_s':>14} {'stddev_s':>14} "
+        f"{'dispatch':<28} {'mean_s':>14} {'stddev_s':>14} "
         f"{'ns/integral':>14} {'checksum':>24}  command"
     )
 
     summaries: list[BenchmarkSummary] = []
-    for method in METHODS:
-        for dispatch, executable_name in EXECUTABLES.items():
-            command = benchmark_command(
-                args.build_dir / executable_name,
-                method,
-                args.repetitions,
-                args.simpson_panels,
+    for dispatch, executable_name in EXECUTABLES.items():
+        command = benchmark_command(
+            args.build_dir / executable_name,
+            args.repetitions,
+            args.simpson_panels,
+        )
+        logging.info("timing dispatch=%s", dispatch)
+        output = parse_key_value_output(run_case(command))
+        if backend == "hyperfine":
+            mean_seconds, stddev_seconds = time_with_hyperfine(
+                command,
+                args.warmup_runs,
+                args.runs,
             )
-            logging.info("timing dispatch=%s method=%s", dispatch, method)
-            output = parse_key_value_output(run_case(command))
-            if backend == "hyperfine":
-                mean_seconds, stddev_seconds = time_with_hyperfine(
-                    command,
-                    args.warmup_runs,
-                    args.runs,
-                )
-            else:
-                mean_seconds, stddev_seconds = time_with_skill_helper(
-                    helper_module,
-                    command,
-                    args.warmup_runs,
-                    args.runs,
-                )
-            ns_per_integral = 1.0e9*mean_seconds/(5.0*args.repetitions)
-            summary = BenchmarkSummary(
-                dispatch=output["dispatch"],
-                method=method,
-                mean_seconds=mean_seconds,
-                stddev_seconds=stddev_seconds,
-                ns_per_integral=ns_per_integral,
-                checksum=output["checksum"],
-                command=command,
+        else:
+            mean_seconds, stddev_seconds = time_with_skill_helper(
+                helper_module,
+                command,
+                args.warmup_runs,
+                args.runs,
             )
-            summaries.append(summary)
-            print(
-                f"{summary.dispatch:<22} {summary.method:<10} "
-                f"{summary.mean_seconds:14.9f} {summary.stddev_seconds:14.9f} "
-                f"{summary.ns_per_integral:14.6f} {summary.checksum:>24}  "
-                f"{' '.join(summary.command)}"
-            )
+        ns_per_integral = 1.0e9*mean_seconds/(5.0*args.repetitions)
+        summary = BenchmarkSummary(
+            dispatch=output["dispatch"],
+            mean_seconds=mean_seconds,
+            stddev_seconds=stddev_seconds,
+            ns_per_integral=ns_per_integral,
+            checksum=output["checksum"],
+            command=command,
+        )
+        summaries.append(summary)
+        print(
+            f"{summary.dispatch:<28} "
+            f"{summary.mean_seconds:14.9f} {summary.stddev_seconds:14.9f} "
+            f"{summary.ns_per_integral:14.6f} {summary.checksum:>24}  "
+            f"{' '.join(summary.command)}"
+        )
     return summaries
 
 
@@ -413,7 +404,6 @@ def write_json_output(
     payload = [
         {
             "dispatch": summary.dispatch,
-            "method": summary.method,
             "mean_seconds": summary.mean_seconds,
             "stddev_seconds": summary.stddev_seconds,
             "ns_per_integral": summary.ns_per_integral,

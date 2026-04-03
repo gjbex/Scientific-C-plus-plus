@@ -10,7 +10,6 @@
 #include <string>
 
 struct BenchmarkConfig {
-    std::string method {"simpson"};
     unsigned simpson_panels {100};
     std::size_t repetitions {2000000};
 };
@@ -22,14 +21,10 @@ inline double benchmark_integrand(double x) {
 inline BenchmarkConfig parse_benchmark_config(int argc, char* argv[]) {
     BenchmarkConfig config;
     if (argc > 1)
-        config.method = argv[1];
+        config.repetitions = std::stoull(argv[1]);
     if (argc > 2)
-        config.repetitions = std::stoull(argv[2]);
-    if (argc > 3)
-        config.simpson_panels = static_cast<unsigned>(std::stoul(argv[3]));
+        config.simpson_panels = static_cast<unsigned>(std::stoul(argv[2]));
 
-    if (config.method != "simpson" && config.method != "gaussian")
-        throw std::invalid_argument("method must be 'simpson' or 'gaussian'");
     if (config.repetitions == 0)
         throw std::invalid_argument("repetitions must be positive");
     if (config.simpson_panels == 0 || config.simpson_panels % 2 != 0)
@@ -66,7 +61,6 @@ void execute_benchmark(const std::string& dispatch_name,
     const double ns_per_integral = 1.0e9*elapsed.count()/calls;
 
     std::cout << "dispatch=" << dispatch_name
-              << " method=" << config.method
               << " repetitions=" << config.repetitions
               << " simpson_panels=" << config.simpson_panels
               << " elapsed_seconds=" << std::setprecision(9)

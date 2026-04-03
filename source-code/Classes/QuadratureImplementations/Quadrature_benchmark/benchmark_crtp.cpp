@@ -2,7 +2,6 @@
 #include <iostream>
 
 #include "benchmark_common.h"
-#include "gaussian_quad.h"
 #include "simpson_quad.h"
 
 namespace {
@@ -23,13 +22,8 @@ void benchmark_static_dispatch(const std::string& dispatch_name,
 int main(int argc, char* argv[]) {
     try {
         const BenchmarkConfig config = parse_benchmark_config(argc, argv);
-        if (config.method == "simpson") {
-            const SimpsonQuad quad(config.simpson_panels);
-            benchmark_static_dispatch("crtp_static", config, quad);
-        } else {
-            const GaussianQuad quad;
-            benchmark_static_dispatch("crtp_static", config, quad);
-        }
+        const SimpsonQuad quad(config.simpson_panels);
+        benchmark_static_dispatch("crtp_static", config, quad);
     } catch (const std::exception& error) {
         std::cerr << "### error: " << error.what() << '\n';
         return 1;

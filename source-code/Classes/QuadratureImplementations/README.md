@@ -1,6 +1,6 @@
 # Quadrature implementations
 
-This directory collects five implementations of the same quadrature example,
+This directory collects seven implementations of the same quadrature example,
 ordered roughly from runtime polymorphism to constrained compile-time
 polymorphism.
 
@@ -12,7 +12,9 @@ polymorphism.
 | `Quadrature_CRTP` | Curiously Recurring Template Pattern | Static dispatch with no virtual-call overhead while still sharing a common wrapper API | More template ceremony, harder diagnostics, and no heterogeneous runtime storage through one base pointer |
 | `Quadrature_deduce_this` | Explicit object parameter (`this` deduction) | Keeps the static-dispatch benefits of CRTP while removing the "derived type as template argument" boilerplate | Requires a compiler with C++23 explicit-object-parameter support and is still less familiar than ordinary virtual dispatch |
 | `Quadrature_duck_typing` | Unconstrained function template | Minimal coupling and very little framework code; any type with a compatible `integrate` member works | Interface requirements are implicit, so misuse tends to produce noisier template errors and weaker documentation |
+| `Quadrature_duck_typing_template` | Unconstrained function template with a templated callable argument | Avoids `std::function` type-erasure overhead for the integrand while keeping the duck-typed interface lightweight | Interface requirements are still implicit, and templated member definitions must live in headers |
 | `Quadrature_concept` | Concept-constrained template | Preserves static dispatch while making the required interface explicit and improving diagnostics | Still a compile-time interface only; unlike virtual dispatch, it does not by itself provide one runtime-polymorphic object type |
+| `Quadrature_concept_template` | Concept-constrained template with a templated callable argument | Keeps explicit interface constraints while avoiding `std::function` overhead for the integrand | More template surface area, and the concept now depends on both the quadrature type and the callable type |
 
 ## How to read these examples
 
@@ -22,9 +24,13 @@ polymorphism.
 1. Compare `Quadrature_deduce_this` with `Quadrature_CRTP` to see how C++23
    reduces CRTP boilerplate.
 1. Read `Quadrature_duck_typing` for the lightest-weight template-based
-   formulation.
-1. Finish with `Quadrature_concept` to see how concepts make duck-typed
+   formulation with a fixed `std::function` integrand type.
+1. Compare `Quadrature_duck_typing_template` to see how templating the
+   callable removes `std::function` overhead.
+1. Move to `Quadrature_concept` to see how concepts make duck-typed
    requirements explicit.
+1. Finish with `Quadrature_concept_template` to combine concept-checked
+   quadrature types with a templated callable argument.
 
 ## Practical tradeoff
 
@@ -39,5 +45,5 @@ and avoiding dynamic allocation matter more than runtime substitutability.
 ## Build note
 
 `Quadrature_deduce_this` uses C++23 explicit object parameters. If your
-compiler does not yet implement that feature, the other four variants still
+compiler does not yet implement that feature, the other six variants still
 build and run normally.

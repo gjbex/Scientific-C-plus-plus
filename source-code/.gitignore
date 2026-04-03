@@ -10,3 +10,6 @@ a.out
 
 # Build directory
 _build_all/
+
+# Python cache directories
+__pycache__/

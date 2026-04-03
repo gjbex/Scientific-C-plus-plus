@@ -110,7 +110,7 @@ refer to Bjarne Strustroup's "A tour of C++".
     main function takes a command line argument specifying which method
     to use to compute the numerical integral of a function over an
     interval.
-    ([Solution](Classes/Quadrature))
+    ([Solution](Classes/QuadratureImplementations/Quadrature))
     
 
 ## <a name="templates">Templates and functional programming interludes (chapter 5)<a/>

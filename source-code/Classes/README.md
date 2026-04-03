@@ -12,16 +12,9 @@ Code illustrations for chapter 4, Classes in Stroustrup's
 1. `Particles`: simple example of inheritance in C++.
 1. `Stats`: another example of a derived class, implements computing simple
    statistics on a data stream.
-1. `Quadrature`: illustration of a class hierarchy with an abstract base class.
-   It uses runtime polymorphism.
-1. `Quadrature_CRTP`: illustration of the Curiously Repeating Template Pattern
-   (CRTP) to avoid runtime polymorphism.
-1. `Quadrature_deduce_this`: a variant of `Quadrature_CRTP` that uses C++23's
-   this-deduction to avoid the need for the derived class to specify its own
-   type as a template parameter.
-1. `Quadrature_duck_typing`: a variant of `Quadrature` that uses duck typing to
-   avoid the need for an abstract base class or CRTP.
-1. `Quadrature_concepts`: a variant of `Quadrature` that uses concepts to
-   define the requirements on the derived classes.
+1. `QuadratureImplementations`: five variants of the same quadrature example,
+   starting with runtime polymorphism and progressing through CRTP,
+   `this`-deduction, duck typing, and concepts. The subdirectory README
+   compares the merits and disadvantages of each approach.
 1. `Mixin`: illustration of using multiple inheritance to implement a mix-in
    class.

@@ -21,5 +21,7 @@ Code illustrations for chapter 4, Classes in Stroustrup's
    type as a template parameter.
 1. `Quadrature_duck_typing`: a variant of `Quadrature` that uses duck typing to
    avoid the need for an abstract base class or CRTP.
+1. `Quadrature_concepts`: a variant of `Quadrature` that uses concepts to
+   define the requirements on the derived classes.
 1. `Mixin`: illustration of using multiple inheritance to implement a mix-in
    class.

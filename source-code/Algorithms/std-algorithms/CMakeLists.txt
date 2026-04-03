@@ -1,9 +1,9 @@
 cmake_minimum_required(VERSION 3.20)
-project(algorithms LANGUAGES CXX)
+project(std_algorithms LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 20)
-set(CMaKE_CXX_STANDARD_REQUIRED YES)
-set(CMAKE_CXX_EXTENSIONS NO)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
 
 set(APPLICATIONS
     find_if
@@ -21,7 +21,6 @@ set(APPLICATIONS
     points)
 
 foreach(APP ${APPLICATIONS})
-    add_executable(${APP}.exe
-        ${APP}.cpp)
+    add_executable(${APP}.exe ${APP}.cpp)
     target_compile_options(${APP}.exe PRIVATE -Wall -Wextra -Wpedantic)
 endforeach()

@@ -12,6 +12,6 @@ feature, e.g., g++ 14.x or later.
 
 ## What is it?
 
-1. `count_up.cpp`: C++ application that illustrates a configurable genertor
+1. `count_up.cpp`: C++ application that illustrates a configurable generator
    using a higher-order function.
 1. `CMakeLists.txt`: CMake file to build the application.

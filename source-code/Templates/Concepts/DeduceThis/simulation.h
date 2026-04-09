@@ -30,7 +30,7 @@ struct Simulation {
             self.current_step_++;
         }
         void run(this auto& self, const std::size_t max_nr_steps) {
-            for (size_t step_nr = 0; step_nr < max_nr_steps; ++step_nr) {
+            for (std::size_t step_nr = 0; step_nr < max_nr_steps; ++step_nr) {
                 self.step();
             }
         }

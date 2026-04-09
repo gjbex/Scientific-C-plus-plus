@@ -1,6 +1,6 @@
 # Numerics
 
-Code illustrations for chapter 9, Numerics in Stroustrup's "A tour of C++" as
+Code illustrations for chapter 12, Numerics in Stroustrup's "A tour of C++" as
 well as some additional examples illustrating C++20 features.
 
 # What is it?
@@ -17,3 +17,7 @@ well as some additional examples illustrating C++20 features.
 1. `numbers_pi_versus_M_PI.cpp`: illustration of templated numeric constants
    to avoid type promotion.
 1. `CMakeLists.txt`: CMake file to build the code.
+
+Several of these files are also linked from `source-code/exercises.md` as
+solutions for the Numerics chapter exercises, together with related examples in
+`source-code/Armadillo`, `source-code/Eigen`, and `source-code/Boost/Math`.

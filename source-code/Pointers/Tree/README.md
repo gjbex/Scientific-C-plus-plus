@@ -17,3 +17,7 @@ Example of using various types of pointers to implement a binary tree.
       structure.
   * `tree_uptr.cpp`: main file to test node implementation.
 * `CMakeLists.txt`: CMake file to build the applications.
+
+The three tree drivers are also linked from `source-code/exercises.md` as
+solutions for Pointers exercises comparing raw pointers, `std::unique_ptr`,
+and `std::shared_ptr`.

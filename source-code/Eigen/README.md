@@ -14,6 +14,9 @@ Eigen is a header-only library for linear algrebra in C++.
 1. `StringAlignment`: example of using integer matrices for string alignment
     using dynamic programming.
 
+Some of these files are also linked from `source-code/exercises.md` as
+solutions for Numerics exercises on linear algebra.
+
 
 ## How to build?
 

@@ -18,3 +18,6 @@ in Stroustrup's "A tour of C++".
     to tokenize a text and count the words occurring in it.
 1. `text.txt`: sample text to count words in.
 1. `CMakeLists.txt`: CMake configuration file to build the applications.
+
+Several of these files are also linked from `source-code/exercises.md` as
+solutions for the Strings and regular expressions exercises.

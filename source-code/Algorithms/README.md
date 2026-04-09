@@ -1,30 +1,18 @@
 # Algorithms
-Code illustrations for chapter 10, Algorithms in Stroustrup's
-"A tour of C++".
 
-## What is it?
-1. `accumulate.cpp`: simple illustration of using the `std::accumulate`
-    function, and a trivial lambda function.
-1. `find_if.cpp`: illustrates finding elements in collections using
-    `std::find_if` and a closure lambda function.
-1. `for_each.cpp`: illustration of modifying each element of an STL vector
-    using `std::for_each` and a lambda function.
-1. `generate.cpp`: illustration of generating the elements of a vector
-    using `std::generate` and a lambda function.
-1. `permutations.cpp`: illustration of generating the permutations of a
-    vector using `std::next_permutation`.
-1. `particle_sort.cpp`: illustrations of sorting structures based on
-    various fields.
-1. `count_clamp.cpp`: illustration of count and replace algorithms with
-    predicates.
-1. `transform.cpp`: simple example of using `transform`.
-1. `zip_it.cpp`: illustration of using `transform` to use two sequences
-    to produce a third.
-1. `find_words.cpp`: illustrates using `search` for strings.
-`. `text.txt`: text file to perform search on.
-1. `distances.cpp`: illustrating a `std::back_inserter` in an
-    `std::transform`.
-1. `iota.cpp`: initialize a `valarray` using `iota` and apply a function.
-1. `points.cpp`: illustration of using C++20's spaceship operator.
-1. `CMakeLists.txt`: CMake file to build the code.
-1. `OceanView`: compute which buildings have an ocean view.
+Illustrations of C++ algorithms and related data-structure exercises.
+
+## Contents
+
+1. `std-algorithms/`: standalone examples of standard-library algorithms from
+   chapter 10 of Stroustrup's "A Tour of C++", also used as solutions for
+   the exercises listed in `source-code/exercises.md`.
+1. `../Ranges/`: C++20 ranges and views examples that complement the
+   Algorithms chapter exercises.
+1. `ocean-view/`: implementations and benchmark drivers for the ocean-view
+   building problem.
+1. `algorithm_choices.md`: short written solution for the STL algorithm
+   selection exercise.
+
+Each directory is self-contained and has its own `README.md` and
+`CMakeLists.txt`.

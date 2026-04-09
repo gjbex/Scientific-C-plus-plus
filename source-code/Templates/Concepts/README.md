@@ -1,13 +1,15 @@
 # Concepts
 
-Concepts help to improve template error messages by providing a systematic
-way for formulate constraints on the template parameters, typically the
-types.
+Concepts in C++ let you specify constraints on template parameters. They
+express the requirements a type must satisfy before it can be used with a
+template, which can improve readability and produce clearer diagnostics when
+template instantiation fails.
 
 
 ## What is it?
 
-1. `iterable.h`: defintion of the iterable concept.
-1. `main.cpp`: application that will fail to compile because the template
-   constraints are not satisfied.
-1. `CMakeLists.txt`: CMake file to build the applications.
+1. `Simple`: a small example of using a concept to constrain template
+   parameters for iterable types.
+1. `DeduceThis`: a C++23 example showing how a concept can constrain a stop
+   callback while explicit object parameters (`this auto&`) provide
+   derived-type dispatch without CRTP.

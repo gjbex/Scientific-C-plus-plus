@@ -16,7 +16,6 @@ Code illustrations for chapter 5, Temaples in Stroustrup's
    container.
 1. `print_container_no_range_for.cpp`: using a template to print the elements
    of a random accessible container (plays well with valarray expressions).
-1. `DuckTyping`: example of using a template for duck typing.
 1. `CMakeLists.txt`: CMake file to build the applications.
 1. `Grid`: templated data structure with friend function.
 1. `ArrayView`: template for creating multi-dimensional views on
@@ -25,5 +24,3 @@ Code illustrations for chapter 5, Temaples in Stroustrup's
    templates.
 1. `Shapes`: comparing various implementations of the shapes example.
 1. `Counter`: illustration of a template class with a custom iterator.
-1. `IntegrateConcept`: illustration of using concepts in the context of duck
-   typing.

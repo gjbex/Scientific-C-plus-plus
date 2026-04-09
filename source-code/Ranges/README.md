@@ -22,4 +22,7 @@ of algorithms.  Part of this functionality is rolled into the C++20 standard.
    particles by their mass member and using a lambda function as a comparator.
 1. `CMakeLists.txt`: CMake file to build the applications.
 
+Several of these files are also linked from `source-code/exercises.md` as
+solutions for the ranges/views part of the Algorithms exercises.
+
 *Note:* you will need at least g++ 13.x to compile this succesfully.

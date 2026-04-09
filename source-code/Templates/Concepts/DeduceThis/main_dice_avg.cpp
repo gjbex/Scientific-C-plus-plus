@@ -16,7 +16,6 @@ int main(int argc, char* argv[]) {
     }
     DiceAvgSimulation simulation;
     simulation.seed(1234);
-    simulation.seed(1234);
     auto stop_function = [=] (const DiceAvgSimulation& simulation, [[maybe_unused]] const std::size_t step_nr) {
         const auto& distribution {simulation.distribution()};
         double avg {std::accumulate(distribution.begin(), distribution.end(), 0.0)/distribution.size()};

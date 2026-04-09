@@ -17,3 +17,6 @@ Some sample code for using the Armadillo linear algebra library.
     to Armadillo vectors and matrices.
 1. `inverse.cpp`: illustrates computing the matrix inverse.
 1. `CMakeLists.txt`: CMake file to build the sample code.
+
+Some of these files are also linked from `source-code/exercises.md` as
+solutions for Numerics exercises on linear algebra.

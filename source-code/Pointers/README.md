@@ -14,3 +14,6 @@ Some illustrations of using pointers in C++.
   pointers.
 * `CMakeLists.txt`: CMake file to build the applications.
 * `SharedPointers`: illustration of using shared pointers.
+
+Several of these files are also linked from `source-code/exercises.md` as
+solutions for the Pointers exercises.

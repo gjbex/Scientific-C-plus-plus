@@ -9,9 +9,12 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 set(COMMON_FLAGS -Wall -Wextra -Wpedantic)
 
 set(SEQUENCE_EXAMPLES
+    array_sum_squares
     list
+    particle_tuple
     split_string
     tuple
+    vector_stats
     vector
 )
 

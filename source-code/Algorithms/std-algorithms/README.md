@@ -29,6 +29,13 @@ cmake --build build
 1. `points.cpp`: sort points using C++20's spaceship operator.
 1. `CMakeLists.txt`: standalone build file for these examples.
 
+Several of these files are also linked from `source-code/exercises.md` as
+solutions for the Algorithms chapter exercises, in particular:
+`find_if.cpp`, `generate.cpp`, `for_each.cpp`, `particle_sort.cpp`,
+`count_clamp.cpp`, `transform.cpp`, `zip_it.cpp`, `accumulate.cpp`, and
+`distance.cpp`.  The file `../algorithm_choices.md` complements these code
+examples with a short "which STL algorithm would you pick?" exercise solution.
+
 ## Sample data
 
 - `text.txt`: input for `find_words.exe`.

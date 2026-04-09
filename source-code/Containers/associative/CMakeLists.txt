@@ -12,7 +12,9 @@ set(ASSOCIATIVE_EXAMPLES
     aggregate_data
     dim_nr_counts
     dim_nrs
+    distinct_words
     set
+    word_frequencies
 )
 
 foreach(app ${ASSOCIATIVE_EXAMPLES})

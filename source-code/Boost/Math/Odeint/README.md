@@ -9,3 +9,6 @@ of ordinary differential equations.
     variables.
 1. `plot_lorentz.plt`: Gnuplot script to plot curve for Lorentz system.
 1. `CMakeLists.txt`: CMake file to build the code.
+
+This example is also linked from `source-code/exercises.md` as a solution for a
+Numerics exercise on solving ordinary differential equations.

@@ -9,3 +9,6 @@ list (aka, functional data structure).
 1. `linked_list.cpp`: implementation of the methods.
 1. `main.cpp`: application illustrating the shared memory pointer usage.
 1. `CMakeLists.txt`: CMake file to build the applications.
+
+This example is also linked from `source-code/exercises.md` as a solution for a
+Pointers exercise on persistent data structures with `std::shared_ptr`.

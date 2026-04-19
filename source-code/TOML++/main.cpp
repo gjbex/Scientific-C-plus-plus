@@ -24,4 +24,5 @@ int main() {
         std::cerr << "TOML parse error:\n" << err << '\n';
         return 1;
     }
+    return 0;
 }

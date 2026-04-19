@@ -56,6 +56,6 @@ programming concepts and idiosyncracies particular to C++.
 1. `TOML++`: examples of parsing TOML configuration files in C++ using the
    TOML++ library.
 1. `build_all.sh`: Bash script to build all the examples in this repository,
-   using CMake. Note that some example may fail to build, depending on the
+   using CMake. Note that some examples may fail to build, depending on the
    software installed on your system.  The primary intention of this script is
    test the build process of all examples.

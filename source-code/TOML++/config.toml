@@ -1,0 +1,7 @@
+[server]
+host = "localhost"
+port = 9000
+timeout_seconds = 30
+
+[logging]
+verbose = true

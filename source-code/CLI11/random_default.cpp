@@ -29,7 +29,7 @@ Options get_options(int argc, char** argv) {
     app.add_option("-n", n, "number of random values to generate")->default_val(std::to_string(default_n));
     app.add_option("-a", a, "minimum value")->default_val(std::to_string(default_a));
     app.add_option("-b", b, "maximum value")->default_val(std::to_string(default_b));
-    app.add_option("--seed", seed, "seed to use");
+    app.add_option("--seed", seed, "seed to use")->required();
     try {
         app.parse(argc, argv);
     } catch (const CLI::ParseError &e) {

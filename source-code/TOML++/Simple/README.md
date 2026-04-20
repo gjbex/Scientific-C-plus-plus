@@ -10,6 +10,8 @@ be found on [GitHub](https://github.com/marzer/tomlplusplus).
 
 ## What is it?
 
-1. `Simple`: simple to use, with a clean and intuitive API.
-1. ``RandomNumbers`: an example program that demonstrates how to use TOML++ to
-   parse a TOML for a similar application that illustrates the CLI11 library. 
+1. `main.cpp`: A simple example of using TOML++ to parse a TOML configuration
+   file and read typed values from it.
+1. `config.toml`: Example configuration file consumed by the program.
+1. `CMakeLists.txt`: CMake file to build the example. CMake will automatically
+   download and include TOML++ as a dependency.

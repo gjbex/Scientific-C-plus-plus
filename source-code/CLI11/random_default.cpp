@@ -4,7 +4,7 @@
 
 using Options = std::tuple<int, double, double, size_t>;
 
-Options get_options(int argc, char** argv);
+Options get_options(int argc, char* argv[]);
 
 int main(int argc, char* argv[]) {
     auto [n, a, b, seed] = get_options(argc, argv);
@@ -17,7 +17,7 @@ int main(int argc, char* argv[]) {
     return 0;
 }
 
-Options get_options(int argc, char** argv) {
+Options get_options(int argc, char* argv[]) {
     const int default_n {1};
     const double default_a {0.0};
     const double default_b {1.0};

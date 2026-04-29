@@ -124,6 +124,7 @@ You do not need prior experience with C++ itself, templates, inheritance, the
 STL, CMake, Eigen, Armadillo, Boost, or GSL. Those are part of the training
 itself.
 
+
 ### Quick self-assessment
 
 If you can do most of the tasks below in some programming language, you are
@@ -141,6 +142,8 @@ likely ready for this training.
 If several of these items still feel difficult, the training will probably move
 too fast. In that case, it is better to first take a short introductory
 programming course.
+
+### Software and access requirements
 
 To follow hands-on, you need a computer with a C++ development environment
 installed. You can of course use an HPC system you have access to as well.

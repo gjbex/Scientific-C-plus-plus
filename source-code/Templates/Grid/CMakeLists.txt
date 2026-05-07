@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.0)
+cmake_minimum_required(VERSION 3.20)
 project(grids LANGUAGES CXX)
 
 function(target_enable_project_warnings target)

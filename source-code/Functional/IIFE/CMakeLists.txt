@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.31)
+cmake_minimum_required(VERSION 3.20)
 project(immediately_invoked_function_expression LANGUAGES CXX)
 
 function(target_enable_project_warnings target)

@@ -15,7 +15,7 @@ endfunction()
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED YES)
-set(CMAKE_CXX_GNU_EXTNESIONS NO)
+set(CMAKE_CXX_EXTENSIONS NO)
 
 add_executable(stats_functional.exe main_functional.cpp)
 target_enable_project_warnings(stats_functional.exe)

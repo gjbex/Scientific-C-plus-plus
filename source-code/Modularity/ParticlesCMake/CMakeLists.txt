@@ -14,7 +14,7 @@ function(target_enable_project_warnings target)
     )
 endfunction()
 
-set(CMAKE_CXX_LANGUAGE_STANDARD 14)
+set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED YES)
 set(CMAKE_CXX_EXTENSIONS NO)
 

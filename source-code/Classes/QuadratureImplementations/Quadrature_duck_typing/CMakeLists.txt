@@ -1,6 +1,18 @@
-cmake_minimum_required(VERSION 3.14)
+cmake_minimum_required(VERSION 3.20)
 
 project(duck_typing_quadrature LANGUAGES CXX)
+
+function(target_enable_project_warnings target)
+    if(NOT TARGET "${target}")
+        message(FATAL_ERROR "target_enable_project_warnings called for unknown target: ${target}")
+    endif()
+
+    target_compile_options("${target}" PRIVATE
+        "$<$<COMPILE_LANG_AND_ID:CXX,GNU,Clang,AppleClang,IntelLLVM>:-Wall>"
+        "$<$<COMPILE_LANG_AND_ID:CXX,GNU,Clang,AppleClang,IntelLLVM>:-Wextra>"
+        "$<$<COMPILE_LANG_AND_ID:CXX,GNU,Clang,AppleClang,IntelLLVM>:-Wpedantic>"
+    )
+endfunction()
 
 add_executable(quad.exe)
 
@@ -13,7 +25,7 @@ target_sources(
 )
 
 target_compile_features(quad.exe PRIVATE cxx_std_14)
-target_compile_options(quad.exe PRIVATE -Wall -Wextra)
+target_enable_project_warnings(quad.exe)
 
 # Match Makefile defaults: debug symbols and O2 optimization.
 target_compile_options(quad.exe PRIVATE -g -O2)

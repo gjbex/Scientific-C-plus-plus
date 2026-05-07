@@ -1,6 +1,7 @@
 #include <algorithm>
 #include <chrono>
 #include <iostream>
+#include <memory>
 #include <random>
 #include <vector>
 #include "circle.h"
@@ -8,7 +9,7 @@
 #include "square.h"
 #include "triangle.h"
 
-using Data = std::vector<Shape*>;
+using Data = std::vector<std::unique_ptr<Shape>>;
 
 double total_area(const Data& data) {
     double total = 0;
@@ -26,13 +27,13 @@ Data create_shapes(std::size_t nr_shapes) {
     for (std::size_t i = 0; i < nr_shapes; ++i) {
         switch (shape_dist(gen)) {
             case 0:
-                data.push_back(new Circle(size_dist(gen)));
+                data.push_back(std::make_unique<Circle>(size_dist(gen)));
                 break;
             case 1:
-                data.push_back(new Square(size_dist(gen)));
+                data.push_back(std::make_unique<Square>(size_dist(gen)));
                 break;
             case 2:
-                data.push_back(new Triangle(size_dist(gen), size_dist(gen)));
+                data.push_back(std::make_unique<Triangle>(size_dist(gen), size_dist(gen)));
                 break;
         }
     }
@@ -45,9 +46,6 @@ int main(int argc, char* argv[]) {
         nr_shapes = std::stoul(argv[1]);
     }
     auto start = std::chrono::high_resolution_clock::now();
-    /*
-    Data data = create_shapes(nr_shapes);
-    */
     Data data {create_shapes(nr_shapes)};   
     auto end = std::chrono::high_resolution_clock::now();
     std::cout << "Time to create: "

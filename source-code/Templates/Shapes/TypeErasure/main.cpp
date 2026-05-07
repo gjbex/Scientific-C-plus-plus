@@ -13,15 +13,21 @@ void create_shapes(AreaAggregator& aggr, std::size_t nr_shapes) {
     std::uniform_int_distribution<int> shape_dist(0, 2);
     for (std::size_t i = 0; i < nr_shapes; ++i) {
         switch (shape_dist(gen)) {
-            case 0:
-                aggr.add(new Circle(size_dist(gen)));
+            case 0: {
+                Circle c(size_dist(gen));
+                aggr.add(c);
                 break;
-            case 1:
-                aggr.add(new Square(size_dist(gen)));
+            }
+            case 1: {
+                Square s(size_dist(gen));
+                aggr.add(s);
                 break;
-            case 2:
-                aggr.add(new Triangle(size_dist(gen), size_dist(gen)));
+            }
+            case 2: {
+                Triangle t(size_dist(gen), size_dist(gen));
+                aggr.add(t);
                 break;
+            }
         }
     }
 }

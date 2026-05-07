@@ -1,6 +1,18 @@
-cmake_minimum_required(VERSION 3.16)
+cmake_minimum_required(VERSION 3.20)
 
 project(quadrature LANGUAGES CXX)
+
+function(target_enable_project_warnings target)
+    if(NOT TARGET "${target}")
+        message(FATAL_ERROR "target_enable_project_warnings called for unknown target: ${target}")
+    endif()
+
+    target_compile_options("${target}" PRIVATE
+        "$<$<COMPILE_LANG_AND_ID:CXX,GNU,Clang,AppleClang,IntelLLVM>:-Wall>"
+        "$<$<COMPILE_LANG_AND_ID:CXX,GNU,Clang,AppleClang,IntelLLVM>:-Wextra>"
+        "$<$<COMPILE_LANG_AND_ID:CXX,GNU,Clang,AppleClang,IntelLLVM>:-Wpedantic>"
+    )
+endfunction()
 
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -16,10 +28,7 @@ add_executable(quad
 set_target_properties(quad PROPERTIES OUTPUT_NAME "quad.exe")
 
 # Match Makefile warning flags.
-target_compile_options(quad PRIVATE
-    -Wall
-    -Wextra
-)
+target_enable_project_warnings(quad)
 
 # Link against libm as in LDLIBS = -lm.
 target_link_libraries(quad PRIVATE m)

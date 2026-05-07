@@ -1,11 +1,21 @@
-cmake_minimum_required(VERSION 3.14 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.20)
 project(MyProject LANGUAGES CXX)
+
+function(target_enable_project_warnings target)
+    if(NOT TARGET "${target}")
+        message(FATAL_ERROR "target_enable_project_warnings called for unknown target: ${target}")
+    endif()
+
+    target_compile_options("${target}" PRIVATE
+        "$<$<COMPILE_LANG_AND_ID:CXX,GNU,Clang,AppleClang,IntelLLVM>:-Wall>"
+        "$<$<COMPILE_LANG_AND_ID:CXX,GNU,Clang,AppleClang,IntelLLVM>:-Wextra>"
+        "$<$<COMPILE_LANG_AND_ID:CXX,GNU,Clang,AppleClang,IntelLLVM>:-Wpedantic>"
+    )
+endfunction()
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMaKE_CXX_STANDARD_REQUIRED YES)
 set(CMAKE_CXX_EXTENSIONS NO)
-
-add_compile_options(-Wall -Wextra -Wpedantic)
 
 # if necessary download and install CPM
 set(CPM_DOWNLOAD_VERSION 0.38.1)
@@ -33,5 +43,6 @@ CPMAddPackage("gh:fmtlib/fmt#9.1.0")
 
 add_executable(fmt_test.exe
     main.cpp)
+target_enable_project_warnings(fmt_test.exe)
 target_link_libraries(fmt_test.exe
     fmt::fmt)

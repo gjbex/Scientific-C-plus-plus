@@ -2,6 +2,19 @@ cmake_minimum_required(VERSION 3.20)
 
 project(FunctionalAggregate LANGUAGES CXX)
 
+
+function(target_enable_project_warnings target)
+    if(NOT TARGET "${target}")
+        message(FATAL_ERROR "target_enable_project_warnings called for unknown target: ${target}")
+    endif()
+
+    target_compile_options("${target}" PRIVATE
+        "$<$<COMPILE_LANG_AND_ID:CXX,GNU,Clang,AppleClang,IntelLLVM>:-Wall>"
+        "$<$<COMPILE_LANG_AND_ID:CXX,GNU,Clang,AppleClang,IntelLLVM>:-Wextra>"
+        "$<$<COMPILE_LANG_AND_ID:CXX,GNU,Clang,AppleClang,IntelLLVM>:-Wpedantic>"
+    )
+endfunction()
+
 add_executable(aggregate aggregate.cpp)
 
 target_compile_features(aggregate PRIVATE cxx_std_14)
@@ -9,8 +22,6 @@ set_target_properties(aggregate PROPERTIES
   CXX_EXTENSIONS OFF
 )
 
-target_compile_options(aggregate PRIVATE
-  $<$<CXX_COMPILER_ID:GNU,Clang,AppleClang>:-Wall -Wextra>
-)
+target_enable_project_warnings(aggregate)
 
 target_link_libraries(aggregate PRIVATE m)

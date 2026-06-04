@@ -11,6 +11,9 @@ For information on the training, see the website
    presentation used for the training.
 1. [`glossary.md`](glossary.md): glossary of terms used in the training and the
    wider scientific C++ community.
+1. [`cpp_false_friends_by_language.md`](cpp_false_friends_by_language.md): list
+   of C++ features that are commonly misunderstood by developers coming from
+   other programming languages.
 1. [`source-code`](source-code): directory that contains sample code written to
    develop the slides and illustrate concepts.
 1. [`environment`](environment): defintions to build the software environment as

@@ -12,20 +12,30 @@ struct State {
 };
 
 double acceleration(const State& state, const OscillatorParameters& parameters) {
-    return -(parameters.spring_constant/parameters.mass)*state.x;
+    const double m {parameters.mass};
+    const double k {parameters.spring_constant};
+    const double x {state.x};
+    return -(k/m)*x;
 }
 
 double energy(const State& state, const OscillatorParameters& parameters) {
-    const double kinetic {0.5*parameters.mass*state.v*state.v};
-    const double potential {0.5*parameters.spring_constant*state.x*state.x};
+    const double m {parameters.mass};
+    const double k {parameters.spring_constant};
+    const double x {state.x};
+    const double v {state.v};
+    const double kinetic {0.5*m*v*v};
+    const double potential {0.5*k*x*x};
     return kinetic + potential;
 }
 
 State explicit_euler_step(const State& state, const OscillatorParameters& parameters,
                           const double dt) {
+    const double x {state.x};
+    const double v {state.v};
+    const double a {acceleration(state, parameters)};
     return State {
-        state.x + dt*state.v,
-        state.v + dt*acceleration(state, parameters),
+        x + dt*v,
+        v + dt*a,
     };
 }
 

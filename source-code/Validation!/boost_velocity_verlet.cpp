@@ -16,10 +16,12 @@ using state_type = std::pair<coordinate_type, velocity_type>;
 using stepper_type = boost::numeric::odeint::velocity_verlet<coordinate_type>;
 
 double energy(const state_type& state, const OscillatorParameters& parameters) {
+    const double m {parameters.mass};
+    const double k {parameters.spring_constant};
     const double x {state.first[0]};
     const double v {state.second[0]};
-    const double kinetic {0.5*parameters.mass*v*v};
-    const double potential {0.5*parameters.spring_constant*x*x};
+    const double kinetic {0.5*m*v*v};
+    const double potential {0.5*k*x*x};
     return kinetic + potential;
 }
 
@@ -33,7 +35,10 @@ class HarmonicOscillator {
 
         void operator()(const coordinate_type& q, const velocity_type&,
                         coordinate_type& acceleration, const double) const {
-            acceleration[0] = -(parameters_.spring_constant/parameters_.mass)*q[0];
+            const double m {parameters_.mass};
+            const double k {parameters_.spring_constant};
+            const double x {q[0]};
+            acceleration[0] = -(k/m)*x;
         }
 };
 

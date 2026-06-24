@@ -55,7 +55,7 @@ programming concepts and idiosyncracies particular to C++.
    library.
 1. `TOML++`: examples of parsing TOML configuration files in C++ using the
    TOML++ library.
-1. `Validation!`: examples that connect numerical implementations to
+1. `Validation`: examples that connect numerical implementations to
    scientific validation checks.
 1. `build_all.sh`: Bash script to build all the examples in this repository,
    using CMake. Note that some examples may fail to build, depending on the

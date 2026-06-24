@@ -25,7 +25,7 @@ double energy(const state_type& state, const OscillatorParameters& parameters) {
     return kinetic + potential;
 }
 
-class HarmonicOscillator {
+struct HarmonicOscillator {
     private:
         OscillatorParameters parameters_;
 

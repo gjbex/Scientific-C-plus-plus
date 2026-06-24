@@ -1,26 +1,14 @@
+#include "command_line_options.h"
+
 #include <algorithm>
 #include <cmath>
-#include <cstdlib>
 #include <iomanip>
 #include <iostream>
 #include <stdexcept>
-#include <string>
-
-struct OscillatorParameters {
-    double mass {1.0};
-    double spring_constant {1.0};
-};
 
 struct State {
     double x {1.0};
     double v {0.0};
-};
-
-struct SimulationOptions {
-    double dt {0.05};
-    int steps {400};
-    OscillatorParameters parameters {};
-    State initial_state {};
 };
 
 double acceleration(const State& state, const OscillatorParameters& parameters) {
@@ -41,58 +29,10 @@ State explicit_euler_step(const State& state, const OscillatorParameters& parame
     };
 }
 
-double parse_double(const char* value, const std::string& name) {
-    char* end {};
-    const double result {std::strtod(value, &end)};
-    if (end == value || *end != '\0') {
-        throw std::runtime_error("invalid floating-point value for " + name + ": " + value);
-    }
-    return result;
-}
-
-int parse_int(const char* value, const std::string& name) {
-    char* end {};
-    const long result {std::strtol(value, &end, 10)};
-    if (end == value || *end != '\0') {
-        throw std::runtime_error("invalid integer value for " + name + ": " + value);
-    }
-    if (result < 0) {
-        throw std::runtime_error(name + " must be non-negative");
-    }
-    return static_cast<int>(result);
-}
-
-SimulationOptions parse_options(const int argc, char* argv[]) {
-    SimulationOptions options {};
-    if (argc != 1 && argc != 7) {
-        throw std::runtime_error {
-            "usage: explicit_euler.exe [dt steps mass spring_constant x0 v0]"
-        };
-    }
-    if (argc == 7) {
-        options.dt = parse_double(argv[1], "dt");
-        options.steps = parse_int(argv[2], "steps");
-        options.parameters.mass = parse_double(argv[3], "mass");
-        options.parameters.spring_constant = parse_double(argv[4], "spring_constant");
-        options.initial_state.x = parse_double(argv[5], "x0");
-        options.initial_state.v = parse_double(argv[6], "v0");
-    }
-    if (options.dt <= 0.0) {
-        throw std::runtime_error("dt must be positive");
-    }
-    if (options.parameters.mass <= 0.0) {
-        throw std::runtime_error("mass must be positive");
-    }
-    if (options.parameters.spring_constant <= 0.0) {
-        throw std::runtime_error("spring_constant must be positive");
-    }
-    return options;
-}
-
 int main(int argc, char* argv[]) {
     try {
-        const SimulationOptions options {parse_options(argc, argv)};
-        State state {options.initial_state};
+        const SimulationOptions options {parse_options(argc, argv, "explicit_euler.exe")};
+        State state {options.x0, options.v0};
         const double initial_energy {energy(state, options.parameters)};
         if (initial_energy == 0.0) {
             throw std::runtime_error("initial energy is zero; choose a non-zero x0 or v0");
@@ -104,8 +44,8 @@ int main(int argc, char* argv[]) {
                   << ", steps = " << options.steps
                   << ", mass = " << options.parameters.mass
                   << ", spring_constant = " << options.parameters.spring_constant
-                  << ", x0 = " << options.initial_state.x
-                  << ", v0 = " << options.initial_state.v << '\n';
+                  << ", x0 = " << options.x0
+                  << ", v0 = " << options.v0 << '\n';
         std::cout << "t\tx\tv\tenergy\trelative_energy_error\n";
         std::cout << std::setprecision(16);
 

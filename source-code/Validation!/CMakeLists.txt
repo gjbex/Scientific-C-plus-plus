@@ -24,9 +24,9 @@ endif()
 
 find_package(Boost CONFIG REQUIRED)
 
-add_executable(explicit_euler.exe explicit_euler.cpp)
+add_executable(explicit_euler.exe explicit_euler.cpp command_line_options.cpp)
 target_enable_project_warnings(explicit_euler.exe)
 
-add_executable(boost_velocity_verlet.exe boost_velocity_verlet.cpp)
+add_executable(boost_velocity_verlet.exe boost_velocity_verlet.cpp command_line_options.cpp)
 target_enable_project_warnings(boost_velocity_verlet.exe)
 target_link_libraries(boost_velocity_verlet.exe PRIVATE Boost::headers)

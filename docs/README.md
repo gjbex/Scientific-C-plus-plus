@@ -32,12 +32,12 @@ Total duration: 4 hours
   | Subject                                     | Duration |
   |---------------------------------------------|----------|
   | introduction and motivation                 |  5 min.  |
-  | basics: control flow statements, data types | 85 min.  |
+  | basics: control flow statements, data types | 80 min.  |
   | hands-on session                            | 20 min.  |
   | coffee break                                | 10 min.  |
   | functions                                   | 15 min.  |
   | simple I/O                                  | 10 min.  |
-  | user defined types and classes              | 85 min.  |
+  | user defined types and classes              | 80 min.  |
   | hands-on session                            | 20 min.  |
 
 

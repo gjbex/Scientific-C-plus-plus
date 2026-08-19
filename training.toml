@@ -1,0 +1,296 @@
+schema_version = 2
+id = "scientific-c-plus-plus"
+title = "Scientific C++"
+content_language = "en"
+summary = """
+An introduction to modern C++ for scientific programming, including idiomatic
+C++, selected C++17 features, the Standard Template Library, and third-party
+libraries for numerical and scientific computing.
+"""
+languages = ["C++"]
+standards_discussed = ["C++17"]
+topics = [
+  "scientific computing",
+  "modern C++",
+  "Standard Template Library",
+  "numerical computing",
+  "linear algebra",
+]
+[[learning_outcomes]]
+statement = "Read and understand well-written C++ code."
+competencies = ["cpp.read-and-write-idiomatic-programs"]
+
+[[learning_outcomes]]
+statement = "Write small to medium C++ programs in an idiomatic style."
+competencies = ["cpp.read-and-write-idiomatic-programs"]
+
+[[learning_outcomes]]
+statement = "Use user-defined types, classes, templates, and STL facilities effectively."
+competencies = [
+  "cpp.basic-classes",
+  "cpp.templates",
+  "cpp.standard-library-containers-and-algorithms",
+]
+
+[[learning_outcomes]]
+statement = "Recognize best practices and common pitfalls for C++ programmers."
+competencies = ["cpp.apply-best-practices"]
+
+[[learning_outcomes]]
+statement = "Have a working knowledge of the Standard Template Library (STL)."
+competencies = ["cpp.standard-library-containers-and-algorithms"]
+
+[[learning_outcomes]]
+statement = "Use third-party libraries such as Armadillo or Eigen for linear algebra."
+competencies = ["cpp.use-scientific-linear-algebra-libraries"]
+
+[[learning_outcomes]]
+statement = "Have a solid foundation for follow-up work in scientific and high-performance C++ programming."
+
+[source]
+repository_url = "https://github.com/gjbex/Scientific-C-plus-plus/"
+website_url = "https://gjbex.github.io/Scientific-C-plus-plus/"
+license = "CC-BY-4.0"
+
+[delivery]
+duration_minutes = 960
+duration_kind = "fixed"
+session_count = 4
+target_session_duration_minutes = 240
+schedule_complete = true
+
+[audience]
+description = """
+People who already know how to program in another language and want to learn
+modern C++ for scientific applications.
+"""
+
+[prerequisites]
+summary = """
+Experience programming in another programming language is required. This is
+not a training that starts from general programming fundamentals.
+"""
+competencies = [
+  "programming.control-flow",
+  "programming.functions",
+  "programming.basic-data-structures",
+  "programming.program-decomposition",
+  "command-line.run-or-compile-programs",
+  "shell.edit-run-inspect",
+]
+not_required = [
+  "Prior C++ experience",
+  "Templates",
+  "Inheritance",
+  "The Standard Template Library",
+  "CMake",
+  "Eigen",
+  "Armadillo",
+  "Boost",
+  "The GNU Scientific Library",
+]
+
+[self_assessment]
+introduction = """
+Participants are likely ready if they can do most of these tasks in some
+programming language.
+"""
+tasks = [
+  "Write a function that computes the average of a list of numbers.",
+  "Loop over a collection and compute a derived result such as a sum or count.",
+  "Use if/else or a switch-like construct to classify values into cases.",
+  "Split a program into a few helper functions or files.",
+  "Read data from a text file and print a simple summary.",
+  "Read a short program and explain what it does.",
+  "Compile or run a small program from the command line.",
+  "Make a small change to an existing program and run it again.",
+]
+recommendation_if_not_ready = """
+First take a short introductory programming course if several of the tasks are
+still difficult.
+"""
+
+[requirements]
+software = [
+  "A computer with a C++ development environment installed.",
+]
+optional = [
+  "Access to an HPC system can be used as the development environment.",
+]
+
+[level]
+introductory_percent = 35
+intermediate_percent = 45
+advanced_percent = 20
+description = """
+The percentages describe the C++ and scientific-computing topics, not the
+participants' general programming background.
+"""
+
+[[materials]]
+kind = "slides"
+path = "scientific_cpp.pptx"
+
+[[materials]]
+kind = "source-code"
+path = "source-code"
+
+[[materials]]
+kind = "exercises"
+path = "exercises"
+
+[[materials]]
+kind = "environment"
+path = "environment"
+
+[[trainers]]
+name = "Geert Jan Bex"
+email = "geertjan.bex@uhasselt.be"
+
+[[maintainers]]
+name = "Geert Jan Bex"
+email = "geertjan.bex@uhasselt.be"
+
+[[sessions]]
+id = "session-1"
+title = "Session one"
+duration_minutes = 240
+
+[[sessions.items]]
+subject = "Introduction and motivation"
+duration_minutes = 5
+
+[[sessions.items]]
+subject = "Basics: control flow statements and data types"
+duration_minutes = 80
+
+[[sessions.items]]
+subject = "Hands-on session"
+duration_minutes = 20
+
+[[sessions.items]]
+subject = "Coffee break"
+duration_minutes = 10
+
+[[sessions.items]]
+subject = "Functions"
+duration_minutes = 15
+
+[[sessions.items]]
+subject = "Simple I/O"
+duration_minutes = 10
+
+[[sessions.items]]
+subject = "User-defined types and classes"
+duration_minutes = 80
+
+[[sessions.items]]
+subject = "Hands-on session"
+duration_minutes = 20
+
+[[sessions]]
+id = "session-2"
+title = "Session two"
+duration_minutes = 240
+
+[[sessions.items]]
+subject = "Modular code and the build process"
+duration_minutes = 80
+
+[[sessions.items]]
+subject = "Hands-on session"
+duration_minutes = 20
+
+[[sessions.items]]
+subject = "Error handling"
+duration_minutes = 10
+
+[[sessions.items]]
+subject = "Coffee break"
+duration_minutes = 10
+
+[[sessions.items]]
+subject = "Inheritance"
+duration_minutes = 60
+
+[[sessions.items]]
+subject = "Templates"
+duration_minutes = 20
+
+[[sessions.items]]
+subject = "Functional programming"
+duration_minutes = 20
+
+[[sessions.items]]
+subject = "Hands-on session"
+duration_minutes = 20
+
+[[sessions]]
+id = "session-3"
+title = "Session three"
+duration_minutes = 240
+
+[[sessions.items]]
+subject = "String and regular expressions"
+duration_minutes = 70
+
+[[sessions.items]]
+subject = "I/O streams"
+duration_minutes = 20
+
+[[sessions.items]]
+subject = "Hands-on session"
+duration_minutes = 20
+
+[[sessions.items]]
+subject = "Coffee break"
+duration_minutes = 10
+
+[[sessions.items]]
+subject = "STL containers"
+duration_minutes = 70
+
+[[sessions.items]]
+subject = "STL algorithms"
+duration_minutes = 30
+
+[[sessions.items]]
+subject = "Hands-on session"
+duration_minutes = 20
+
+[[sessions]]
+id = "session-4"
+title = "Session four"
+duration_minutes = 240
+
+[[sessions.items]]
+subject = "Numerical computing"
+duration_minutes = 70
+
+[[sessions.items]]
+subject = "Hands-on session"
+duration_minutes = 40
+
+[[sessions.items]]
+subject = "Coffee break"
+duration_minutes = 10
+
+[[sessions.items]]
+subject = "Linear algebra"
+duration_minutes = 30
+
+[[sessions.items]]
+subject = "Boost for numerics"
+duration_minutes = 10
+
+[[sessions.items]]
+subject = "GNU Scientific Library (GSL)"
+duration_minutes = 30
+
+[[sessions.items]]
+subject = "Hands-on session"
+duration_minutes = 40
+
+[[sessions.items]]
+subject = "Wrap up"
+duration_minutes = 10
